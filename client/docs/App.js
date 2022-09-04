@@ -8,12 +8,12 @@ const debug =
 // 1. Create a client engine instance
 const engine = new Styletron();
 
-import { Div, StyleReset, ThemeProvider } from "atomize";
+import { Button, Div, StyleReset, ThemeProvider } from "atomize";
 
 const theme = {
   colors: {
-    black900: "#1d1d1e"
-  }
+    black900: "#1d1d1e",
+  },
 };
 
 class App extends Component {
@@ -35,7 +35,23 @@ class App extends Component {
             textWeight="500"
             p={{ x: "1rem", y: "4rem" }}
           >
-            Start from here
+            <nav>
+              <Button>
+                <a href="./dashboard">Dashboard</a>
+              </Button>
+              <Button>
+                <a href="./profile">Profile</a>
+              </Button>
+              <Button>
+                <a href="./login">Login</a>
+              </Button>
+              <Button>
+                <a href="./signup">Sign Up</a>
+              </Button>
+              <Button>
+                <a href="./quiz">Quiz</a>
+              </Button>
+            </nav>
           </Div>
         </ThemeProvider>
       </StyletronProvider>
