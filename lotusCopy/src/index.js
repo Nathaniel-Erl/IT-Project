@@ -31,3 +31,5 @@ export { default as currentDevice } from "./functions/currentDevice";
 
 export { ThemeProvider } from "./core/ThemeContext";
 // export { default as DefaultTheme } from "./styles/DefaultTheme";
+
+ReactDOM.render(<App />, document.getElementById("root"));

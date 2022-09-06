@@ -37,6 +37,7 @@
     "styletron-react": "^5.2.0"
   },
   "dependencies": {
-    "atomize": "^1.0.28"
+    "atomize": "^1.0.28",
+    "react-router-dom": "^6.3.0"
   }
 }

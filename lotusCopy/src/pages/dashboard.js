@@ -35,6 +35,7 @@ class App extends Component {
             textWeight="500"
             p={{ x: "1rem", y: "4rem" }}
           >
+            <h1>dashboard</h1>
             <nav>
               <Button>
                 <a href="./dashboard">Dashboard</a>
