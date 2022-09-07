@@ -32,4 +32,20 @@ export { default as currentDevice } from "./functions/currentDevice";
 export { ThemeProvider } from "./core/ThemeContext";
 // export { default as DefaultTheme } from "./styles/DefaultTheme";
 
+// export { App } from "./pages/home.js";
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="blogs" element={<Blogs />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="*" element={<NoPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
 ReactDOM.render(<App />, document.getElementById("root"));
