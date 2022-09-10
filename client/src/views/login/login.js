@@ -5,25 +5,7 @@ function App() {
     <div className="App">
       <form>
         <label>
-          First Name:
-          <input type="text" name="name" />
-        </label>
-      </form>
-      <form>
-        <label>
-          Last Name:
-          <input type="text" name="name" />
-        </label>
-      </form>
-      <form>
-        <label>
-          Username:
-          <input type="text" name="name" />
-        </label>
-      </form>
-      <form>
-        <label>
-          Email:
+          Email or Username:
           <input type="text" name="name" />
         </label>
       </form>
