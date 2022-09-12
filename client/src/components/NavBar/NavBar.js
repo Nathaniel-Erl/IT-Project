@@ -12,7 +12,11 @@ const NavBar = ({ title }) => {
     <StyledAppBar>
       <StyledToolbar>
         <div style={{ flexGrow: 1, flexBasis: 0 }}>
-          <Logo src={logo} alt="quizy" />
+          <Logo
+            src={logo}
+            alt="quizy"
+            sx={{ display: { xs: "none", sm: "block" } }}
+          />
         </div>
         <Typography
           style={{ flexGrow: 1, flexBasis: 0 }}

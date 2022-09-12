@@ -5,7 +5,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/questiontype" exact element={<QuestionType />} />
+        <Route path="/createquestion" exact element={<QuestionType />} />
       </Routes>
     </BrowserRouter>
   );

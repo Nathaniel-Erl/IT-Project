@@ -1,50 +1,66 @@
-import React from 'react'
-import { Box, Typography, ButtonGroup, Button } from '@mui/material'
+import React, {useState} from 'react'
+import { Box, Typography, Button } from '@mui/material'
 import CloseIcon from "@mui/icons-material/Close";
+import ShortAnswer from '../ShortAnswer/ShortAnswer';
+import MultipleChoice from '../MultipleChoice/MultipleChoice';
+import { Container, StyledBox, StyledModal } from './styles';
 
 const TypeBox = () => {
+  const [openShortAnswer, setOpenShortAnswer] = useState(false);
+  const [openMultipleChoice, setOpenMultipleChoice] = useState(false);
+
   return (
-    <Box
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      minHeight="90vh"
-    >
-      <Box
-        display="flex"
-        flexDirection="column"
-        justifyContent="space-between"
-        width={400}
-        height={230}
-        bgcolor="#FFFFFF"
-        p={3}
-        borderRadius={4}
-        margin="auto"
-      >
-        <Box display="flex">
-          <Typography
-            style={{ flexGrow: 1, flexBasis: 0 }}
-            variant="h4"
-            color="black"
-            align="center"
-            fontWeight={100}
+    <>
+      <Container>
+        <StyledBox>
+          <Box display="flex">
+            <Typography
+              style={{ flexGrow: 1, flexBasis: 0 }}
+              variant="h4"
+              color="black"
+              align="center"
+              fontWeight={100}
+            >
+              Question Type
+            </Typography>
+            <CloseIcon />
+          </Box>
+
+          <Box
+            display="flex"
+            flexDirection="column"
+            gap="1.5rem"
+            style={{ marginBottom: "2rem" }}
           >
-            Question Type
-          </Typography>
-          <CloseIcon/>
-        </Box>
+            <Button size="large" variant="contained" fullWidth onClick={() => setOpenShortAnswer(true)}>
+              Short Answer
+            </Button>
 
-        <Box display="flex" flexDirection="column" gap="1.5rem" style={{ marginBottom: '2rem' }}>
-          <Button size="large" variant="contained" fullWidth>
-            Short Answer
-          </Button>
+            <Button size="large" variant="contained" color="error" fullWidth onClick={()=>setOpenMultipleChoice(true)}>
+              Multiple Choice
+            </Button>
+          </Box>
+        </StyledBox>
+      </Container>
+      
+      <StyledModal
+        open={openShortAnswer}
+        onClose={() => setOpenShortAnswer(false)}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <ShortAnswer setOpen={setOpenShortAnswer} />
+      </StyledModal>
 
-          <Button size="large" variant="contained" color="error" fullWidth>
-            Multiple Choice
-          </Button>
-        </Box>
-      </Box>
-    </Box>
+      <StyledModal
+        open={openMultipleChoice}
+        onClose={() => setOpenMultipleChoice(false)}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <MultipleChoice setOpen={setOpenMultipleChoice} />
+      </StyledModal>
+    </>
   );
 }
 
