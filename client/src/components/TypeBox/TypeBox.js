@@ -1,9 +1,10 @@
 import React, {useState} from 'react'
-import { Box, Typography, Button } from '@mui/material'
+import { Box, Typography, Button, IconButton } from '@mui/material'
 import CloseIcon from "@mui/icons-material/Close";
 import ShortAnswer from '../ShortAnswer/ShortAnswer';
 import MultipleChoice from '../MultipleChoice/MultipleChoice';
 import { Container, StyledBox, StyledModal } from './styles';
+import { Link } from "react-router-dom";
 
 const TypeBox = () => {
   const [openShortAnswer, setOpenShortAnswer] = useState(false);
@@ -23,7 +24,9 @@ const TypeBox = () => {
             >
               Question Type
             </Typography>
-            <CloseIcon />
+            <IconButton component={Link} to="/questions">
+              <CloseIcon />
+            </IconButton>
           </Box>
 
           <Box
@@ -32,17 +35,28 @@ const TypeBox = () => {
             gap="1.5rem"
             style={{ marginBottom: "2rem" }}
           >
-            <Button size="large" variant="contained" fullWidth onClick={() => setOpenShortAnswer(true)}>
+            <Button
+              size="large"
+              variant="contained"
+              fullWidth
+              onClick={() => setOpenShortAnswer(true)}
+            >
               Short Answer
             </Button>
 
-            <Button size="large" variant="contained" color="error" fullWidth onClick={()=>setOpenMultipleChoice(true)}>
+            <Button
+              size="large"
+              variant="contained"
+              color="error"
+              fullWidth
+              onClick={() => setOpenMultipleChoice(true)}
+            >
               Multiple Choice
             </Button>
           </Box>
         </StyledBox>
       </Container>
-      
+
       <StyledModal
         open={openShortAnswer}
         onClose={() => setOpenShortAnswer(false)}

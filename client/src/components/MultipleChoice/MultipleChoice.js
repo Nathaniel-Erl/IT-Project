@@ -84,7 +84,7 @@ const MultipleChoice = ({ setOpen }) => {
 
         <Box display="flex" alignItems="center">
           <Typography color="error">
-            * Please indicate correct answer(s) by checking box
+            * Please indicate correct answer by checking box next to answer
           </Typography>
           <Button
             variant="contained"
