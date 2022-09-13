@@ -3,21 +3,23 @@ import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
 import cors from 'cors'
 
-import postRoutes from './routes/post.js'
+import postRoutes from './routes/user.js'
+import landingRoutes from './routes/landing.js'
+import user from './models/userSchema.js'
 
 const app = express()
 
-app.use(bodyParser.json())
-app.use(express.urlencoded({ extended: true }))
+app.use(bodyParser.json({ limit: '1mb', extended: true }))
+app.use(bodyParser.urlencoded({ limit: '1mb', extended: true }))
 app.use(cors())
-
+app.use(express.json())
 //every routes inside the post routes will start with post
-app.use('/posts', postRoutes)
+app.use('/:username', postRoutes)
+app.use('/', landingRoutes)
 
 // app.listen(PORT, () => console.log('Server Runing on port: ${PORT}'))
 const CONNECTION_URL =
   'mongodb+srv://BackendBryans:BackendBryans@cluster0.dosyhde.mongodb.net/?retryWrites=true&w=majority'
-
 const PORT = process.env.PORT || 5000
 
 mongoose
