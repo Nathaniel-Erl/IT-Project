@@ -3,7 +3,7 @@ import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
 import cors from 'cors'
 
-import postRoutes from './routes/user.js'
+import userRoutes from './routes/user.js'
 import landingRoutes from './routes/landing.js'
 import user from './models/userSchema.js'
 
@@ -13,8 +13,9 @@ app.use(bodyParser.json({ limit: '1mb', extended: true }))
 app.use(bodyParser.urlencoded({ limit: '1mb', extended: true }))
 app.use(cors())
 app.use(express.json())
-//every routes inside the post routes will start with post
-app.use('/:username', postRoutes)
+
+app.use('/:username', userRoutes)
+
 app.use('/', landingRoutes)
 
 // app.listen(PORT, () => console.log('Server Runing on port: ${PORT}'))

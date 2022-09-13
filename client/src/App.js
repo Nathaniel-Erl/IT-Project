@@ -1,11 +1,14 @@
-import React from 'react'
+import QuestionType from "./pages/QuestionType";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-const App = () => {
+function App() {
   return (
-    <div>
-      <h1>Adsadsapp</h1>
-    </div>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/createquestion" exact element={<QuestionType />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
