@@ -9,7 +9,9 @@ function Dashboard() {
     <>
       <NavBar title="Dashboard" />
       <CreateButton link="/createquestion" title="Create Quiz"></CreateButton>
-      <QuizBlock></QuizBlock>
+      <QuizBlock title={"Physics"} numQuestions="2" description={"hello!!"}>
+        title, numQuestions, description{" "}
+      </QuizBlock>
       <Question></Question>
     </>
   );

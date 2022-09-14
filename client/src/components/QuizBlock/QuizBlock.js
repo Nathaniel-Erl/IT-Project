@@ -15,14 +15,17 @@ import StarIcon from "@mui/icons-material/Star";
 import ModeIcon from "@mui/icons-material/Mode";
 import DeleteIcon from "@mui/icons-material/Delete";
 import {} from "./styles.js";
+// import * as url from "src/images/badge3.png";
 
-const QuizBlock = ({ title }) => {
+const QuizBlock = ({ title, numQuestions, description }) => {
   return (
     <>
       <Card sx={{ margin: 5, width: 427, hight: 432, borderRadius: 5 }}>
         <CardMedia
+          // border as i cant render image, placeholder
+          sx={{ border: 5, objectFit: "contain" }}
           component="img"
-          height="194"
+          height="200"
           image="src/images/badge3.png"
           alt="quiz"
         />
@@ -35,9 +38,18 @@ const QuizBlock = ({ title }) => {
               />
             </IconButton>
           }
-          title="Biology"
-          subheader="Question 1 of 12"
+          title={title}
+          subheader={
+            numQuestions == "1"
+              ? `${numQuestions} Question`
+              : `${numQuestions} Questions`
+          }
         />
+        <CardContent>
+          <Typography variant="h6" fontWeight={100}>
+            What is the power house of the cell ?
+          </Typography>
+        </CardContent>
       </Card>
     </>
   );

@@ -5,6 +5,7 @@ import {
   CardHeader,
   Checkbox,
   IconButton,
+  Input,
   Paper,
   Typography,
 } from "@mui/material";
@@ -14,7 +15,7 @@ import StarIcon from "@mui/icons-material/Star";
 import ModeIcon from "@mui/icons-material/Mode";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-const Question = () => {
+const Question = ({ question }) => {
   return (
     <Card sx={{ margin: 5 }}>
       <CardHeader
@@ -31,16 +32,21 @@ const Question = () => {
       />
       <CardContent>
         <Typography variant="h6" fontWeight={100}>
-          What is the power house of the cell ?
+          {question}
         </Typography>
 
         <Paper
           variant="outlined"
           sx={{ padding: 5, border: 1, borderColor: "grey.500", marginTop: 2 }}
         >
-          <Typography variant="body1" fontWeight={100}>
-            The Mitochondria
-          </Typography>
+          <Input
+            autoComplete="true"
+            autoCapitalize="true"
+            autoCorrect="true"
+            autoFocus="true"
+            //TODO make default value of a lighter color
+            defaultValue={"Enter answer here"}
+          ></Input>
         </Paper>
       </CardContent>
       <CardActions

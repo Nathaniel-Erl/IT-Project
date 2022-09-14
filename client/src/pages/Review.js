@@ -9,7 +9,7 @@ const Review = () => {
     <>
       <NavBar title="Review" />
       <Box flex={4} padding={2}>
-        <Question />
+        <Question question={"What is the power house of the cell ?"} />
         <Question />
         <Question />
       </Box>
