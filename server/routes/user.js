@@ -1,4 +1,5 @@
 import express from 'express'
+import User from '../models/userSchema.js'
 import { getQuizz, createQuiz } from '../controllers/post.js'
 const router = express.Router()
 
@@ -25,7 +26,25 @@ router.get('/settings', (req, res) => {
   res.json({ message: 'User settings ' })
 })
 
-router.get('/username', (req, res) => {})
-router.post('/', createQuiz)
+router.post('/sign-up', async (req, res) => {
+  const { username, firstName, lastName, email, password } = req.body
+
+  try {
+    const newUser = await User.create({
+      username,
+      firstName,
+      lastName,
+      email,
+      password,
+    })
+    res.send(req.body)
+    console.log(username, firstName, lastName, email, password)
+  } catch (error) {
+    console.log(error)
+    res.send(req.body)
+
+    return
+  }
+})
 
 export default router

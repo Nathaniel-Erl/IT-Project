@@ -1,6 +1,6 @@
 // Create all the handlers for our routes
 
-import user from '../models/userSchema.js'
+import User from '../models/userSchema.js'
 
 export const getQuizz = (req, res) => {
   res.send('this works')

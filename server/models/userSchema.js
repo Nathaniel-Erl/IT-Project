@@ -2,14 +2,14 @@ import mongoose from 'mongoose'
 import quiz from './quizSchema.js'
 
 const userSchema = mongoose.Schema({
-  username: { type: String, requried: true, unique: true },
-  firstName: { type: String, requried: true },
-  lastName: { type: String, requried: true },
-  email: { type: String, requried: true, unique: true },
-  password: { type: String, requried: true },
-  quizzes: [quiz.schema],
+  username: { type: String, required: true, unique: true },
+  firstName: { type: String, required: true },
+  lastName: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+  quizzes: [{ type: quiz.schema, required: false }],
 })
 
-const user = mongoose.model('user', userSchema)
+const User = mongoose.model('user', userSchema)
 
-export default user
+export default User
