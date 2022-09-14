@@ -28,6 +28,7 @@ const ShortAnswer = ({ setOpen }) => {
               id="outlined-basic"
               label="Question"
               variant="outlined"
+              autoComplete="off"
             />
             <TextField
               id="outlined-multiline-static"
@@ -35,6 +36,7 @@ const ShortAnswer = ({ setOpen }) => {
               multiline
               rows="7"
               variant="outlined"
+              autoComplete="off"
             />
           </Box>
           <Button

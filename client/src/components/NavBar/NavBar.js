@@ -6,7 +6,16 @@ import { Typography } from '@mui/material';
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 const NavBar = ({ title }) => {
-  const [open, setOpen] = useState(false)
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   return (
     <StyledAppBar>
@@ -28,28 +37,26 @@ const NavBar = ({ title }) => {
         </Typography>
         <div style={{ flexGrow: 1, flexBasis: 0, textAlign: "right" }}>
           <AccountCircleIcon
+            id="basic-button"
+            aria-controls={open ? "basic-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? "true" : undefined}
+            onClick={handleClick}
             style={{ marginLeft: "auto", color: "black" }}
-            onClick={() => setOpen(true)}
           />
+          <Menu
+            id="basic-menu"
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            MenuListProps={{
+              "aria-labelledby": "basic-button",
+            }}
+          >
+            <MenuItem>Account Settings</MenuItem>
+          </Menu>
         </div>
       </StyledToolbar>
-
-      <Menu
-        id="demo-positioned-menu"
-        aria-labelledby="demo-positioned-button"
-        open={open}
-        onClose={() => setOpen(false)}
-        anchorOrigin={{
-          vertical: "top",
-          horizontal: "right",
-        }}
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "right",
-        }}
-      >
-        <MenuItem>Account Settings</MenuItem>
-      </Menu>
     </StyledAppBar>
   );
 }
