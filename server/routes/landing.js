@@ -1,6 +1,6 @@
 import express from 'express'
 
-import User from '../models/userSchema.js'
+import user from '../models/userSchema.js'
 const router = express.Router()
 
 router.get('/', (req, res) => {
