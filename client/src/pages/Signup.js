@@ -1,6 +1,4 @@
-import "./login.css";
-
-function App() {
+function Signup() {
   return (
     <div className="App">
       <form>
@@ -38,4 +36,4 @@ function App() {
   );
 }
 
-export default App;
+export default Signup;

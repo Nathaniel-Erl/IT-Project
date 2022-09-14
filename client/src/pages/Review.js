@@ -1,9 +1,8 @@
-import { Box, Fab } from '@mui/material'
-import React from 'react'
-import NavBar from '../components/NavBar/NavBar'
-import Question from '../components/Question/Question'
-import AddIcon from "@mui/icons-material/Add";
-import { Link } from "react-router-dom";
+import { Box } from "@mui/material";
+import React from "react";
+import NavBar from "../components/NavBar/NavBar";
+import Question from "../components/Question/Question";
+import CreateButton from "../components/CreateButton/CreateButton";
 
 const Review = () => {
   return (
@@ -14,25 +13,9 @@ const Review = () => {
         <Question />
         <Question />
       </Box>
-      <Fab
-        component={Link}
-        to="/createquestion"
-        variant="extended"
-        size="medium"
-        color="error"
-        aria-label="add"
-        sx={{
-          borderRadius: 1,
-          position: "fixed",
-          bottom: 20,
-          right: { xs: "calc(50% - 175px)", md: 30 },
-        }}
-      >
-        <AddIcon sx={{ mr: 1 }} />
-        Add Question
-      </Fab>
+      <CreateButton title="Add Question" link="/createquestion"></CreateButton>
     </>
   );
-}
+};
 
-export default Review
+export default Review;
