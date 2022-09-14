@@ -7,9 +7,9 @@ const userSchema = mongoose.Schema({
   lastName: { type: String, requried: true },
   email: { type: String, requried: true, unique: true },
   password: { type: String, requried: true },
-  quizzes: [quiz.schema],
+  
 })
 
-const user = mongoose.model('user', userSchema)
+const User = mongoose.model('user', userSchema)
 
-export default user
+export default User

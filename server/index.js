@@ -21,7 +21,7 @@ app.use('/', landingRoutes)
 // app.listen(PORT, () => console.log('Server Runing on port: ${PORT}'))
 const CONNECTION_URL =
   'mongodb+srv://BackendBryans:BackendBryans@cluster0.dosyhde.mongodb.net/?retryWrites=true&w=majority'
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 8080
 
 mongoose
   .connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
