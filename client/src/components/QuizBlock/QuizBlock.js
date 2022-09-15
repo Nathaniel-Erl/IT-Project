@@ -68,7 +68,11 @@ const QuizBlock = ({ title, numQuestions, description }) => {
         >
           Test
         </Button>
-        <QuizBlockButton link="/questions"></QuizBlockButton>
+        <QuizBlockButton
+          text="review"
+          link="/questions"
+          color="#26ABFF"
+        ></QuizBlockButton>
       </Card>
     </>
   );

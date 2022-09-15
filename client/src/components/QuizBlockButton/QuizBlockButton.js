@@ -8,6 +8,7 @@ import { Button } from "@mui/material";
  * @returns
  */
 const QuizBlockButton = ({ text, color, link }) => {
+  console.log({ color });
   return (
     <>
       <Button
@@ -15,9 +16,10 @@ const QuizBlockButton = ({ text, color, link }) => {
           margin: 2,
           fontSize: 30,
           color: "white",
+          // backgroundColor: "#26ABFF",
           backgroundColor: { color },
         }}
-        // component={Link}
+        component={Link}
         to={link}
       >
         {text}
