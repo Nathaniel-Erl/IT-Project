@@ -1,5 +1,7 @@
 import express from 'express'
 import User from '../models/userSchema.js'
+import Question from '../models/questionSchema.js'
+import Quiz from '../models/quizSchema.js'
 import { getQuizz, createQuiz } from '../controllers/post.js'
 const router = express.Router()
 
@@ -47,4 +49,21 @@ router.post('/sign-up', async (req, res) => {
   }
 })
 
+router.post('/create-quiz', async (req, res) => {
+  const { subject, description, createdDate, questions } = req.body
+
+  console.log(req.originalUrl.split('/'))
+  try {
+    const newQuiz = await Quiz.create({
+      subject,
+      description,
+      createdDate,
+      questions,
+    })
+    res.send(req.body)
+  } catch (error) {
+    console.log(error)
+    res.send(400)
+  }
+})
 export default router

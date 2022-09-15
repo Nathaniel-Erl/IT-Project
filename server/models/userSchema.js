@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
-import quiz from './quizSchema.js'
+import Question from './questionSchema.js'
+import Quiz from './quizSchema.js'
 
 const userSchema = mongoose.Schema({
   username: { type: String, required: true, unique: true },
@@ -7,7 +8,6 @@ const userSchema = mongoose.Schema({
   lastName: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  quizzes: [{ type: quiz.schema, required: false }],
 })
 
 const User = mongoose.model('user', userSchema)

@@ -1,12 +1,12 @@
 import mongoose from 'mongoose'
 
 const questionSchema = mongoose.Schema({
-  quizID: { type: String, requried: true, unique: true },
-  question: { type: String, requried: true },
-  correctAnswer: [String],
+  question: { type: String, required: true },
+  correctAnswer: [{ type: String, required: true }],
   options: [String],
+  dateCreated: { type: Date, default: new Date() },
 })
 
-const question = mongoose.model('question', questionSchema)
+const Question = mongoose.model('question', questionSchema)
 
-export default question
+export default Question

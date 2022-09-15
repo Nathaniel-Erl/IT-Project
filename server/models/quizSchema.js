@@ -1,11 +1,11 @@
 import mongoose from 'mongoose'
-import multipleChoice from './multipleChoiceSchema.js'
-import shortAnswer from './shortAnswerSchema.js'
-import question from './questionSchema.js'
+// import multipleChoice from './multipleChoiceSchema.js'
+// import shortAnswer from './shortAnswerSchema.js'
+import Question from './questionSchema.js'
 
 const quizSchema = mongoose.Schema({
-  subject: { type: String, requried: true },
-  description: { type: String, requried: true },
+  subject: { type: String, required: true },
+  description: { type: String, required: false },
   createdDate: { type: Date, default: new Date() },
 
   //this way or this way
@@ -13,9 +13,9 @@ const quizSchema = mongoose.Schema({
   //   shortAnswerQuestions: { type: [shortAnswer.schema] },
 
   //or this way
-  questions: [{ type: question.schema }],
+  questions: [{ type: Question.schema, required: true }],
 })
 
-const quiz = mongoose.model('quiz', quizSchema)
+const Quiz = mongoose.model('quiz', quizSchema)
 
-export default quiz
+export default Quiz
