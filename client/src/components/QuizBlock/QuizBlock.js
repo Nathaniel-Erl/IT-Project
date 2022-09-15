@@ -19,6 +19,7 @@ import {} from "./styles.js";
 import logo from "../../images/badge3.png";
 import { Box, ThemeProvider, createTheme } from "@mui/system";
 import { Link } from "react-router-dom";
+import QuizBlockButton from "../QuizBlockButton/QuizBlockButton.js";
 
 const QuizBlock = ({ title, numQuestions, description }) => {
   return (
@@ -41,22 +42,33 @@ const QuizBlock = ({ title, numQuestions, description }) => {
           }
         ></CardHeader>
 
-        <CardContent>
-          <Typography variant="h6" fontWeight={100}>
-            What is the power house of the cell ?
-          </Typography>
-        </CardContent>
-        <Button component={Link} to="/questions">
+        <CardContent>{description}</CardContent>
+        <Button
+          sx={{
+            margin: 2,
+            fontSize: 30,
+            color: "white",
+            backgroundColor: "#26ABFF",
+          }}
+          component={Link}
+          to="/questions"
+        >
           Review
         </Button>
         <Button
-          color="error"
+          sx={{
+            margin: 2,
+            fontSize: 30,
+            color: "white",
+            backgroundColor: "red",
+          }}
           onClick={() => {
             alert("to test page (when implemented)");
           }}
         >
           Test
         </Button>
+        <QuizBlockButton link="/questions"></QuizBlockButton>
       </Card>
     </>
   );
