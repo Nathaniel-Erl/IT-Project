@@ -4,6 +4,7 @@ import { Menu, MenuItem } from "@mui/material";
 import logo from "../../images/logo.svg";
 import { Typography } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { Link } from "react-router-dom";
 
 const NavBar = ({ title }) => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -19,7 +20,7 @@ const NavBar = ({ title }) => {
 
   return (
     <StyledAppBar>
-      <StyledToolbar>
+      <StyledToolbar component={Link} to="/">
         <div style={{ flexGrow: 1, flexBasis: 0 }}>
           <Logo
             src={logo}
