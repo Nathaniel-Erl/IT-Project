@@ -23,9 +23,8 @@ const QuizBlock = ({ title, numQuestions, description }) => {
 
   return (
     <>
-      <Card sx={{ margin: 5, width: 427, hight: 432, borderRadius: 5 }}>
+      <Card sx={{ margin: 1, width: 327, height: 332, borderRadius: 5 }}>
         <CardMedia
-          // border as i cant render image, placeholder
           sx={{ objectFit: "cover" }}
           component="img"
           height="200"
