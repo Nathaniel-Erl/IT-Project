@@ -1,10 +1,6 @@
 import { Button } from "@mui/material";
 import React from "react";
-import CreateButton from "../components/CreateButton/CreateButton";
 import NavBar from "../components/NavBar/NavBar";
-import Question from "../components/Question/Question";
-import QuizBlock from "../components/QuizBlock/QuizBlock";
-import QuizBlockButton from "../components/QuizBlockButton/QuizBlockButton";
 import { Link } from "react-router-dom";
 
 /**

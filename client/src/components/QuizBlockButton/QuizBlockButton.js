@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
+import * as colors from "../../static/Colors";
+import * as font_sizes from "../../static/FontSizes";
 
 /**
- *
- * @param {text to be entered} text to be entered
- * @returns
+ * @returns returns a button for quiz block.
  */
 const QuizBlockButton = ({ text, color, link }) => {
   return (
@@ -13,10 +13,9 @@ const QuizBlockButton = ({ text, color, link }) => {
       <Button
         sx={{
           margin: 2,
-          fontSize: 30,
-          color: "white",
-          // backgroundColor: "#26ABFF",
-          backgroundColor: { color },
+          fontSize: font_sizes.FONT_M,
+          color: colors.WHITE,
+          backgroundColor: color,
         }}
         component={Link}
         to={link}

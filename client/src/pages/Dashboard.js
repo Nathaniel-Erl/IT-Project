@@ -34,7 +34,7 @@ Red Lotus: “…”`}
 
 “Master, you cannot stop it, Heavenly Court cannot stop it, because you cannot stop 
 people from thinking with their free will!”`}
-        numQuestions="2"
+        numQuestions="1"
         description={`The beasts ridiculed him: But you humans were born with empty hands and will pass away with nothing. Oh human, you want to pursue freedom but you also need to abide by your nature, you should not indulge in wild fantasies.
 
         Ren Zu said: I want freedom and to get rid of fate’s shackles. I will breathe freely and live on forever, I want eternal life!
