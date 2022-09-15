@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Box, Button, CardContent, CardMedia } from "@mui/material";
+import { Box, Button, CardContent, CardMedia, Avatar } from "@mui/material";
 import * as colors from "../../static/Colors";
 import * as font_sizes from "../../static/FontSizes";
+import * as constants from "../../static/Constants.js";
 import badge1 from "../../images/badge1.png";
 import badge2 from "../../images/badge2.png";
 import badge3 from "../../images/badge3.png";
@@ -18,43 +19,48 @@ const ProfileBlock = ({ text, color, link }) => {
     <>
       <Grid container>
         <Grid item xs={12}>
-          <CardMedia
-            sx={{ objectFit: "cover" }}
-            component="img"
-            height="200"
-            image={profile}
+          <Avatar
+            sx={{
+              height: constants.ICON_MEDIUM,
+              width: constants.ICON_MEDIUM,
+            }}
+            src={profile}
             alt="profile"
           />
           Username
         </Grid>
         <Grid item xs={12}>
           Badges
-          <CardMedia
-            sx={{ objectFit: "cover" }}
-            component="img"
-            height="200"
-            image={badge1}
+          <Avatar
+            sx={{
+              height: constants.ICON_SMALL,
+              width: constants.ICON_SMALL,
+            }}
+            src={badge1}
             alt="badge1"
           />
-          <CardMedia
-            sx={{ objectFit: "cover" }}
-            component="img"
-            height="200"
-            image={badge2}
+          <Avatar
+            sx={{
+              height: constants.ICON_SMALL,
+              width: constants.ICON_SMALL,
+            }}
+            src={badge2}
             alt="badge2"
           />
-          <CardMedia
-            sx={{ objectFit: "cover" }}
-            component="img"
-            height="200"
-            image={badge3}
+          <Avatar
+            sx={{
+              height: constants.ICON_SMALL,
+              width: constants.ICON_SMALL,
+            }}
+            src={badge3}
             alt="badge3"
           />
-          <CardMedia
-            sx={{ objectFit: "cover" }}
-            component="img"
-            height="200"
-            image={badge4}
+          <Avatar
+            sx={{
+              height: constants.ICON_SMALL,
+              width: constants.ICON_SMALL,
+            }}
+            src={badge4}
             alt="badge4"
           />
         </Grid>

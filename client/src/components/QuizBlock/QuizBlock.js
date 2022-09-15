@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardContent, CardHeader, CardMedia } from "@mui/material";
+import { Card, CardContent, CardHeader, CardMedia, Grid } from "@mui/material";
 import {} from "./styles.js";
 import logo from "../../images/badge3.png";
 import {
@@ -23,23 +23,38 @@ const QuizBlock = ({ title, numQuestions, description }) => {
 
   return (
     <>
-      <Card sx={{ margin: 1, width: 327, height: 332, borderRadius: 5 }}>
-        <CardMedia
-          sx={{ objectFit: "cover" }}
-          component="img"
-          height="200"
-          image={logo}
-          alt="quiz"
-        />
-        <CardHeader
-          title={displayTitle}
-          sx={{ fontSize: font_sizes.FONT_XL }}
-          subheader={
-            numQuestions === "1"
-              ? `${numQuestions} Question`
-              : `${numQuestions} Questions`
-          }
-        ></CardHeader>
+      <Card sx={{ margin: 1, height: 300, borderRadius: 5 }}>
+        {/* to neatly organise  */}
+        <Grid container spacing={0.5}>
+          <Grid item xs="12">
+            <CardMedia
+              sx={{ objectFit: "cover" }}
+              component="img"
+              height="120"
+              image={logo}
+              alt="quiz"
+            />
+          </Grid>
+          {/* first most row of text */}
+          <Grid item>
+            {/* this will contain 2 items, front title and number of questions */}
+            <Grid container>
+              <Grid
+                item
+                pl={0.5}
+                xs={5.5}
+                sx={{ fontSize: font_sizes.FONT_S, fontWeight: "bold" }}
+              >
+                {displayTitle}
+              </Grid>
+              <Grid item xs={5.5} textAlign="end" pr={0.5}>
+                {numQuestions === "1"
+                  ? `${numQuestions} Question`
+                  : `${numQuestions} Questions`}
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
         <CardContent>{displayDescription}</CardContent>
 
         <QuizBlockButton
