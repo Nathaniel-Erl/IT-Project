@@ -24,7 +24,7 @@ import {
   MAX_DESCRIPTION_DISPLAY_LENGTH,
   MAX_TITLE_DISPLAY_LENGTH,
 } from "../../static/Constants.js";
-import { BLUE } from "../../static/Colors.js";
+import { BLACK, BLUE } from "../../static/Colors.js";
 
 const QuizBlock = ({ title, numQuestions, description }) => {
   // console.log({ description }.length);
@@ -61,7 +61,6 @@ const QuizBlock = ({ title, numQuestions, description }) => {
               : `${numQuestions} Questions`
           }
         ></CardHeader>
-
         <CardContent>{displayDescription}</CardContent>
         <Button
           sx={{
@@ -88,11 +87,12 @@ const QuizBlock = ({ title, numQuestions, description }) => {
         >
           Test
         </Button>
-        <QuizBlockButton
+        //TODO make this QuizBlockButton able to work and replace button.
+        {/* <QuizBlockButton
           text="review"
           link="/questions"
-          color={BLUE}
-        ></QuizBlockButton>
+          color={BLACK}
+        ></QuizBlockButton> */}
       </Card>
     </>
   );
