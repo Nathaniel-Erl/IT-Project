@@ -10,17 +10,34 @@ router.get('/', (req, res) => {
 })
 
 router.get('/create-quiz', (req, res) => {
-  res.json({ message: 'Create Quiz' })
+  res.json({ message: 'Create Quiz Pop out ' })
 })
-router.get('/all-quizzes', (req, res) => {
-  res.json({ message: 'View all quizzes created' })
+router.get('/all-quizzes', async (req, res) => {
+  const username = req.originalUrl.split('/')[1]
+  try {
+    const user = await User.findOne({ username: username })
+
+    if (user == null) {
+      res.send(400)
+    }
+
+    //all the quizzes made by a user
+    const quizzes = await Quiz.find({ createdBy: user._id })
+    console.log(quizzes)
+
+    res.send(200)
+  } catch (error) {
+    console.log(error)
+    res.status(400)
+    return
+  }
 })
 
 router.get('/:quiz-id', (req, res) => {
   res.json({ message: 'view particular quiz questions only' })
 })
 
-router.get('/quiz-id/attempt', (req, res) => {
+router.get('/:quiz_id/attempt', (req, res) => {
   res.json({ message: 'attempt particular quiz ' })
 })
 
@@ -28,35 +45,18 @@ router.get('/settings', (req, res) => {
   res.json({ message: 'User settings ' })
 })
 
-router.post('/sign-up', async (req, res) => {
-  const { username, firstName, lastName, email, password } = req.body
-
-  try {
-    const newUser = await User.create({
-      username,
-      firstName,
-      lastName,
-      email,
-      password,
-    })
-    res.send(req.body)
-    console.log(username, firstName, lastName, email, password)
-  } catch (error) {
-    console.log(error)
-    res.send(req.body)
-
-    return
-  }
-})
-
 router.post('/create-quiz', async (req, res) => {
   const { subject, description, createdDate, questions } = req.body
 
-  console.log(req.originalUrl.split('/'))
+  const username = req.originalUrl.split('/')[1]
+  const user = await User.findOne({ username: username })
+  const createdBy = user._id
+
   try {
     const newQuiz = await Quiz.create({
       subject,
       description,
+      createdBy,
       createdDate,
       questions,
     })
