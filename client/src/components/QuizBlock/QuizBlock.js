@@ -15,7 +15,8 @@ import StarIcon from "@mui/icons-material/Star";
 import ModeIcon from "@mui/icons-material/Mode";
 import DeleteIcon from "@mui/icons-material/Delete";
 import {} from "./styles.js";
-// import * as url from "src/images/badge3.png";
+import logo from "../../images/badge3.png";
+import { Box, ThemeProvider, createTheme } from "@mui/system";
 
 const QuizBlock = ({ title, numQuestions, description }) => {
   return (
@@ -23,28 +24,41 @@ const QuizBlock = ({ title, numQuestions, description }) => {
       <Card sx={{ margin: 5, width: 427, hight: 432, borderRadius: 5 }}>
         <CardMedia
           // border as i cant render image, placeholder
-          sx={{ border: 5, objectFit: "contain" }}
+          sx={{ objectFit: "cover" }}
           component="img"
           height="200"
-          image="src/images/badge3.png"
+          image={logo}
           alt="quiz"
         />
-        <CardHeader
-          action={
-            <IconButton aria-label="add to favorites">
-              <Checkbox
-                icon={<StarBorderIcon />}
-                checkedIcon={<StarIcon sx={{ color: "orange" }} />}
-              />
-            </IconButton>
-          }
-          title={title}
-          subheader={
-            numQuestions == "1"
+        <Box
+          sx={{
+            color: "success.dark",
+            display: "inline",
+            fontWeight: "bold",
+            mx: 0.5,
+            fontSize: 30,
+            margin: 2,
+          }}
+        >
+          {title}
+        </Box>
+        <div style={{ flexGrow: 1, flexBasis: 0, textAlign: "right" }}>
+          <Box
+            sx={{
+              color: "text.secondary",
+              display: "inline",
+              fontSize: 20,
+              fontWeight: "lighter",
+              marginLeft: "auto",
+            }}
+            // textAlign="right"
+          >
+            {numQuestions == "1"
               ? `${numQuestions} Question`
-              : `${numQuestions} Questions`
-          }
-        />
+              : `${numQuestions} Questions`}
+          </Box>
+        </div>
+
         <CardContent>
           <Typography variant="h6" fontWeight={100}>
             What is the power house of the cell ?

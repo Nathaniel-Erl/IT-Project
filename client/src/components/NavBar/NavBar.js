@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import { StyledAppBar, StyledToolbar, Logo } from "./styles";
-import { Menu, MenuItem } from '@mui/material'
-import logo from '../../images/logo.svg'
-import { Typography } from '@mui/material';
+import { Menu, MenuItem } from "@mui/material";
+import logo from "../../images/logo.svg";
+import { Typography } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 const NavBar = ({ title }) => {
@@ -59,6 +59,6 @@ const NavBar = ({ title }) => {
       </StyledToolbar>
     </StyledAppBar>
   );
-}
+};
 
-export default NavBar
+export default NavBar;
