@@ -9,6 +9,7 @@ import {
   Paper,
   Typography,
   CardMedia,
+  Button,
 } from "@mui/material";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import StarIcon from "@mui/icons-material/Star";
@@ -17,6 +18,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import {} from "./styles.js";
 import logo from "../../images/badge3.png";
 import { Box, ThemeProvider, createTheme } from "@mui/system";
+import { Link } from "react-router-dom";
 
 const QuizBlock = ({ title, numQuestions, description }) => {
   return (
@@ -30,40 +32,31 @@ const QuizBlock = ({ title, numQuestions, description }) => {
           image={logo}
           alt="quiz"
         />
-        <Box
-          sx={{
-            color: "success.dark",
-            display: "inline",
-            fontWeight: "bold",
-            mx: 0.5,
-            fontSize: 30,
-            margin: 2,
-          }}
-        >
-          {title}
-        </Box>
-        <div style={{ flexGrow: 1, flexBasis: 0, textAlign: "right" }}>
-          <Box
-            sx={{
-              color: "text.secondary",
-              display: "inline",
-              fontSize: 20,
-              fontWeight: "lighter",
-              marginLeft: "auto",
-            }}
-            // textAlign="right"
-          >
-            {numQuestions == "1"
+        <CardHeader
+          title={title}
+          subheader={
+            numQuestions == "1"
               ? `${numQuestions} Question`
-              : `${numQuestions} Questions`}
-          </Box>
-        </div>
+              : `${numQuestions} Questions`
+          }
+        ></CardHeader>
 
         <CardContent>
           <Typography variant="h6" fontWeight={100}>
             What is the power house of the cell ?
           </Typography>
         </CardContent>
+        <Button component={Link} to="/questions">
+          Review
+        </Button>
+        <Button
+          color="error"
+          onClick={() => {
+            alert("to test page (when implemented)");
+          }}
+        >
+          Test
+        </Button>
       </Card>
     </>
   );
