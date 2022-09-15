@@ -8,7 +8,6 @@ import { Button } from "@mui/material";
  * @returns
  */
 const QuizBlockButton = ({ text, color, link }) => {
-  console.log({ color });
   return (
     <>
       <Button

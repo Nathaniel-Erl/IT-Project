@@ -20,8 +20,28 @@ import logo from "../../images/badge3.png";
 import { Box, ThemeProvider, createTheme } from "@mui/system";
 import { Link } from "react-router-dom";
 import QuizBlockButton from "../QuizBlockButton/QuizBlockButton.js";
+import {
+  MAX_DESCRIPTION_DISPLAY_LENGTH,
+  MAX_TITLE_DISPLAY_LENGTH,
+} from "../../static/Constants.js";
+import { BLUE } from "../../static/Colors.js";
 
 const QuizBlock = ({ title, numQuestions, description }) => {
+  // console.log({ description }.length);
+  var displayTitle = "";
+  var displayDescription = "";
+  if (title.length < MAX_TITLE_DISPLAY_LENGTH) {
+    displayTitle = title;
+  } else {
+    displayTitle = title.substring(0, MAX_TITLE_DISPLAY_LENGTH) + "...";
+  }
+  if (description.length < MAX_DESCRIPTION_DISPLAY_LENGTH) {
+    displayDescription = description;
+  } else {
+    displayDescription =
+      description.substring(0, MAX_DESCRIPTION_DISPLAY_LENGTH) + "...";
+  }
+  // const displayTitle = console.log(description.length);
   return (
     <>
       <Card sx={{ margin: 5, width: 427, hight: 432, borderRadius: 5 }}>
@@ -34,7 +54,7 @@ const QuizBlock = ({ title, numQuestions, description }) => {
           alt="quiz"
         />
         <CardHeader
-          title={title}
+          title={displayTitle}
           subheader={
             numQuestions == "1"
               ? `${numQuestions} Question`
@@ -42,7 +62,7 @@ const QuizBlock = ({ title, numQuestions, description }) => {
           }
         ></CardHeader>
 
-        <CardContent>{description}</CardContent>
+        <CardContent>{displayDescription}</CardContent>
         <Button
           sx={{
             margin: 2,
@@ -71,7 +91,7 @@ const QuizBlock = ({ title, numQuestions, description }) => {
         <QuizBlockButton
           text="review"
           link="/questions"
-          color="#26ABFF"
+          color={BLUE}
         ></QuizBlockButton>
       </Card>
     </>
