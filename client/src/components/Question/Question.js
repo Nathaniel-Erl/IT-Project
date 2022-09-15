@@ -43,9 +43,6 @@ const Question = ({ question }) => {
             autoComplete="true"
             autoCapitalize="true"
             autoCorrect="true"
-            //TODO make default value of a lighter color
-            defaultValue={"Enter answer here"}
-            color="grey"
           ></Input>
         </Paper>
       </CardContent>
