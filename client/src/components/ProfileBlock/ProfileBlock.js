@@ -18,7 +18,7 @@ const ProfileBlock = () => {
   const badges = [badge1, badge2, badge3, badge4];
   return (
     <>
-      <StyledAppBar sx={{ top: 64, minHeight: 1 }}>
+      <StyledAppBar sx={{ top: 64, minHeight: 600 }}>
         <Grid
           container
           direction="column"
