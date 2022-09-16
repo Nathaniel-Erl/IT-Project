@@ -1,5 +1,13 @@
 import React from "react";
-import { Card, CardContent, CardHeader, CardMedia, Grid } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardMedia,
+  Grid,
+  TextField,
+  Typography,
+} from "@mui/material";
 import {} from "./styles.js";
 import logo from "../../images/badge3.png";
 import {
@@ -23,7 +31,7 @@ const QuizBlock = ({ title, numQuestions, description }) => {
 
   return (
     <>
-      <Card sx={{ margin: 1, height: 300, borderRadius: 5 }}>
+      <Card sx={{ margin: 1, height: 280, borderRadius: 5 }}>
         {/* to neatly organise  */}
         <Grid container spacing={0.5}>
           <Grid item xs="12">
@@ -38,38 +46,50 @@ const QuizBlock = ({ title, numQuestions, description }) => {
           {/* first most row of text */}
           <Grid item>
             {/* this will contain 2 items, front title and number of questions */}
-            <Grid container>
+            <Grid container pb={0}>
+              <Grid item xs={0.5}>
+                {/* padding */}
+              </Grid>
               <Grid
                 item
-                pl={0.5}
-                xs={5.5}
+                xs={6}
                 sx={{ fontSize: font_sizes.FONT_S, fontWeight: "bold" }}
               >
                 {displayTitle}
               </Grid>
-              <Grid item xs={5.5} textAlign="end" pr={0.5}>
+              <Grid item xs={5.5} textAlign="end">
                 {numQuestions === "1"
                   ? `${numQuestions} Question`
                   : `${numQuestions} Questions`}
               </Grid>
+              <Grid item xs={0.5}>
+                {/* padding */}
+              </Grid>
             </Grid>
           </Grid>
+          <Grid container spacing={1} pt={0} pl={2} pr={2}>
+            <Grid item sx={{ padding: 0.5, fontSize: font_sizes.FONT_XS }}>
+              {displayDescription}
+            </Grid>
+          </Grid>
+          <QuizBlockButton
+            text="review"
+            link="/questions"
+            color={colors.BLUE}
+            direction="column"
+            justify="space-between"
+          ></QuizBlockButton>
+          <QuizBlockButton
+            text="test"
+            link="/dashboard"
+            color={colors.RED}
+            direction="column"
+            justify="space-between"
+            onClick={() => {
+              alert("to test page (when implemented)");
+            }}
+          ></QuizBlockButton>
         </Grid>
-        <CardContent>{displayDescription}</CardContent>
-
-        <QuizBlockButton
-          text="review"
-          link="/questions"
-          color={colors.BLUE}
-        ></QuizBlockButton>
-        <QuizBlockButton
-          text="test"
-          link="/dashboard"
-          color={colors.RED}
-          onClick={() => {
-            alert("to test page (when implemented)");
-          }}
-        ></QuizBlockButton>
       </Card>
     </>
   );

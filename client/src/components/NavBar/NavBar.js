@@ -19,7 +19,7 @@ const NavBar = ({ title }) => {
   };
 
   return (
-    <StyledAppBar>
+    <StyledAppBar position="fixed" sx={{ top: 0, bottom: 0 }}>
       <StyledToolbar component={Link} to="/">
         <div style={{ flexGrow: 1, flexBasis: 0 }}>
           <Logo
