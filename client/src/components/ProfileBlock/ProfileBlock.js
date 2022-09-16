@@ -1,6 +1,6 @@
 import React from "react";
 // import { Link } from "react-router-dom";
-import { Avatar, colors, LinearProgress, Typography } from "@mui/material";
+import { Avatar, LinearProgress } from "@mui/material";
 import * as constants from "../../static/Constants.js";
 import badge1 from "../../images/badge1.png";
 import badge2 from "../../images/badge2.png";

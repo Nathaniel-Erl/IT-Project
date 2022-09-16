@@ -1,6 +1,7 @@
-import { Grid, Input } from "@mui/material";
+import { Button, Fab, Grid, Input } from "@mui/material";
 import React from "react";
 import CreateButton from "../components/CreateButton/CreateButton";
+import CreateQuizButton from "../components/CreateQuizButton/CreateQuizButton";
 import NavBar from "../components/NavBar/NavBar";
 import ProfileBlock from "../components/ProfileBlock/ProfileBlock";
 import QuizBlock from "../components/QuizBlock/QuizBlock";
@@ -18,11 +19,11 @@ function Dashboard() {
   return (
     <>
       <NavBar title="Dashboard" />
-      <CreateButton link="/createquestion" title="Create Quiz"></CreateButton>
       {/* contains everything */}
       <Grid container>
         {/* contains quizes */}
         <Grid item xs={9}>
+          {/* title and search bar */}
           <Grid container>
             <Grid
               item
@@ -47,6 +48,7 @@ function Dashboard() {
                 ></QuizBlock>
               </Grid>
             ))}
+            <CreateQuizButton></CreateQuizButton>
           </Grid>
         </Grid>
         {/* Profile block */}
