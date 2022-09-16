@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 const questionSchema = mongoose.Schema({
   question: { type: String, required: true },
   correctAnswer: [{ type: String, required: true }],
-  options: [String],
+  incorrectAnswers: [String],
   dateCreated: { type: Date, default: new Date() },
 })
 

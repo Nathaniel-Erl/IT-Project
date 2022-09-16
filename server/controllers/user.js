@@ -1,5 +1,7 @@
 // Create all the handlers for our routes
 
+import Question from '../models/questionSchema.js'
+import Quiz from '../models/quizSchema.js'
 import User from '../models/userSchema.js'
 
 export const createQuiz = async (req, res) => {
@@ -26,15 +28,42 @@ export const createQuiz = async (req, res) => {
 
 export const markQuiz = async (req, res) => {
   try {
+    const answers = req.body
+
     const quiz = await Quiz.findById(req.params['quizID'])
+    console.log(req.params['quizID'])
     const quizLength = quiz['questions'].length
     const quizQuestions = quiz['questions']
-    const answers = req.body
-    const correctQuizAnswers = [quizLength]
+
+    let shortAnswerIndexes = [quizLength]
+    let multipleChoice = []
+    let shortAnswer = []
 
     for (let i = 0; i < quizLength; i++) {
-      correctQuizAnswers.push(quizQuestions[i]['correctAnswer'])
+      //TODO check if we options and correct answers are seperate
+      if (quizQuestions[i]['options'].length > 0) {
+        multipleChoice.push({
+          index: i,
+          correctAnswer: quizQuestions[i]['correctAnswer'],
+        })
+      } else {
+        shortAnswer.push({
+          index: i,
+          modelAnswer: quizQuestions[i]['correctAnswer'],
+        })
+      }
     }
+
+    for (const element of multipleChoice) {
+      let index = element['index']
+      let correspondingAnswer = answers[index]
+
+      if (correspondingAnswer.toString() != element.correctAnswer.toString()) {
+      }
+    }
+
+    console.log(multipleChoice)
+    console.log(shortAnswer)
   } catch (error) {
     res.send(400)
     return
