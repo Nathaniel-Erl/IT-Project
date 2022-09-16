@@ -1,15 +1,7 @@
 import React from "react";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardMedia,
-  Grid,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Card, CardMedia, Grid } from "@mui/material";
 import {} from "./styles.js";
-import logo from "../../images/badge3.png";
+import quizImg from "../../images/quiz.png";
 import {
   MAX_DESCRIPTION_DISPLAY_LENGTH,
   MAX_TITLE_DISPLAY_LENGTH,
@@ -39,7 +31,7 @@ const QuizBlock = ({ title, numQuestions, description }) => {
               sx={{ objectFit: "cover" }}
               component="img"
               height="120"
-              image={logo}
+              image={quizImg}
               alt="quiz"
             />
           </Grid>

@@ -4,6 +4,7 @@ import CreateButton from "../components/CreateButton/CreateButton";
 import NavBar from "../components/NavBar/NavBar";
 import ProfileBlock from "../components/ProfileBlock/ProfileBlock";
 import QuizBlock from "../components/QuizBlock/QuizBlock";
+import * as font_sizes from "../static/FontSizes";
 
 function Dashboard() {
   const text1 = `“Hong Ting, master taught you, Heavenly Court cultivated you, what you enjoyed were the fruits of the 
@@ -23,8 +24,15 @@ function Dashboard() {
         {/* contains quizes */}
         <Grid item xs={9}>
           <Grid container>
-            <Grid item>Your Quizzes</Grid>
-            <Grid item>
+            <Grid
+              item
+              xs={9}
+              pl={1}
+              sx={{ fontSize: font_sizes.FONT_L, fontWeight: "bold" }}
+            >
+              Your Quizzes
+            </Grid>
+            <Grid item xs={3}>
               <Input></Input>
             </Grid>
           </Grid>

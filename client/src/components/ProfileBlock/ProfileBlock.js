@@ -1,12 +1,6 @@
 import React from "react";
 // import { Link } from "react-router-dom";
-import {
-  AppBar,
-  // Box, Button, CardContent, CardMedia,
-  Avatar,
-} from "@mui/material";
-import * as colors from "../../static/Colors";
-// import * as font_sizes from "../../static/FontSizes";
+import { Avatar } from "@mui/material";
 import * as constants from "../../static/Constants.js";
 import badge1 from "../../images/badge1.png";
 import badge2 from "../../images/badge2.png";
@@ -19,7 +13,7 @@ import { StyledAppBar } from "../NavBar/styles";
 /**
  * @returns returns stuff on profile
  */
-const ProfileBlock = ({ text, color, link }) => {
+const ProfileBlock = () => {
   return (
     <>
       <StyledAppBar sx={{ top: 64 }}>
