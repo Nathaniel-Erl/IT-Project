@@ -1,8 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Box, Button, CardContent, CardMedia, Avatar } from "@mui/material";
+// import { Link } from "react-router-dom";
+import {
+  // Box, Button, CardContent, CardMedia,
+  Avatar,
+} from "@mui/material";
 import * as colors from "../../static/Colors";
-import * as font_sizes from "../../static/FontSizes";
+// import * as font_sizes from "../../static/FontSizes";
 import * as constants from "../../static/Constants.js";
 import badge1 from "../../images/badge1.png";
 import badge2 from "../../images/badge2.png";
@@ -17,8 +20,14 @@ import { Grid } from "@mui/material";
 const ProfileBlock = ({ text, color, link }) => {
   return (
     <>
-      <Grid container alignItems="center" sx={{ background: colors.WHITE }}>
-        <Grid item xs={12}>
+      <Grid
+        container
+        direction="column"
+        justifyContent="center"
+        alignItems="center"
+        sx={{ borderLeft: 2, borderColor: colors.GREY }}
+      >
+        <Grid item xs={12} sx={{ justifyContent: "center" }}>
           <Avatar
             sx={{
               height: constants.ICON_MEDIUM,

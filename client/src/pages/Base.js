@@ -1,7 +1,5 @@
-import { Button } from "@mui/material";
 import React from "react";
 import NavBar from "../components/NavBar/NavBar";
-import { Link } from "react-router-dom";
 import QuizBlockButton from "../components/QuizBlockButton/QuizBlockButton";
 import * as colors from "../static/Colors.js";
 
