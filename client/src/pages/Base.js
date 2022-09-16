@@ -2,6 +2,8 @@ import { Button } from "@mui/material";
 import React from "react";
 import NavBar from "../components/NavBar/NavBar";
 import { Link } from "react-router-dom";
+import QuizBlockButton from "../components/QuizBlockButton/QuizBlockButton";
+import * as colors from "../static/Colors.js";
 
 /**
  *
@@ -11,79 +13,36 @@ function Base() {
   return (
     <>
       <NavBar></NavBar>
-
-      <Button
-        sx={{
-          margin: 2,
-          fontSize: 30,
-          color: "white",
-          backgroundColor: "#26ABFF",
-        }}
-        component={Link}
-        to="/questions"
-      >
-        Review
-      </Button>
-      <Button
-        sx={{
-          margin: 2,
-          fontSize: 30,
-          color: "white",
-          backgroundColor: "#26ABFF",
-        }}
-        component={Link}
-        to="/createquestion"
-      >
-        Question type
-      </Button>
-      <Button
-        sx={{
-          margin: 2,
-          fontSize: 30,
-          color: "white",
-          backgroundColor: "#26ABFF",
-        }}
-        component={Link}
-        to="/quizform"
-      >
-        Quiz form
-      </Button>
-      <Button
-        sx={{
-          margin: 2,
-          fontSize: 30,
-          color: "white",
-          backgroundColor: "#26ABFF",
-        }}
-        component={Link}
-        to="/signup"
-      >
-        Sign up
-      </Button>
-      <Button
-        sx={{
-          margin: 2,
-          fontSize: 30,
-          color: "white",
-          backgroundColor: "#26ABFF",
-        }}
-        component={Link}
-        to="/dashboard"
-      >
-        Dashboard
-      </Button>
-      <Button
-        sx={{
-          margin: 2,
-          fontSize: 30,
-          color: "white",
-          backgroundColor: "#26ABFF",
-        }}
-        component={Link}
-        to="/profile"
-      >
-        Profile
-      </Button>
+      <QuizBlockButton
+        text={"Review"}
+        link={"/questions"}
+        color={colors.BLUE}
+      ></QuizBlockButton>
+      <QuizBlockButton
+        text={"QuestionType"}
+        link={"/createquestion"}
+        color={colors.BLUE}
+      ></QuizBlockButton>
+      <QuizBlockButton
+        text={"QuizForm"}
+        link={"/quizform"}
+        color={colors.BLUE}
+      ></QuizBlockButton>
+      <QuizBlockButton
+        text={"Signup"}
+        link={"/signup"}
+        color={colors.BLUE}
+      ></QuizBlockButton>
+      <QuizBlockButton
+        text={"Dashboard"}
+        link={"/dashboard"}
+        color={colors.BLUE}
+      ></QuizBlockButton>
+      <QuizBlockButton
+        text={"Profile"}
+        link={"/profile"}
+        color={colors.BLUE}
+      ></QuizBlockButton>
     </>
   );
 }

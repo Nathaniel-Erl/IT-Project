@@ -17,7 +17,7 @@ import { Grid } from "@mui/material";
 const ProfileBlock = ({ text, color, link }) => {
   return (
     <>
-      <Grid container>
+      <Grid container alignItems="center" sx={{ background: colors.WHITE }}>
         <Grid item xs={12}>
           <Avatar
             sx={{
