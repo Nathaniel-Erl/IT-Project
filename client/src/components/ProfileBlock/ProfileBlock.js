@@ -22,7 +22,7 @@ import { StyledAppBar } from "../NavBar/styles";
 const ProfileBlock = ({ text, color, link }) => {
   return (
     <>
-      <StyledAppBar>
+      <StyledAppBar sx={{ top: 64 }}>
         <Grid
           container
           direction="column"
