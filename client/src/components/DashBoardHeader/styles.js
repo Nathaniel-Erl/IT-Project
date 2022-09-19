@@ -7,6 +7,7 @@ const DBHBox = styled(Box)(({ theme }) => ({
     flexDirection: 'column',
     gap: '2rem'
   },
+  marginBottom: '1.75rem'
 }));
 
 const Search = styled("div")(({ theme }) => ({
@@ -16,7 +17,7 @@ const Search = styled("div")(({ theme }) => ({
   "&:hover": {
     backgroundColor: alpha(theme.palette.common.white, 0.25),
   },
-  marginRight: theme.spacing(10),
+  marginRight: theme.spacing(0.5),
   marginLeft: 0,
   width: "100%",
   [theme.breakpoints.up("sm")]: {

@@ -31,7 +31,7 @@ function Dashboard() {
         {/* to format quizes */}
         <Grid
           container
-          spacing={{ xs: 2, md: 3 }}
+          spacing={{ xs: 4, md: 8 }}
           columns={{ xs: 4, sm: 8, md: 12 }}
         >
           {dummy.map(() => (

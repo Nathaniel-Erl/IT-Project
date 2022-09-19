@@ -55,7 +55,9 @@ const NavBar = ({ title }) => {
               "aria-labelledby": "basic-button",
             }}
           >
-            <MenuItem>Account Settings</MenuItem>
+            <MenuItem component={Link} to={"/settings"}>
+              Account Settings
+            </MenuItem>
             <MenuItem>Logout</MenuItem>
           </Menu>
         </div>

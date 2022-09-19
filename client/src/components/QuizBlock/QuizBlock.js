@@ -7,7 +7,7 @@ const QuizBlock = ({ title, numQuestions, description }) => {
   // limit length of display name and title
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card>
       <CardMedia
         sx={{ objectFit: "cover" }}
         component="img"
@@ -25,7 +25,7 @@ const QuizBlock = ({ title, numQuestions, description }) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button component={Link} to={'/questions'}>
+        <Button component={Link} to={'/questions'} >
           Review
         </Button>
       </CardActions>
