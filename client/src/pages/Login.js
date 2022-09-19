@@ -1,10 +1,10 @@
 import { Box, Typography } from '@mui/material'
 import React from 'react'
-import Question from '../components/SignUp/SignUpForm'
+import Question from '../components/Login/SignUpQuestions'
 import logo from "../images/logo.svg";
-import { Logo, MainContainer, LogoText } from "../components/SignUp/styles.js"
+import { Logo, MainContainer, LogoText } from "../components/Login/styles.js"
 
-const Signup = () => {
+const Login = () => {
   return (
     <>
       <MainContainer>

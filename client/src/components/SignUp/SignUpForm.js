@@ -1,29 +1,34 @@
 import { Box, Button, TextField, Typography } from '@mui/material';
 import React from 'react'
 import { Form, SABox } from './styles';
-import CloseIcon from "@mui/icons-material/Close";
 
 const ShortAnswer = ({ setOpen }) => {
 
     return (
       <SABox>
         <Form>
-
-          <hr style={{ marginTop: "-3rem" }} />
-
-          <Box display="flex" flexDirection="column" gap="2rem">
-            <TextField
-              id="outlined-basic"
-              label="First Name"
-              variant="outlined"
-              autoComplete="off"
-            />
-            <TextField
-              id="outlined-multiline-static"
-              label="Last Name"
-              variant="outlined"
-              autoComplete="off"
-            />
+            <Typography
+              variant="h5"
+              color="black"
+              align="left"
+            >
+              Sign Up
+            </Typography>
+          <Box display="flex" flexDirection="column" gap="0.5rem">
+            <Box display="flex" flexDirection="row" gap="0.5rem">
+              <TextField
+                id="outlined-basic"
+                label="First Name"
+                variant="outlined"
+                autoComplete="off"
+              />
+              <TextField
+                id="outlined-multiline-static"
+                label="Last Name"
+                variant="outlined"
+                autoComplete="off"
+              />
+            </Box>
             <TextField
               id="outlined-multiline-static"
               label="Username"
@@ -36,6 +41,7 @@ const ShortAnswer = ({ setOpen }) => {
               variant="outlined"
               autoComplete="off"
             />
+            <hr style={{ marginTop: "10px"}} />
             <TextField
               id="outlined-multiline-static"
               label="Password"
@@ -47,12 +53,14 @@ const ShortAnswer = ({ setOpen }) => {
               label="Re-enter Password"
               variant="outlined"
               autoComplete="off"
+              
             />
+            <hr style={{ marginTop: "10px"}} />
           </Box>
           <Button
             variant="contained"
             color="error"
-            style={{ marginLeft: "auto", padding: "0.5rem 5rem" }}
+            style={{ padding: "0.5rem 5rem"}}
           >
             Submit
           </Button>
