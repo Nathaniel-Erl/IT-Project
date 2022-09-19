@@ -39,11 +39,9 @@ const Question = ({ question }) => {
           variant="outlined"
           sx={{ padding: 5, border: 1, borderColor: "grey.500", marginTop: 2 }}
         >
-          <Input
-            autoComplete="true"
-            autoCapitalize="true"
-            autoCorrect="true"
-          ></Input>
+          <Typography variant="body1" fontWeight={100}>
+            The Mitochondria
+          </Typography>
         </Paper>
       </CardContent>
       <CardActions

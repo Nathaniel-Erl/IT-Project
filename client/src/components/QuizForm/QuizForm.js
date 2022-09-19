@@ -5,12 +5,12 @@ import { Box, Button, IconButton, Paper, TextField, Typography } from '@mui/mate
 import FileBase from "react-file-base64";
 import AddIcon from "@mui/icons-material/Add";
 
-const QuizForm = () => {
+const QuizForm = ({setOpen}) => {
   const [file, setFile] = useState('')
   return (
     <QFBox>
       <Form>
-        <IconButton sx={{ marginLeft: "auto" }}>
+        <IconButton sx={{ marginLeft: "auto" }} onClick={() => setOpen(false)}>
           <CloseIcon />
         </IconButton>
 

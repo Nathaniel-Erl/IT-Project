@@ -5,7 +5,6 @@ import QuizForm from "./components/QuizForm/QuizForm";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import Profile from "./pages/Profile";
-import Base from "./pages/Base";
 
 function App() {
   return (
@@ -17,7 +16,6 @@ function App() {
         <Route path="/signup" exact element={<Signup />} />
         <Route path="/dashboard" exact element={<Dashboard />} />
         <Route path="/profile" exact element={<Profile />} />
-        <Route path="/" exact element={<Base />} />
       </Routes>
     </BrowserRouter>
   );

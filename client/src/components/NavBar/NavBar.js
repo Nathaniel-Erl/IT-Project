@@ -20,9 +20,10 @@ const NavBar = ({ title }) => {
 
   return (
     <StyledAppBar position="fixed" sx={{ top: 0, bottom: 0 }}>
-      <StyledToolbar component={Link} to="/">
+      <StyledToolbar>
         <div style={{ flexGrow: 1, flexBasis: 0 }}>
           <Logo
+            onClick={(event) => (window.location.href = "/dashboard")}
             src={logo}
             alt="quizy"
             sx={{ display: { xs: "none", sm: "block" } }}
@@ -55,6 +56,7 @@ const NavBar = ({ title }) => {
             }}
           >
             <MenuItem>Account Settings</MenuItem>
+            <MenuItem>Logout</MenuItem>
           </Menu>
         </div>
       </StyledToolbar>

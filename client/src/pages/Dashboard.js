@@ -1,61 +1,62 @@
-import { Button, Fab, Grid, Input } from "@mui/material";
-import React from "react";
+import { Box, Button, Grid } from "@mui/material";
+import React, { useState } from "react";
 import CreateButton from "../components/CreateButton/CreateButton";
-import CreateQuizButton from "../components/CreateQuizButton/CreateQuizButton";
 import NavBar from "../components/NavBar/NavBar";
-import ProfileBlock from "../components/ProfileBlock/ProfileBlock";
 import QuizBlock from "../components/QuizBlock/QuizBlock";
-import * as font_sizes from "../static/FontSizes";
+import DashBoardHeader from "../components/DashBoardHeader/DashBoardHeader";
+import QuizForm from "../components/QuizForm/QuizForm";
+import { StyledModal } from "../components/TypeBox/styles";
 
 function Dashboard() {
-  const text1 = `“Hong Ting, master taught you, Heavenly Court cultivated you, what you enjoyed were the fruits of the 
-  dedication and sacrifice of our predecessors from ancient times until now!" “So, come back, Hong Ting!” “Follow the arrangements of Fate.”
-  Red Lotus: “…”`;
+  const [openQuizForm, setOpenQuizForm] = useState(false);
+  const text1 = "Hong Ting"
   const text2 = `Ren Zu was puzzled.Ren Zu was disgruntled.
-  Ren Zu was irritated.Ren Zu became insane!How can you have such thoughts?Why can’t I have the same thoughts?Why can’t 
-  a human be together forever with their loved ones?Why can’t a human live life without worries and have endless wealth? 
-  Why can’t a human have eternal life?`;
+  Ren Zu was irritated.Ren Zu became insane!How can you have such thoughts?
+  Why can’t I have the same thoughts?`;
+
   const dummy = ["1", "2", "3", "4"];
+  
   return (
     <>
       <NavBar title="Dashboard" />
-      {/* contains everything */}
-      <Grid container>
-        {/* contains quizes */}
-        <Grid item xs={9}>
-          {/* title and search bar */}
-          <Grid container>
-            <Grid
-              item
-              xs={9}
-              pl={1}
-              sx={{ fontSize: font_sizes.FONT_L, fontWeight: "bold" }}
-            >
-              Your Quizzes
+      <Box
+        display="flex"
+        flexDirection="column"
+        justifyContent="space-between"
+        padding={{ xs: 5, md: 8 }}
+        gap={3}
+      >
+        {/* title and search bar */}
+        <DashBoardHeader />
+        {/* to format quizes */}
+        <Grid
+          container
+          spacing={{ xs: 2, md: 3 }}
+          columns={{ xs: 4, sm: 8, md: 12 }}
+        >
+          {dummy.map(() => (
+            <Grid item xs={12} sm={4} md={4}>
+              <QuizBlock
+                title={text1}
+                numQuestions="2"
+                description={text2}
+              ></QuizBlock>
             </Grid>
-            <Grid item xs={3}>
-              <Input></Input>
-            </Grid>
-          </Grid>
-          {/* to format quizes */}
-          <Grid container>
-            {dummy.map(() => (
-              <Grid item xs={4}>
-                <QuizBlock
-                  title={text1}
-                  numQuestions="2"
-                  description={text2}
-                ></QuizBlock>
-              </Grid>
-            ))}
-            <CreateQuizButton></CreateQuizButton>
-          </Grid>
+          ))}
         </Grid>
-        {/* Profile block */}
-        <Grid item xs={3}>
-          <ProfileBlock></ProfileBlock>
-        </Grid>
-      </Grid>
+        <Button onClick={() => setOpenQuizForm(true)}>
+          <CreateButton title="Add Quiz" link=""></CreateButton>
+        </Button>
+      </Box>
+
+      <StyledModal
+        open={openQuizForm}
+        onClose={() => setOpenQuizForm(false)}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <QuizForm setOpen={ setOpenQuizForm } />
+      </StyledModal>
     </>
   );
 }
