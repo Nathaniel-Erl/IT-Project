@@ -37,8 +37,8 @@ function Base() {
         color={colors.BLUE}
       ></QuizBlockButton>
       <QuizBlockButton
-        text={"Profile"}
-        link={"/profile"}
+        text={"Settings"}
+        link={"/settings"}
         color={colors.BLUE}
       ></QuizBlockButton>
     </>
