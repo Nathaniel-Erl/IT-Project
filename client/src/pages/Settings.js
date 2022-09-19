@@ -7,6 +7,8 @@ import NavBar from "../components/NavBar/NavBar";
 import ProfileBlock from "../components/ProfileBlock/ProfileBlock";
 import QuizBlock from "../components/QuizBlock/QuizBlock";
 import * as font_sizes from "../static/FontSizes";
+import Question from "../components/SignUp/SignUpForm";
+
 // First name, Last name,
 function Settings() {
   const dummy = ["First Name", "Last Name", "Username", "Email"];
@@ -22,22 +24,7 @@ function Settings() {
       >
         <Grid container display="flex" justifyContent="center" padding={3}>
           <Grid item xs={6}>
-            <Card>
-              <Grid container>
-                {dummy.map((title) => (
-                  <Grid
-                    item
-                    xs={12}
-                    display="flex"
-                    justifyContent="center"
-                    padding={3}
-                  >
-                    {title}
-                    <Input></Input>
-                  </Grid>
-                ))}
-              </Grid>
-            </Card>
+            <Question title="Settings" button="Save Changes" />
           </Grid>
           <ProfileBlock></ProfileBlock>
         </Grid>
