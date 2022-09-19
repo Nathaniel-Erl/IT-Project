@@ -8,7 +8,7 @@ const SABox = styled(Box)(({ theme }) => ({
   padding: "20px",
   margin: "auto",
   overflow: "hidden",
-  overflowY: "scroll",
+  overflowY: "hidden",
   [theme.breakpoints.down("sm")]: {
     width: "100vw",
     height: "98vh",

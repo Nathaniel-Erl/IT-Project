@@ -4,7 +4,7 @@ const Container = styled(Box) (({ theme }) => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    height: "90vh",
+    height: "89vh",
 }));
 
 const StyledBox = styled(Box) ({

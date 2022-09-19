@@ -1,14 +1,21 @@
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box, Button, TextField, Typography, IconButton } from "@mui/material";
 import React from "react";
 import { Form, SABox } from "./styles";
+import CloseIcon from "@mui/icons-material/Close";
+import { Link } from "react-router-dom";
 
-const SignUpForm = ({ setOpen, title, button }) => {
+const SignUpForm = ({ title, button }) => {
   return (
     <SABox>
       <Form>
+      <Box display="flex" justifyContent="space-between">
         <Typography variant="h5" color="black" align="left">
           {title}
         </Typography>
+        <IconButton component={Link} to="../login">
+              <CloseIcon />
+          </IconButton>
+        </Box>
         <Box display="flex" flexDirection="column" gap="0.5rem">
           <Box display="flex" flexDirection="row" gap="0.5rem">
             <TextField
