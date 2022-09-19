@@ -1,45 +1,34 @@
+import { Box, Typography } from "@mui/material";
 import React from "react";
-import NavBar from "../components/NavBar/NavBar";
+import Question from "../components/SignUp/SignUpForm";
+import logo from "../images/logo.svg";
+import { Logo, MainContainer, LogoText } from "../components/SignUp/styles.js";
 
-function Signup() {
+const Signup = () => {
   return (
     <>
-      <NavBar></NavBar>
-      <div className="App">
-        <form>
-          <label>
-            First Name:
-            <input type="text" name="name" />
-          </label>
-        </form>
-        <form>
-          <label>
-            Last Name:
-            <input type="text" name="name" />
-          </label>
-        </form>
-        <form>
-          <label>
-            Username:
-            <input type="text" name="name" />
-          </label>
-        </form>
-        <form>
-          <label>
-            Email:
-            <input type="text" name="name" />
-          </label>
-        </form>
-        <form>
-          <label>
-            Password:
-            <input type="text" name="name" />
-          </label>
-        </form>
-        <input type="submit" value="Submit" />
-      </div>
+      <MainContainer>
+        <LogoText>
+          <Logo
+            src={logo}
+            alt="quizy"
+            sx={{ display: { xs: "none", sm: "block" } }}
+          />
+          <Typography
+            variant="h5"
+            color="#666666"
+            align="center"
+            marginRight="auto"
+          >
+            Quiz yourself and your friends!
+          </Typography>
+        </LogoText>
+        <Box flex={4} padding={2}>
+          <Question title="Sign up" button="Sign Up" />
+        </Box>
+      </MainContainer>
     </>
   );
-}
+};
 
 export default Signup;
