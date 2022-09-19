@@ -1,9 +1,10 @@
-import { Grid } from "@mui/material";
+import { Grid, Fab } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import NavBar from "../components/NavBar/NavBar";
 import ProfileBlock from "../components/ProfileBlock/ProfileBlock";
 import Question from "../components/SignUp/SignUpForm";
+import SignOutButton from "../components/CreateButton/SignOutButton";
 
 // First name, Last name,
 function Settings() {
@@ -25,6 +26,7 @@ function Settings() {
           <ProfileBlock></ProfileBlock>
         </Grid>
       </Box>
+      <SignOutButton title="Log Out" link="/login"></SignOutButton>
     </>
   );
 }

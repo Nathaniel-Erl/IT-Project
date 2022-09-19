@@ -60,8 +60,8 @@ const SignUpForm = ({ title, button }) => {
         </Box>
         <Button
           variant="contained"
-          color="error"
-          style={{ padding: "0.5rem 5rem" }}
+          color = "success"
+          style={{ padding: "0.5rem 5rem", backgroundcolor: "red" }}
         >
           {button}
         </Button>
