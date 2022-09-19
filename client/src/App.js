@@ -4,8 +4,8 @@ import Review from "./pages/Review";
 import QuizForm from "./components/QuizForm/QuizForm";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
-import Profile from "./pages/Profile";
 import Base from "./pages/Base";
+import Settings from "./pages/Settings";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
         <Route path="/quizform" exact element={<QuizForm />} />
         <Route path="/signup" exact element={<Signup />} />
         <Route path="/dashboard" exact element={<Dashboard />} />
-        <Route path="/profile" exact element={<Profile />} />
+        <Route path="/settings" exact element={<Settings />} />
         <Route path="/" exact element={<Base />} />
       </Routes>
     </BrowserRouter>
