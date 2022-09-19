@@ -39,7 +39,7 @@ function Dashboard() {
           </Grid>
           {/* to format quizes */}
           <Grid container>
-            {dummy.map((dummy) => (
+            {dummy.map(() => (
               <Grid item xs={4}>
                 <QuizBlock
                   title={text1}
