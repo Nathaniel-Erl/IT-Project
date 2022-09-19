@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material'
 import React from 'react'
-import Question from '../components/Login/SignUpQuestions'
+import Question from '../components/Login/LoginForm'
 import logo from "../images/logo.svg";
 import { Logo, MainContainer, LogoText } from "../components/Login/styles.js"
 
@@ -31,4 +31,4 @@ const Login = () => {
   );
 }
 
-export default Signup
+export default Login

@@ -62,7 +62,7 @@ const ShortAnswer = ({ setOpen }) => {
             color="error"
             style={{ padding: "0.5rem 5rem"}}
           >
-            Submit
+            Sign Up
           </Button>
         </Form>
       </SABox>
