@@ -1,45 +1,16 @@
-import React from "react";
-import NavBar from "../components/NavBar/NavBar";
+import { Box, Fab } from '@mui/material'
+import React from 'react'
+import { Link } from "react-router-dom";
+import Question from '../components/SignUp/SignUpQuestions'
 
-function Signup() {
+const Signup = () => {
   return (
     <>
-      <NavBar></NavBar>
-      <div className="App">
-        <form>
-          <label>
-            First Name:
-            <input type="text" name="name" />
-          </label>
-        </form>
-        <form>
-          <label>
-            Last Name:
-            <input type="text" name="name" />
-          </label>
-        </form>
-        <form>
-          <label>
-            Username:
-            <input type="text" name="name" />
-          </label>
-        </form>
-        <form>
-          <label>
-            Email:
-            <input type="text" name="name" />
-          </label>
-        </form>
-        <form>
-          <label>
-            Password:
-            <input type="text" name="name" />
-          </label>
-        </form>
-        <input type="submit" value="Submit" />
-      </div>
+      <Box flex={4} padding={2}>
+       <Question />
+      </Box>
     </>
   );
 }
 
-export default Signup;
+export default Signup
