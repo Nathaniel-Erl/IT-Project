@@ -1,30 +1,33 @@
-import express from 'express'
-import bodyParser from 'body-parser'
-import mongoose from 'mongoose'
-import cors from 'cors'
+import express from "express";
+import bodyParser from "body-parser";
+import mongoose from "mongoose";
+import cors from "cors";
+import passport from "passport";
+import userRoutes from "./routes/user.js";
+import landingRoutes from "./routes/landing.js";
+import { passportConfig } from "./config/passport.js";
+import { keys } from "./config/keys.js";
 
-import userRoutes from './routes/user.js'
-import landingRoutes from './routes/landing.js'
+const app = express();
 
-const app = express()
+passportConfig(passport);
+app.use(bodyParser.json({ limit: "1mb", extended: true }));
+app.use(bodyParser.urlencoded({ limit: "1mb", extended: true }));
+app.use(cors());
+app.use(express.json());
 
-app.use(bodyParser.json({ limit: '1mb', extended: true }))
-app.use(bodyParser.urlencoded({ limit: '1mb', extended: true }))
-app.use(cors())
-app.use(express.json())
+app.use("/:username", userRoutes);
 
-app.use('/:username', userRoutes)
+app.use("/", landingRoutes);
 
-app.use('/', landingRoutes)
+const { port, mongoDBUri } = keys.env;
+const CONNECTION_URL = mongoDBUri;
 
-// app.listen(PORT, () => console.log('Server Runing on port: ${PORT}'))
-const CONNECTION_URL =
-  'mongodb+srv://BackendBryans:BackendBryans@cluster0.dosyhde.mongodb.net/?retryWrites=true&w=majority'
-const PORT = process.env.PORT || 8080
+const PORT = process.env.PORT || port;
 
 mongoose
   .connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() =>
     app.listen(PORT, () => console.log(`Server running on port: ${PORT}`))
   )
-  .catch((error) => console.log(error.messsage))
+  .catch((error) => console.log(error.messsage));
