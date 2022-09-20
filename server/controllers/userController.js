@@ -31,39 +31,46 @@ export const markQuiz = async (req, res) => {
     const answers = req.body
 
     const quiz = await Quiz.findById(req.params['quizID'])
-    console.log(req.params['quizID'])
+
     const quizLength = quiz['questions'].length
     const quizQuestions = quiz['questions']
 
-    let shortAnswerIndexes = [quizLength]
     let multipleChoice = []
     let shortAnswer = []
+    let multiAnswersNotInCorrect = []
 
     for (let i = 0; i < quizLength; i++) {
-      //TODO check if we options and correct answers are seperate
-      if (quizQuestions[i]['options'].length > 0) {
+      //multiple choice will always have more than 1 answer and shot answer will have only 1 correct answer
+      if (
+        quiz['questions'][i]['correctAnswer'].length +
+          quiz['questions'][i]['incorrectAnswer'].length >
+        1
+      ) {
+        console.log('e')
         multipleChoice.push({
           index: i,
-          correctAnswer: quizQuestions[i]['correctAnswer'],
+          correct: quiz['questions'][i]['correctAnswer'],
+          incorrect: quiz['questions'][i]['incorrectAnswer'],
         })
       } else {
         shortAnswer.push({
           index: i,
-          modelAnswer: quizQuestions[i]['correctAnswer'],
+          model: quiz['questions'][i]['correctAnswer'],
         })
       }
     }
 
-    for (const element of multipleChoice) {
-      let index = element['index']
-      let correspondingAnswer = answers[index]
+    //console.log(a.filter(x => !b.includes(x)) );
+    //{ '1': [ 6 ], '2': [ 1, 2, 3 ], '3': [ 1, 2, 3 ] }
+    let j = 0
+    for (let i = 0; i < multipleChoice.length; i++) {
+      let currentQuestionCorrect = multipleChoice[i]['correct']
 
-      if (correspondingAnswer.toString() != element.correctAnswer.toString()) {
-      }
+      let index = multipleChoice[i]['index']
+      console.log(
+        answers[index].filter((x) => multipleChoice[i]['correct'].includes(x))
+      )
     }
-
-    console.log(multipleChoice)
-    console.log(shortAnswer)
   } catch (error) {
     res.send(400)
     return

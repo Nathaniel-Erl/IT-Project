@@ -1,19 +1,18 @@
 import express from 'express'
-import User from '../models/userSchema.js'
-import Question from '../models/questionSchema.js'
-import Quiz from '../models/quizSchema.js'
+
 import {
   getQuiz,
   createQuiz,
   markQuiz,
   getAllQuizzes,
-} from '../controllers/user.js'
+} from '../controllers/userController.js'
 
 const router = express.Router()
 
 router.get('/', (req, res) => {
+
+
   res.json({ message: req.url })
-})
 
 router.get('/create-quiz', (req, res) => {
   res.json({ message: 'Create Quiz Pop out ' })
