@@ -4,7 +4,7 @@ import { Form, SABox } from "./styles";
 import CloseIcon from "@mui/icons-material/Close";
 import { Link } from "react-router-dom";
 
-const SignUpForm = ({ title, button }) => {
+const SignUpForm = ({ title, button, link }) => {
   return (
     <SABox>
       <Form>
@@ -12,7 +12,7 @@ const SignUpForm = ({ title, button }) => {
         <Typography variant="h5" color="black" align="left">
           {title}
         </Typography>
-        <IconButton component={Link} to="../login">
+        <IconButton component={Link} to={link}>
               <CloseIcon />
           </IconButton>
         </Box>
@@ -59,6 +59,8 @@ const SignUpForm = ({ title, button }) => {
           <hr style={{ marginTop: "10px" }} />
         </Box>
         <Button
+          component={Link}
+          to={"../dashboard"}
           variant="contained"
           color = "success"
           style={{ padding: "0.5rem 5rem", backgroundcolor: "red" }}

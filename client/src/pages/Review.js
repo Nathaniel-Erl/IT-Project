@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 import React from "react";
 import NavBar from "../components/NavBar/NavBar";
 import Question from "../components/Question/Question";
-import CreateButton from "../components/CreateButton/CreateButton";
+import CreateButton from "../components/Buttons/CreateButton";
 
 const Review = () => {
   return (

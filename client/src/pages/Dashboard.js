@@ -1,6 +1,6 @@
 import { Box, Button, Grid } from "@mui/material";
 import React, { useState } from "react";
-import CreateButton from "../components/CreateButton/CreateButton";
+import CreateButton from "../components/Buttons/CreateButton";
 import NavBar from "../components/NavBar/NavBar";
 import QuizBlock from "../components/QuizBlock/QuizBlock";
 import DashBoardHeader from "../components/DashBoardHeader/DashBoardHeader";

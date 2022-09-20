@@ -7,7 +7,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { Link } from "react-router-dom";
 
 const NavBar = ({ title }) => {
-  const [anchorEl, setAnchorEl] = useState(null);
+  /*const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
   const handleClick = (event) => {
@@ -16,7 +16,7 @@ const NavBar = ({ title }) => {
 
   const handleClose = () => {
     setAnchorEl(null);
-  };
+  }; */
 
   return (
     <StyledAppBar position="fixed" sx={{ top: 0, bottom: 0 }}>
@@ -38,15 +38,21 @@ const NavBar = ({ title }) => {
           {title}
         </Typography>
         <div style={{ flexGrow: 1, flexBasis: 0, textAlign: "right" }}>
-          <AccountCircleIcon
-            id="basic-button"
-            aria-controls={open ? "basic-menu" : undefined}
-            aria-haspopup="true"
-            aria-expanded={open ? "true" : undefined}
-            onClick={handleClick}
-            style={{ marginLeft: "auto", color: "black" }}
-          />
-          <Menu
+          <Link to="/settings">
+              <AccountCircleIcon
+                id="basic-button"
+                //aria-controls={open ? "basic-menu" : undefined}
+                //aria-haspopup="true"
+                //aria-expanded={open ? "true" : undefined}
+                //onClick={handleClick}
+                //component={Link}
+                //to="/settings"
+                //variant="contained"
+                style={{ marginLeft: "auto", color: "black" }}
+              ></AccountCircleIcon>
+            </Link>
+
+          {/*<Menu
             id="basic-menu"
             anchorEl={anchorEl}
             open={open}
@@ -59,7 +65,7 @@ const NavBar = ({ title }) => {
               Account Settings
             </MenuItem>
             <MenuItem>Logout</MenuItem>
-          </Menu>
+          </Menu> */}
         </div>
       </StyledToolbar>
     </StyledAppBar>

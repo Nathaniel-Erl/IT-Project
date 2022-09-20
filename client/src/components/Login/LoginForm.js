@@ -24,6 +24,8 @@ const ShortAnswer = ({ setOpen }) => {
             <hr style={{ marginTop: "10px" }} />
           </Box>
           <Button
+            component={Link}
+            to={"/dashboard"}
             variant="contained"
             color="error"
             style={{ padding: "0.5rem 5rem" }}
@@ -35,7 +37,7 @@ const ShortAnswer = ({ setOpen }) => {
             component={Link}
             to={"/signup"}
             variant="contained"
-            color="error"
+            color="success"
             style={{ padding: "0.5rem 5rem" }}
           >
             Create new account

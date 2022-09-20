@@ -12,7 +12,6 @@ const Signup = () => {
           <Logo
             src={logo}
             alt="quizy"
-            sx={{ display: { xs: "none", sm: "block" } }}
           />
           <Typography
             variant="h5"
@@ -24,7 +23,7 @@ const Signup = () => {
           </Typography>
         </LogoText>
         <Box flex={4} padding={2}>
-          <Question title="Sign up" button="Sign Up" />
+          <Question title="Sign up" button="Sign Up" link="../login"/>
         </Box>
       </MainContainer>
     </>

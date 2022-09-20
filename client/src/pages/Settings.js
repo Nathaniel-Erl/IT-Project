@@ -4,7 +4,7 @@ import React from "react";
 import NavBar from "../components/NavBar/NavBar";
 import ProfileBlock from "../components/ProfileBlock/ProfileBlock";
 import Question from "../components/SignUp/SignUpForm";
-import SignOutButton from "../components/CreateButton/SignOutButton";
+import SignOutButton from "../components/Buttons/SignOutButton";
 
 // First name, Last name,
 function Settings() {
@@ -21,9 +21,8 @@ function Settings() {
       >
         <Grid container display="flex" justifyContent="center" padding={3}>
           <Grid item xs={6}>
-            <Question title="Settings" button="Save Changes" />
+            <Question title="Settings" button="Save Changes" link="../dashboard" />
           </Grid>
-          <ProfileBlock></ProfileBlock>
         </Grid>
       </Box>
       <SignOutButton title="Log Out" link="/login"></SignOutButton>
