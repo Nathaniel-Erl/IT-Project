@@ -16,7 +16,7 @@ const CreateButton = ({ link, title }) => {
         borderRadius: 1,
         position: "fixed",
         bottom: 20,
-        right: { xs: "calc(50% - 175px)", md: 30 },
+        right: { xs: "calc(50% - 175px)", sm: "calc(50% - 350px)", md: 30 },
       }}
     >
       <AddIcon sx={{ mr: 1 }} />
