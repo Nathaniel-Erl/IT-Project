@@ -16,7 +16,7 @@ function App() {
         <Route path="/quizform" exact element={<QuizForm />} />
         <Route path="/signup" exact element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" exact element={<Dashboard />} />
+        <Route path="/quiz" exact element={<Dashboard />} />
         <Route path="/settings" exact element={<Settings />} />
       </Routes>
     </BrowserRouter>
