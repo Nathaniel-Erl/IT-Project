@@ -1,14 +1,11 @@
-import { Grid, Fab } from "@mui/material";
+import { Grid } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import NavBar from "../components/NavBar/NavBar";
-import ProfileBlock from "../components/ProfileBlock/ProfileBlock";
 import Question from "../components/SignUp/SignUpForm";
 import SignOutButton from "../components/Buttons/SignOutButton";
 
-// First name, Last name,
 function Settings() {
-  const dummy = ["First Name", "Last Name", "Username", "Email"];
   return (
     <>
       <NavBar title="Settings" />
