@@ -29,6 +29,7 @@ const LoginForm = () => {
             variant="contained"
             color="error"
             style={{ padding: "0.5rem 5rem" }}
+            sx={{ fontSize: { xs: "10px", md: "12px"} }}
           >
             Log In
           </Button>
@@ -39,6 +40,7 @@ const LoginForm = () => {
             variant="contained"
             color="success"
             style={{ padding: "0.5rem 5rem" }}
+            sx={{ fontSize: { xs: "10px", md: "12px"} }}
           >
             Create new account
           </Button>

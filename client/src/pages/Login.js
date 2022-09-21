@@ -12,7 +12,7 @@ const Login = () => {
           <Logo
             src={logo}
             alt="quizy"
-            sx={{ width: { xs: "200px", sm: "300px", lg: "40vw" } }}
+            sx={{ width: { xs: "200px", sm: "300px", lg: "30vw" } }}
           />
           <Typography
                 color="#666666"
