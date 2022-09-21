@@ -1,20 +1,22 @@
-import { Box, Button, Grid } from "@mui/material";
-import React, { useState } from "react";
+import { Box, Button } from "@mui/material";
+import React, { useState, useEffect } from "react";
 import CreateButton from "../components/Buttons/CreateButton";
 import NavBar from "../components/NavBar/NavBar";
-import QuizBlock from "../components/QuizBlock/QuizBlock";
 import DashBoardHeader from "../components/DashBoardHeader/DashBoardHeader";
 import QuizForm from "../components/QuizForm/QuizForm";
 import { StyledModal } from "../components/TypeBox/styles";
+import { useDispatch } from 'react-redux'
+import { getQuizzes } from "../actions/quizzes";
+import Quizzes from "../components/Quizzes/Quizzes";
 
 function Dashboard() {
   const [openQuizForm, setOpenQuizForm] = useState(false);
-  const text1 = "Hong Ting"
-  const text2 = `Ren Zu was puzzled.Ren Zu was disgruntled.
-  Ren Zu was irritated.Ren Zu became insane!How can you have such thoughts?
-  Why can’t I have the same thoughts?`;
+  const dispatch = useDispatch();
 
-  const dummy = ["1", "2", "3", "4"];
+  useEffect(() => {
+    dispatch(getQuizzes())
+  }, [dispatch])
+  
   
   return (
     <>
@@ -29,21 +31,8 @@ function Dashboard() {
         {/* title and search bar */}
         <DashBoardHeader />
         {/* to format quizes */}
-        <Grid
-          container
-          spacing={{ xs: 4, md: 8 }}
-          columns={{ xs: 4, sm: 8, md: 12 }}
-        >
-          {dummy.map(() => (
-            <Grid item xs={12} sm={4} md={4}>
-              <QuizBlock
-                title={text1}
-                numQuestions="2"
-                description={text2}
-              ></QuizBlock>
-            </Grid>
-          ))}
-        </Grid>
+        <Quizzes />
+        
         <Button onClick={() => setOpenQuizForm(true)}>
           <CreateButton title="Add Quiz" link=""></CreateButton>
         </Button>
