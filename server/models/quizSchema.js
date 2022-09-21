@@ -7,9 +7,9 @@ const quizSchema = mongoose.Schema({
   subject: { type: String, required: true },
   description: { type: String, required: false },
   createdBy: { type: Schema.Types.ObjectId, ref: 'user', required: true },
-  createdDate: { type: Date, default: new Date() },
+  image: {type:String,required:true},
   questions: [{ type: Question.schema, required: true }],
-  attempt: { default: 0 },
+  
 })
 
 const Quiz = mongoose.model('quiz', quizSchema)
