@@ -116,10 +116,22 @@ export const deleteQuiz = async (req, res) => {
   const { id: _id } = req.params
 
   if (!mongoose.Types.ObjectId.isValid(_id)) {
-    return res.status(404).send("No post with that id");
+    return res.status(404).send("No quiz with that id");
   }
 
   await Quiz.findByIdAndRemove(_id);
 
   res.json({ message: "Post deleted successfully" });
+}
+
+export const updateQuiz = async (req, res) => {
+  const { id: _id } = req.params
+  const quiz = req.body
+
+  if (!mongoose.Types.ObjectId.isValid(_id)) {
+    return res.status(404).send("No quiz with that id");
+  }
+
+  const updated = await Quiz.findByIdAndUpdate(_id, { ...quiz },  { new: true })
+  res.json(updated)
 }

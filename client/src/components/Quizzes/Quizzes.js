@@ -1,9 +1,9 @@
-import { CircularProgress, Grid, Typography } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 import React from 'react'
 import QuizBlock from './QuizBlock/QuizBlock';
 import { useSelector } from "react-redux";
 
-const Quizzes = () => {
+const Quizzes = ({ setOpenQuizForm, currentQuizId, setCurrentQuizId }) => {
     const quizzes = useSelector((store) => store.quizzes)
     
     return !quizzes.length ? (
@@ -16,7 +16,12 @@ const Quizzes = () => {
       >
         {quizzes.map((quiz) => (
           <Grid key={quiz._id} item xs={12} sm={4} md={4}>
-            <QuizBlock quiz={quiz}></QuizBlock>
+            <QuizBlock
+              quiz={quiz}
+              currentQuizId={currentQuizId}
+              setCurrentQuizId={setCurrentQuizId}
+              setOpenQuizForm={setOpenQuizForm}
+            ></QuizBlock>
           </Grid>
         ))}
       </Grid>

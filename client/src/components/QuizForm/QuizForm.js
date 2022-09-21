@@ -1,31 +1,53 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { Form, QFBox } from './styles';
 import CloseIcon from "@mui/icons-material/Close";
 import { Box, Button, IconButton, Paper, TextField, Typography } from '@mui/material';
 import FileBase from "react-file-base64";
 import AddIcon from "@mui/icons-material/Add";
-import { useDispatch } from 'react-redux';
-import { createQuiz } from '../../actions/quizzes';
+import { useDispatch, useSelector } from 'react-redux';
+import { createQuiz, updatedQuiz } from '../../actions/quizzes';
 
-const QuizForm = ({setOpen}) => {
+const QuizForm = ({ setOpenQuizForm, currentQuizId, setCurrentQuizId }) => {
   const [quizData, setQuizData] = useState({
     subject: '',
     description: '',
     image: ''
   })
+
   const dispatch = useDispatch();
+  const selectedQuiz = useSelector((store) => currentQuizId ? store.quizzes.find(quiz => quiz._id === currentQuizId) : null)
   
   const handleSubmit = async (e) => {
     e.preventDefault()
-    dispatch(createQuiz(quizData))
-    setOpen(false)
+
+    if (currentQuizId === null) {
+      dispatch(createQuiz(quizData));
+    }
+    else {
+      dispatch(updatedQuiz(currentQuizId, quizData))
+    }
+    setOpenQuizForm(false);
+    clear();
   }
+
+  const clear = () => {
+    setCurrentQuizId(null)
+    setQuizData({
+      subject: "",
+      description: "",
+      image: "",
+    });
+  }
+
+  useEffect(() => {
+    if (selectedQuiz) setQuizData(selectedQuiz);
+  }, [selectedQuiz]);
 
   return (
     <QFBox>
       <Form onSubmit={handleSubmit}>
-        <IconButton sx={{ marginLeft: "auto" }} onClick={() => setOpen(false)}>
-          <CloseIcon />
+        <IconButton sx={{ marginLeft: "auto" }} onClick={() => setOpenQuizForm(false)}>
+          <CloseIcon onClick={() => clear()} />
         </IconButton>
 
         <Box display="flex" justifyContent="space-between">

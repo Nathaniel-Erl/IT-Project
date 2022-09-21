@@ -11,12 +11,12 @@ import Quizzes from "../components/Quizzes/Quizzes";
 
 function Dashboard() {
   const [openQuizForm, setOpenQuizForm] = useState(false);
+  const [currentQuizId, setCurrentQuizId] = useState(null)
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getQuizzes())
-  }, [dispatch])
-  
+  }, [currentQuizId, dispatch])
   
   return (
     <>
@@ -31,7 +31,11 @@ function Dashboard() {
         {/* title and search bar */}
         <DashBoardHeader />
         {/* to format quizes */}
-        <Quizzes />
+        <Quizzes
+          currentQuizId={currentQuizId}
+          setCurrentQuizId={setCurrentQuizId}
+          setOpenQuizForm={setOpenQuizForm}
+        />
       </Box>
 
       <Button onClick={() => setOpenQuizForm(true)}>
@@ -44,7 +48,11 @@ function Dashboard() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <QuizForm setOpen={setOpenQuizForm} />
+        <QuizForm
+          currentQuizId={currentQuizId}
+          setCurrentQuizId={setCurrentQuizId}
+          setOpenQuizForm={setOpenQuizForm}
+        />
       </StyledModal>
     </>
   );
