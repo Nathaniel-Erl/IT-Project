@@ -7,9 +7,7 @@ const Quizzes = () => {
     const quizzes = useSelector((store) => store.quizzes)
     
     return !quizzes.length ? (
-      <Typography align="center">
-        Please add more quizzes
-      </Typography>
+      <Typography align="center">Please add more quizzes</Typography>
     ) : (
       <Grid
         container
@@ -17,8 +15,8 @@ const Quizzes = () => {
         columns={{ xs: 4, sm: 8, md: 12 }}
       >
         {quizzes.map((quiz) => (
-          <Grid item xs={12} sm={4} md={4}>
-            <QuizBlock key={quiz._id} quiz={quiz}></QuizBlock>
+          <Grid key={quiz._id} item xs={12} sm={4} md={4}>
+            <QuizBlock quiz={quiz}></QuizBlock>
           </Grid>
         ))}
       </Grid>

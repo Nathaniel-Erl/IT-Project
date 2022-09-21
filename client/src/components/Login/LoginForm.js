@@ -25,7 +25,7 @@ const LoginForm = () => {
           </Box>
           <Button
             component={Link}
-            to={"/dashboard"}
+            to={"/quiz"}
             variant="contained"
             color="error"
             style={{ padding: "0.5rem 5rem" }}

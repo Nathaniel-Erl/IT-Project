@@ -1,5 +1,5 @@
 // Create all the handlers for our routes
-
+import mongoose from "mongoose";
 import Question from '../models/questionSchema.js'
 import Quiz from '../models/quizSchema.js'
 import User from '../models/userSchema.js'
@@ -110,4 +110,16 @@ export const getAllQuizzes = async (req, res) => {
     res.status(400)
     return
   }
+}
+
+export const deleteQuiz = async (req, res) => {
+  const { id: _id } = req.params
+
+  if (!mongoose.Types.ObjectId.isValid(_id)) {
+    return res.status(404).send("No post with that id");
+  }
+
+  await Quiz.findByIdAndRemove(_id);
+
+  res.json({ message: "Post deleted successfully" });
 }

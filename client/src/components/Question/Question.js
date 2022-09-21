@@ -6,6 +6,7 @@ import {
   Checkbox,
   IconButton,
   Paper,
+  Tooltip,
   Typography,
 } from "@mui/material";
 import React from "react";
@@ -47,12 +48,17 @@ const Question = ({ question }) => {
         disableSpacing
         sx={{ display: "flex", justifyContent: "flex-end" }}
       >
-        <IconButton aria-label="add to favorites">
-          <ModeIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <DeleteIcon />
-        </IconButton>
+        <Tooltip title="Edit" placement="top">
+          <IconButton aria-label="add to favorites">
+            <ModeIcon />
+          </IconButton>
+        </Tooltip>
+
+        <Tooltip title="Delete" placement="top">
+          <IconButton aria-label="share">
+            <DeleteIcon />
+          </IconButton>
+        </Tooltip>
       </CardActions>
     </Card>
   );

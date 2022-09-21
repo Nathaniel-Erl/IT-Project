@@ -5,6 +5,7 @@ import {
   createQuiz,
   markQuiz,
   getAllQuizzes,
+  deleteQuiz
 } from '../controllers/userController.js'
 
 const router = express.Router()
@@ -15,7 +16,7 @@ router.get('/quiz/:id', getQuiz)
 
 router.post('/quiz/:id/attempt', markQuiz)
 
-//router.get('/quiz/:id', )
+router.delete('/quiz/:id', deleteQuiz)
 
 router.get('/settings', (req, res) => {
   res.json({ message: 'User settings ' })

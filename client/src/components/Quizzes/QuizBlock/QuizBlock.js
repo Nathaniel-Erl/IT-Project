@@ -1,9 +1,18 @@
 import React from "react";
-import { Button, Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material";
+import { Button, Card, CardActions, CardContent, CardMedia, IconButton, Tooltip, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { useDispatch } from "react-redux";
+import { deleteQuiz } from "../../../actions/quizzes";
 
 const QuizBlock = ({ quiz }) => {
   // limit length of display name and title
+
+  const dispatch = useDispatch()
+
+  const handleDelete = () => {
+    dispatch(deleteQuiz(quiz._id))
+  }
 
   return (
     <Card>
@@ -23,10 +32,16 @@ const QuizBlock = ({ quiz }) => {
           {quiz.description}
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button component={Link} to={'/questions'} >
+      <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Button component={Link} to={"/questions"}>
           Review
         </Button>
+
+        <Tooltip title="Delete" placement="top">
+          <IconButton aria-label="share" onClick={handleDelete}>
+            <DeleteIcon />
+          </IconButton>
+        </Tooltip>
       </CardActions>
     </Card>
   );

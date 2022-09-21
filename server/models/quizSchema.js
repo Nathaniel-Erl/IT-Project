@@ -9,7 +9,6 @@ const quizSchema = mongoose.Schema({
   createdBy: { type: Schema.Types.ObjectId, ref: 'user', required: false },
   image: {type:String,required:true},
   questions: [{ type: Question.schema, required: false }],
-  
 })
 
 const Quiz = mongoose.model('quiz', quizSchema)

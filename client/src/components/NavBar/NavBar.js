@@ -23,7 +23,7 @@ const NavBar = ({ title }) => {
       <StyledToolbar>
         <div style={{ flexGrow: 1, flexBasis: 0 }}>
           <Logo
-            onClick={(event) => (window.location.href = "/dashboard")}
+            onClick={(event) => (window.location.href = "/quiz")}
             src={logo}
             alt="quizy"
             sx={{ display: { xs: "none", sm: "block" } }}
