@@ -20,11 +20,9 @@ const QuizForm = ({setOpen}) => {
     dispatch(createQuiz(quizData))
   }
 
-
-
   return (
     <QFBox>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <IconButton sx={{ marginLeft: "auto" }} onClick={() => setOpen(false)}>
           <CloseIcon />
         </IconButton>
