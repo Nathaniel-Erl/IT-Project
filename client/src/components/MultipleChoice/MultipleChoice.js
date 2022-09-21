@@ -13,15 +13,15 @@ const MultipleChoice = ({ setOpen }) => {
     <MCBox>
       <Form>
         <Box display="flex">
-            <Typography
-              variant="h5"
-              color="#666666"
-              align="center"
-              marginRight="auto"
-            >
-              Write Question
-            </Typography>
-            <CloseIcon onClick={() => setOpen(false)} />
+          <Typography
+            variant="h5"
+            color="#666666"
+            align="center"
+            marginRight="auto"
+          >
+            Write Question
+          </Typography>
+          <CloseIcon onClick={() => setOpen(false)} />
         </Box>
 
         <hr style={{ marginTop: "-3rem" }} />
@@ -33,7 +33,12 @@ const MultipleChoice = ({ setOpen }) => {
           flexGrow={1}
           flexBasis={0}
         >
-          <TextField id="outlined-basic" label="Question" variant="outlined" />
+          <TextField
+            id="outlined-basic"
+            label="Question"
+            variant="outlined"
+            autoComplete="off"
+          />
 
           <TextField
             id="outlined-select-answer"
@@ -84,7 +89,7 @@ const MultipleChoice = ({ setOpen }) => {
 
         <Box display="flex" alignItems="center">
           <Typography color="error">
-            * Please indicate correct answer(s) by checking box
+            * Please indicate correct answer by checking box next to answer
           </Typography>
           <Button
             variant="contained"

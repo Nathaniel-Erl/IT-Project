@@ -1,8 +1,7 @@
 import { Box, styled } from "@mui/material";
 
 const SABox = styled(Box)(({ theme }) => ({
-  width: "1000px",
-  height: "500px",
+  width: "400px",
   borderRadius: "4px",
   backgroundColor: "#FFFFFF",
   padding: "20px",
@@ -27,9 +26,27 @@ const Form = styled("form")({
   display: "flex",
   flexDirection: "column",
   flexWrap: "wrap",
-  gap: "4rem",
+  gap: "1rem",
   justifyContent: "space-between",
 });
 
+const Logo = styled("img")({
+  width: "30rem",
+  height: "auto",
+  marginLeft: "10vw",
+});
 
-export { SABox, Form };
+const MainContainer = styled(Box)({
+  position: "absolute",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  height: "100vh",
+  width: "100vw",
+});
+
+const LogoText = styled(Box)({
+  height: "auto",
+});
+
+export { SABox, Form, Logo, MainContainer, LogoText };

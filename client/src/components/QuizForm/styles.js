@@ -1,6 +1,6 @@
 import { Box, styled } from "@mui/material";
 
-const SABox = styled(Box)(({ theme }) => ({
+const QFBox = styled(Box)(({ theme }) => ({
   width: "1000px",
   height: "500px",
   borderRadius: "4px",
@@ -8,7 +8,7 @@ const SABox = styled(Box)(({ theme }) => ({
   padding: "20px",
   margin: "auto",
   overflow: "hidden",
-  overflowY: "hidden",
+  overflowY: "scroll",
   [theme.breakpoints.down("sm")]: {
     width: "100vw",
     height: "98vh",
@@ -27,9 +27,9 @@ const Form = styled("form")({
   display: "flex",
   flexDirection: "column",
   flexWrap: "wrap",
-  gap: "4rem",
+  gap: "2rem",
   justifyContent: "space-between",
 });
 
 
-export { SABox, Form };
+export { QFBox, Form };
