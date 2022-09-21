@@ -32,11 +32,11 @@ function Dashboard() {
         <DashBoardHeader />
         {/* to format quizes */}
         <Quizzes />
-        
-        <Button onClick={() => setOpenQuizForm(true)}>
-          <CreateButton title="Add Quiz" link=""></CreateButton>
-        </Button>
       </Box>
+
+      <Button onClick={() => setOpenQuizForm(true)}>
+        <CreateButton title="Add Quiz" link=""></CreateButton>
+      </Button>
 
       <StyledModal
         open={openQuizForm}
@@ -44,7 +44,7 @@ function Dashboard() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <QuizForm setOpen={ setOpenQuizForm } />
+        <QuizForm setOpen={setOpenQuizForm} />
       </StyledModal>
     </>
   );
