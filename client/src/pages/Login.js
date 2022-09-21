@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material'
 import React from 'react'
-import Question from '../components/Login/LoginForm'
+import LoginForm from '../components/Login/LoginForm'
 import logo from "../images/logo.svg";
 import { Logo, MainContainer, LogoText } from "../components/Login/styles.js"
 
@@ -12,19 +12,17 @@ const Login = () => {
           <Logo
             src={logo}
             alt="quizy"
-            sx={{ display: { xs: "none", sm: "block" } }}
+            sx={{ width: { xs: "200px", sm: "300px", lg: "40vw" } }}
           />
           <Typography
-                variant="h5"
                 color="#666666"
                 align="center"
-                marginRight="auto"
               >
                 Quiz yourself and your friends!
           </Typography>
         </LogoText>
-        <Box flex={4} padding={2}>
-        <Question />
+        <Box>
+        <LoginForm/>
         </Box>
       </MainContainer>
     </>

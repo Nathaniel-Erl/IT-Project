@@ -3,7 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { Form, SABox } from './styles';
 
-const ShortAnswer = ({ setOpen }) => {
+const LoginForm = () => {
 
     return (
       <SABox>
@@ -47,4 +47,4 @@ const ShortAnswer = ({ setOpen }) => {
     );
 }
 
-export default ShortAnswer
+export default LoginForm

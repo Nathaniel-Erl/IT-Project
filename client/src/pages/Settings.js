@@ -2,8 +2,7 @@ import { Grid, Fab } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import NavBar from "../components/NavBar/NavBar";
-import ProfileBlock from "../components/ProfileBlock/ProfileBlock";
-import Question from "../components/SignUp/SignUpForm";
+import SignUpForm from "../components/SignUp/SignUpForm";
 import SignOutButton from "../components/Buttons/SignOutButton";
 
 // First name, Last name,
@@ -21,7 +20,7 @@ function Settings() {
       >
         <Grid container display="flex" justifyContent="center" padding={3}>
           <Grid item xs={6}>
-            <Question title="Settings" button="Save Changes" link="../dashboard" />
+            <SignUpForm title="Settings" button="Save Changes" link="../dashboard" />
           </Grid>
         </Grid>
       </Box>
