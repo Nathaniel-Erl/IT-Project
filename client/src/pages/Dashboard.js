@@ -6,17 +6,22 @@ import DashBoardHeader from "../components/DashBoardHeader/DashBoardHeader";
 import QuizForm from "../components/QuizForm/QuizForm";
 import { StyledModal } from "../components/TypeBox/styles";
 import { useDispatch } from 'react-redux'
-import { getQuizzes } from "../actions/quizzes";
+import { filterQuiz, getQuizzes } from "../actions/quizzes";
 import Quizzes from "../components/Quizzes/Quizzes";
 
 function Dashboard() {
   const [openQuizForm, setOpenQuizForm] = useState(false);
-  const [currentQuizId, setCurrentQuizId] = useState(null)
+  const [currentQuizId, setCurrentQuizId] = useState(null);
+   const [searchValue, setSearchValue] = useState("");
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getQuizzes())
-  }, [currentQuizId, dispatch])
+    if (searchValue) {
+      dispatch(filterQuiz(searchValue))
+    } else {
+      dispatch(getQuizzes());
+    }
+  }, [currentQuizId, searchValue, dispatch])
   
   return (
     <>
@@ -29,7 +34,7 @@ function Dashboard() {
         gap={3}
       >
         {/* title and search bar */}
-        <DashBoardHeader />
+        <DashBoardHeader searchValue={ searchValue } setSearchValue={setSearchValue} />
         {/* to format quizes */}
         <Quizzes
           currentQuizId={currentQuizId}

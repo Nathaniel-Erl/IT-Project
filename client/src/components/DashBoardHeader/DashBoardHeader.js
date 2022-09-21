@@ -3,7 +3,8 @@ import React from 'react'
 import { DBHBox, Search, SearchIconWrapper, StyledInputBase } from './styles';
 import SearchIcon from "@mui/icons-material/Search";
 
-const DashBoardHeader = () => {
+const DashBoardHeader = ({ setSearchValue }) => {
+
   return (
     <DBHBox>
       <Typography variant="h4" sx={{ fontWeight: "bold" }}>
@@ -16,6 +17,7 @@ const DashBoardHeader = () => {
         <StyledInputBase
           placeholder="Search…"
           inputProps={{ "aria-label": "search" }}
+          onChange={(e) => setSearchValue(e.target.value)}
         />
       </Search>
     </DBHBox>

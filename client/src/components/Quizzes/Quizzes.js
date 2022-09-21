@@ -4,10 +4,10 @@ import QuizBlock from './QuizBlock/QuizBlock';
 import { useSelector } from "react-redux";
 
 const Quizzes = ({ setOpenQuizForm, currentQuizId, setCurrentQuizId }) => {
-    const quizzes = useSelector((store) => store.quizzes)
+    let quizzes = useSelector((store) => store.quizzes)
     
     return !quizzes.length ? (
-      <Typography align="center">Please add more quizzes</Typography>
+      <Typography variant='h6' align="center" marginTop='12rem'>No quizzes available</Typography>
     ) : (
       <Grid
         container

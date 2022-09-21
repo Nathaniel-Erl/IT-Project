@@ -1,5 +1,5 @@
 import * as api from '../api'
-import { FETCH_ALL_QUIZZES, CREATE_QUIZ, DELETE_QUIZ, UPDATE_QUIZ } from '../static/actionType'
+import { FETCH_ALL_QUIZZES, CREATE_QUIZ, DELETE_QUIZ, UPDATE_QUIZ, FILTER_QUIZZES } from '../static/actionType'
 
 export const getQuizzes = () => async (dispatch) => {
     try {
@@ -37,5 +37,13 @@ export const updatedQuiz = (id, updatedQuiz) => async (dispatch) => {
         dispatch({ type: UPDATE_QUIZ, payload: data })
     } catch (error) {
         console.log(error);
+    }
+}
+
+export const filterQuiz = (term) => async (dispatch) => {
+    try {
+        dispatch({ type: FILTER_QUIZZES, payload: term})
+    } catch (error) {
+        
     }
 }
