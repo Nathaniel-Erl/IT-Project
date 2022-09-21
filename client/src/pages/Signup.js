@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
-import Question from "../components/SignUp/SignUpForm";
+import SignUpForm from "../components/SignUp/SignUpForm";
 import logo from "../images/logo.svg";
 import { Logo, MainContainer, LogoText } from "../components/SignUp/styles.js";
 
@@ -23,7 +23,7 @@ const Signup = () => {
           </Typography>
         </LogoText>
         <Box flex={4} padding={2}>
-          <Question title="Sign up" button="Sign Up" link="../login"/>
+          <SignUpForm title="Sign up" button="Sign Up" link="../login"/>
         </Box>
       </MainContainer>
     </>
