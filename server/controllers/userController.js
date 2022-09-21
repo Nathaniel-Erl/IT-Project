@@ -5,21 +5,22 @@ import Quiz from '../models/quizSchema.js'
 import User from '../models/userSchema.js'
 
 export const createQuiz = async (req, res) => {
-  const { subject, description, createdDate, questions } = req.body
+  const { subject, description, image } = req.body
 
-  const username = req.originalUrl.split('/')[1]
-  const user = await User.findOne({ username: username })
-  const createdBy = user._id
+  //const username = req.originalUrl.split('/')[1]
+  //const user = await User.findOne({ username: username })
+  //const createdBy = user._id
+  const questions = []
 
   try {
     const newQuiz = await Quiz.create({
       subject,
       description,
-      createdBy,
-      createdDate,
+      //createdBy: "someone",
+      image,
       questions,
     })
-    res.send(req.body)
+    res.send(newQuiz)
   } catch (error) {
     console.log(error)
     res.send(400)
@@ -91,19 +92,19 @@ export const getQuiz = async (req, res) => {
 }
 
 export const getAllQuizzes = async (req, res) => {
-  const username = req.originalUrl.split('/')[1]
+  //const username = req.originalUrl.split('/')[1]
   try {
-    const user = await User.findOne({ username: username })
+    // const user = await User.findOne({ username: username })
 
-    if (user == null) {
-      res.send(400)
-    }
+    // if (user == null) {
+    //   res.send(400)
+    // }
 
     //all the quizzes made by a user
-    const quizzes = await Quiz.find({ createdBy: user._id })
-    console.log(quizzes)
+    //const quizzes = await Quiz.find({ createdBy: user._id })
+    const quizzes = await Quiz.find()
 
-    res.send(200)
+    res.json(quizzes)
   } catch (error) {
     console.log(error)
     res.status(400)

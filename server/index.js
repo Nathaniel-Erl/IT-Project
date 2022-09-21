@@ -11,12 +11,12 @@ import { keys } from "./config/keys.js";
 const app = express();
 
 passportConfig(passport);
-app.use(bodyParser.json({ limit: "1mb", extended: true }));
-app.use(bodyParser.urlencoded({ limit: "1mb", extended: true }));
+app.use(bodyParser.json({ limit: "30mb", extended: true }));
+app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 app.use(express.json());
 
-app.use("/:username", userRoutes);
+app.use("/", userRoutes);
 
 app.use("/", landingRoutes);
 

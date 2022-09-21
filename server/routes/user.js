@@ -9,19 +9,13 @@ import {
 
 const router = express.Router()
 
-router.get('/', (req, res) => {
-
-
-  res.json({ message: req.url })
-
-
 router.get('/quiz', getAllQuizzes)
 
-router.get('/:quizID', getQuiz)
+router.get('/quiz/:id', getQuiz)
 
 router.post('/quiz/:id/attempt', markQuiz)
 
-router.get('/quiz/:id', )
+//router.get('/quiz/:id', )
 
 router.get('/settings', (req, res) => {
   res.json({ message: 'User settings ' })

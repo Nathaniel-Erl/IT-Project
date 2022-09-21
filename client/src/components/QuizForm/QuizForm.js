@@ -15,9 +15,10 @@ const QuizForm = ({setOpen}) => {
   })
   const dispatch = useDispatch();
   
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     dispatch(createQuiz(quizData))
+    setOpen(false)
   }
 
   return (
@@ -56,14 +57,16 @@ const QuizForm = ({setOpen}) => {
                 <FileBase
                   type="file"
                   multiple={false}
-                  onDone={({ base64 }) => setQuizData({ ...quizData, image: base64 })}
+                  onDone={({ base64 }) =>
+                    setQuizData({ ...quizData, image: base64 })
+                  }
                 />
               </Button>
             </IconButton>
           </Paper>
         </Box>
 
-        {file && (
+        {quizData.image && (
           <img
             src={`${quizData.image}`}
             alt="upload"
@@ -93,6 +96,7 @@ const QuizForm = ({setOpen}) => {
         />
 
         <Button
+          type="submit"
           variant="contained"
           color="error"
           style={{ marginLeft: "auto", padding: "0.5rem 5rem" }}

@@ -4,7 +4,7 @@ export const keys = {
     expiresIn: 86400, // 1 day in seconds
   },
   env: {
-    port: 8080,
+    port: 5000,
     mongoDBUri:
       "mongodb+srv://BackendBryans:BackendBryans@cluster0.dosyhde.mongodb.net/?retryWrites=true&w=majority",
   },

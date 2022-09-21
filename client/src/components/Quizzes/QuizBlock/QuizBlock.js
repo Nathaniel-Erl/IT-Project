@@ -1,6 +1,5 @@
 import React from "react";
 import { Button, Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material";
-import quizImg from "../../../images/quiz.png";
 import { Link } from "react-router-dom";
 
 const QuizBlock = ({ quiz }) => {
@@ -12,7 +11,7 @@ const QuizBlock = ({ quiz }) => {
         sx={{ objectFit: "cover" }}
         component="img"
         height="140"
-        image={quizImg}
+        image={quiz.image}
         alt="quiz"
       />
 

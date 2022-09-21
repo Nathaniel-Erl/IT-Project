@@ -3,8 +3,9 @@ import { FETCH_ALL_QUIZZES, CREATE_QUIZ } from '../static/actionType'
 
 export const getQuizzes = () => async (dispatch) => {
     try {
-        const { quizzes } = await api.fetchQuizzes()
-        dispatch({ type: FETCH_ALL_QUIZZES, payload: quizzes})     
+        const { data } = await api.fetchQuizzes()
+        console.log(data)
+        dispatch({ type: FETCH_ALL_QUIZZES, payload: data })     
     }
     catch (error) {
         console.log(error)
@@ -13,8 +14,8 @@ export const getQuizzes = () => async (dispatch) => {
 
 export const createQuiz = (newQuiz) => async (dispatch) => {
     try {
-        const { quiz } = await api.createQuiz(newQuiz)
-        dispatch({type : CREATE_QUIZ, payload: quiz})
+        const { data } = await api.createQuiz(newQuiz)
+        dispatch({ type : CREATE_QUIZ, payload: data })
     }
     catch (error) {
         console.log(error)
