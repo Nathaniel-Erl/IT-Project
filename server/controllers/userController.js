@@ -132,6 +132,6 @@ export const updateQuiz = async (req, res) => {
     return res.status(404).send("No quiz with that id");
   }
 
-  const updated = await Quiz.findByIdAndUpdate(_id, { ...quiz },  { new: true })
+  const updated = await Quiz.findByIdAndUpdate(_id, { ...quiz, _id },  { new: true })
   res.json(updated)
 }

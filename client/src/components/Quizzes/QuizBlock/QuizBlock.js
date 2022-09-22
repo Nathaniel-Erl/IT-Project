@@ -6,7 +6,7 @@ import ModeIcon from "@mui/icons-material/Mode";
 import { useDispatch } from "react-redux";
 import { deleteQuiz } from "../../../actions/quizzes";
 
-const QuizBlock = ({setOpenQuizForm, quiz, setCurrentQuizId }) => {
+const QuizBlock = ({ images, setOpenQuizForm, quiz, setCurrentQuizId }) => {
   // limit length of display name and title
 
   const dispatch = useDispatch()
@@ -26,7 +26,11 @@ const QuizBlock = ({setOpenQuizForm, quiz, setCurrentQuizId }) => {
         sx={{ objectFit: "cover" }}
         component="img"
         height="140"
-        image={quiz.image}
+        image={
+          quiz.image
+            ? quiz.image
+            : images[Math.floor(Math.random() * images.length)].urls.full
+        }
         alt="quiz"
       />
 

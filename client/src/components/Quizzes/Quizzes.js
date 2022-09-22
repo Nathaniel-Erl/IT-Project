@@ -1,12 +1,25 @@
-import { Grid, Typography } from '@mui/material';
-import React from 'react'
+import { Box, CircularProgress, Grid, Typography } from '@mui/material';
+import React, { useEffect, useState } from 'react'
 import QuizBlock from './QuizBlock/QuizBlock';
 import { useSelector } from "react-redux";
 
-const Quizzes = ({ setOpenQuizForm, currentQuizId, setCurrentQuizId }) => {
-    let quizzes = useSelector((store) => store.quizzes)
+const Quizzes = ({images, setOpenQuizForm, currentQuizId, setCurrentQuizId }) => {
+  let quizzes = useSelector((store) => store.quizzes)
+  const [isLoading, setLoading] = useState(true);
     
-    return !quizzes.length ? (
+  useEffect(() => {
+     setTimeout(() => {
+       setLoading(false);
+     }, 1000);
+  }, []);
+  
+  if (isLoading) {
+    return <Box alignSelf='center'>
+      <CircularProgress margin="auto"/>
+    </Box>
+  }
+   
+  return !quizzes.length ? (
       <Typography variant='h6' align="center" marginTop='12rem'>No quizzes available</Typography>
     ) : (
       <Grid
@@ -17,6 +30,7 @@ const Quizzes = ({ setOpenQuizForm, currentQuizId, setCurrentQuizId }) => {
         {quizzes.map((quiz) => (
           <Grid key={quiz._id} item xs={12} sm={4} md={4}>
             <QuizBlock
+              images={images}
               quiz={quiz}
               currentQuizId={currentQuizId}
               setCurrentQuizId={setCurrentQuizId}

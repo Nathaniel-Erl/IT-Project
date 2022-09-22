@@ -9,35 +9,38 @@ import { createQuiz, updatedQuiz } from '../../actions/quizzes';
 
 const QuizForm = ({ setOpenQuizForm, currentQuizId, setCurrentQuizId }) => {
   const [quizData, setQuizData] = useState({
-    subject: '',
-    description: '',
-    image: ''
-  })
+    subject: "",
+    description: "",
+    image: "",
+  });
 
   const dispatch = useDispatch();
-  const selectedQuiz = useSelector((store) => currentQuizId ? store.quizzes.find(quiz => quiz._id === currentQuizId) : null)
-  
+  const selectedQuiz = useSelector((store) =>
+    currentQuizId
+      ? store.quizzes.find((quiz) => quiz._id === currentQuizId)
+      : null
+  );
+
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     if (currentQuizId === null) {
       dispatch(createQuiz(quizData));
-    }
-    else {
-      dispatch(updatedQuiz(currentQuizId, quizData))
+    } else {
+      dispatch(updatedQuiz(currentQuizId, quizData));
     }
     setOpenQuizForm(false);
     clear();
-  }
+  };
 
   const clear = () => {
-    setCurrentQuizId(null)
+    setCurrentQuizId(null);
     setQuizData({
       subject: "",
       description: "",
       image: "",
     });
-  }
+  };
 
   useEffect(() => {
     if (selectedQuiz) setQuizData(selectedQuiz);
@@ -46,7 +49,10 @@ const QuizForm = ({ setOpenQuizForm, currentQuizId, setCurrentQuizId }) => {
   return (
     <QFBox>
       <Form onSubmit={handleSubmit}>
-        <IconButton sx={{ marginLeft: "auto" }} onClick={() => setOpenQuizForm(false)}>
+        <IconButton
+          sx={{ marginLeft: "auto" }}
+          onClick={() => setOpenQuizForm(false)}
+        >
           <CloseIcon onClick={() => clear()} />
         </IconButton>
 

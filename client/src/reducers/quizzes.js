@@ -1,4 +1,4 @@
-import { FETCH_ALL_QUIZZES, CREATE_QUIZ, DELETE_QUIZ, FILTER_QUIZZES } from "../static/actionType";
+import { FETCH_ALL_QUIZZES, CREATE_QUIZ, DELETE_QUIZ, FILTER_QUIZZES, UPDATE_QUIZ } from "../static/actionType";
 
 const quizReducer = (quizzes = [], action) => {
     switch (action.type) {
@@ -8,6 +8,8 @@ const quizReducer = (quizzes = [], action) => {
             return [...quizzes, action.payload]
         case DELETE_QUIZ:
             return quizzes.filter(quiz => quiz._id !== action.payload)
+        case UPDATE_QUIZ:
+            return quizzes.map(quiz => quiz._id === action.payload._id ? action.payload : quiz)
         case FILTER_QUIZZES:
             const searchValue = action.payload.toLowerCase()
             return quizzes.filter(quiz =>

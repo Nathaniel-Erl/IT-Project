@@ -9,10 +9,10 @@ import { useDispatch } from 'react-redux'
 import { filterQuiz, getQuizzes } from "../actions/quizzes";
 import Quizzes from "../components/Quizzes/Quizzes";
 
-function Dashboard() {
+function Dashboard({ images }) {
   const [openQuizForm, setOpenQuizForm] = useState(false);
   const [currentQuizId, setCurrentQuizId] = useState(null);
-   const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState("");
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -34,9 +34,13 @@ function Dashboard() {
         gap={3}
       >
         {/* title and search bar */}
-        <DashBoardHeader searchValue={ searchValue } setSearchValue={setSearchValue} />
+        <DashBoardHeader
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+        />
         {/* to format quizes */}
         <Quizzes
+          images={images}
           currentQuizId={currentQuizId}
           setCurrentQuizId={setCurrentQuizId}
           setOpenQuizForm={setOpenQuizForm}
