@@ -1,22 +1,23 @@
 import { Box, styled } from "@mui/material";
 
 const SABox = styled(Box)(({ theme }) => ({
-  width: "400px",
+  width: "30vw",
   borderRadius: "4px",
   backgroundColor: "#FFFFFF",
   padding: "20px",
-  margin: "auto",
+  margin: "0vw",
   overflow: "hidden",
   overflowY: "hidden",
   [theme.breakpoints.down("sm")]: {
-    width: "100vw",
-    height: "98vh",
+    width: "auto",
     borderRadius: "0",
+    padding: "5px",
+    width: "80vw",
   },
   [theme.breakpoints.down("md")]: {
-    width: "100vw",
-    height: "98vh",
     borderRadius: "0",
+    padding: "20px",
+    width: "80vw",
   },
 }));
 
@@ -27,26 +28,46 @@ const Form = styled("form")({
   flexDirection: "column",
   flexWrap: "wrap",
   gap: "1rem",
-  justifyContent: "space-between",
 });
 
 const Logo = styled("img")({
-  width: "30rem",
   height: "auto",
-  marginLeft: "10vw",
 });
 
-const MainContainer = styled(Box)({
-  position: "absolute",
+const MainContainer = styled(Box)(({ theme }) => ({
+  height: "100vh",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  height: "100vh",
-  width: "100vw",
-});
+  textalign: "center",
+  [theme.breakpoints.down("sm")]: {
+    display: "grid",
+    height: "70vh",
+  },
+  [theme.breakpoints.down("md")]: {
+    display: "grid",
+    height: "auto",
+  },
+}));
 
-const LogoText = styled(Box)({
-  height: "auto",
-});
+const LogoText = styled(Box)(({ theme }) => ({
+  display: "grid",
+  width: "50vw",
+  justifyContent: "center",
+  alignItems: "center",
+  [theme.breakpoints.down("sm")]: {
+    width: "auto",
+    margin: "0",
+    paddingTop: "10px",
+    paddingBottom: "20px",
+  },
+  [theme.breakpoints.down("md")]: {
+    width: "auto",
+    margin: "0",
+    padding: "0",
+    paddingTop: "10px",
+    paddingBottom: "20px",
+  },
+}));
 
 export { SABox, Form, Logo, MainContainer, LogoText };
