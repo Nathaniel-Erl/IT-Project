@@ -30,12 +30,8 @@ const Form = styled("form")({
   gap: "1rem",
 });
 
-const Logo = styled("img")({
-  height: "auto",
-});
-
 const MainContainer = styled(Box)(({ theme }) => ({
-  height: "100vh",
+  height: "89vh",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
@@ -50,24 +46,4 @@ const MainContainer = styled(Box)(({ theme }) => ({
   },
 }));
 
-const LogoText = styled(Box)(({ theme }) => ({
-  display: "grid",
-  width: "50vw",
-  justifyContent: "center",
-  alignItems: "center",
-  [theme.breakpoints.down("sm")]: {
-    width: "auto",
-    margin: "0",
-    paddingTop: "10px",
-    paddingBottom: "20px",
-  },
-  [theme.breakpoints.down("md")]: {
-    width: "auto",
-    margin: "0",
-    padding: "0",
-    paddingTop: "10px",
-    paddingBottom: "20px",
-  },
-}));
-
-export { SABox, Form, Logo, MainContainer, LogoText };
+export { SABox, Form, MainContainer };
