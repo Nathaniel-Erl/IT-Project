@@ -1,12 +1,9 @@
 import React from "react";
 import { Fab } from "@mui/material";
-import { Link } from "react-router-dom";
 
-const SignOutButton = ({ link, title }) => {
+const SignOutButton = ({title}) => {
   return (
     <Fab
-      component={Link}
-      to={`${link}`}
       variant="extended"
       size="medium"
       color="error"

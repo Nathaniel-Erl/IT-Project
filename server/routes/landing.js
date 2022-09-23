@@ -39,7 +39,7 @@ router.post("/login", async (req, res) => {
       const token = jwt.sign(payload, keys.passport.secretOrKey, {
         expiresIn: keys.passport.expiresIn,
       });
-      return res.status(200).json(token);
+      return res.status(200).json({ result: user, token });
     } else {
       // passwords do not match
       return res.status(400).json({ passwordincorrect: "Incorrect password" });
@@ -51,14 +51,14 @@ router.get("/about-us", (req, res) => {
   res.json({ message: "ABOUT US PAGE" });
 });
 
-router.post("/sign-up", async (req, res) => {
-  const { username, firstName, lastName, email, password } = req.body;
+router.post("/signup", async (req, res) => {
+  const { userName, firstName, lastName, email, password } = req.body;
   try {
     // check that email and username are unique
-    const usernameExists = await User.findOne({ username });
+    const usernameExists = await User.findOne({ userName });
     const emailExists = await User.findOne({ email });
     if (usernameExists) {
-      res.status(400).json({ username: "Username already exists" });
+      res.status(400).json({ userName: "Username already exists" });
     } else if (emailExists) {
       res.status(400).json({ email: "Email already exists" });
     } else {
@@ -67,14 +67,14 @@ router.post("/sign-up", async (req, res) => {
       const hash = await bcrypt.hash(password, 10);
       // create a new user entry in the database
       const newUser = await User.create({
-        username: username,
+        userName: userName,
         firstName: firstName,
         lastName: lastName,
         email: email,
         password: hash,
       });
-      res.send(req.body);
-      console.log(username, firstName, lastName, email, hash);
+      res.status(201).json({ result: newUser });
+      console.log(userName, firstName, lastName, email, hash);
     }
   } catch (error) {
     console.log(error);

@@ -6,6 +6,7 @@ import FileBase from "react-file-base64";
 import AddIcon from "@mui/icons-material/Add";
 import { useDispatch, useSelector } from 'react-redux';
 import { createQuiz, updatedQuiz } from '../../actions/quizzes';
+import { MAX_DESCRIPTION_DISPLAY_LENGTH, MAX_TITLE_DISPLAY_LENGTH } from '../../static/constants';
 
 const QuizForm = ({ setOpenQuizForm, currentQuizId, setCurrentQuizId }) => {
   const [quizData, setQuizData] = useState({
@@ -108,6 +109,7 @@ const QuizForm = ({ setOpenQuizForm, currentQuizId, setCurrentQuizId }) => {
           variant="outlined"
           autoComplete="off"
           value={quizData.subject}
+          inputProps={{ maxLength: MAX_TITLE_DISPLAY_LENGTH }}
           onChange={(e) =>
             setQuizData({ ...quizData, subject: e.target.value })
           }
@@ -118,6 +120,7 @@ const QuizForm = ({ setOpenQuizForm, currentQuizId, setCurrentQuizId }) => {
           variant="outlined"
           autoComplete="off"
           value={quizData.description}
+          inputProps={{ maxLength: MAX_DESCRIPTION_DISPLAY_LENGTH }}
           onChange={(e) =>
             setQuizData({ ...quizData, description: e.target.value })
           }

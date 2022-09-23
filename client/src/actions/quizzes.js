@@ -4,7 +4,6 @@ import { FETCH_ALL_QUIZZES, CREATE_QUIZ, DELETE_QUIZ, UPDATE_QUIZ, FILTER_QUIZZE
 export const getQuizzes = () => async (dispatch) => {
     try {
         const { data } = await api.fetchQuizzes()
-        console.log(data)
         dispatch({ type: FETCH_ALL_QUIZZES, payload: data })     
     }
     catch (error) {
