@@ -57,10 +57,12 @@ router.post("/signup", async (req, res) => {
     // check that email and username are unique
     const usernameExists = await User.findOne({ userName });
     const emailExists = await User.findOne({ email });
+
     if (usernameExists) {
-      res.status(400).json({ userName: "Username already exists" });
-    } else if (emailExists) {
-      res.status(400).json({ email: "Email already exists" });
+      res.status(400).json({ userNameError: "Username already exists" });
+    }
+    else if (emailExists) {
+      res.status(400).json({ emailError: "Email already exists" });
     } else {
       // Username and email are unique
       // Hash the password to store in the database

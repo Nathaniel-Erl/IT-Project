@@ -43,6 +43,6 @@ export const filterQuiz = (term) => async (dispatch) => {
     try {
         dispatch({ type: FILTER_QUIZZES, payload: term})
     } catch (error) {
-        
+        console.log(error);
     }
 }

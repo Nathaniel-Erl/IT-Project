@@ -1,5 +1,5 @@
 import * as api from "../api";
-import { AUTH } from "../static/actionType";
+import { AUTH, ERROR_AUTH } from "../static/actionType";
 
 export const signUp = (formData, navigate) => async (dispatch) => {
     try {
@@ -8,7 +8,7 @@ export const signUp = (formData, navigate) => async (dispatch) => {
         navigate('/quiz')
     }
     catch (error) {
-        console.log(error)
+        dispatch({ type: ERROR_AUTH, error})
     }
 }
 

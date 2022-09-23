@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react'
 import QuizBlock from './QuizBlock/QuizBlock';
 import { useSelector } from "react-redux";
 
-const Quizzes = ({images, setOpenQuizForm, currentQuizId, setCurrentQuizId }) => {
+
+const Quizzes = ({ images, setOpenQuizForm, currentQuizId, setCurrentQuizId }) => {
   let quizzes = useSelector((store) => store.quizzes)
   const [isLoading, setLoading] = useState(true);
     
@@ -18,7 +19,7 @@ const Quizzes = ({images, setOpenQuizForm, currentQuizId, setCurrentQuizId }) =>
       <CircularProgress margin="auto"/>
     </Box>
   }
-   
+
   return !quizzes.length ? (
       <Typography variant='h6' align="center" marginTop='12rem'>No quizzes available</Typography>
     ) : (

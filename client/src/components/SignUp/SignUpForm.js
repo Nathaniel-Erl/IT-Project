@@ -3,10 +3,11 @@ import React, { useState } from "react";
 import { Form, SABox } from "./styles";
 import CloseIcon from "@mui/icons-material/Close";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { signUp } from "../../actions/auth";
 
 const SignUpForm = ({ user, title, button, link }) => {
+  const { authData } = useSelector(store => store.auth)
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const [userData, setUserData] = useState({
@@ -60,24 +61,28 @@ const SignUpForm = ({ user, title, button, link }) => {
             />
           </Box>
           <TextField
+            error={authData && authData?.userNameError}
             id="outlined-multiline-static"
             value={user ? user.result.userName : userData.userName}
             required
             label="Username"
             variant="outlined"
             autoComplete="off"
+            helperText={authData ? authData?.userNameError : ""}
             onChange={(e) =>
               setUserData({ ...userData, userName: e.target.value })
             }
           />
           <TextField
             id="outlined-multiline-static"
+            error={authData && authData?.emailError}
             value={user ? user.result.email : userData.email}
             required
             type="email"
             label="E-mail"
             variant="outlined"
             autoComplete="off"
+            helperText={authData ? authData?.emailError : ""}
             onChange={(e) =>
               setUserData({ ...userData, email: e.target.value })
             }
@@ -97,7 +102,7 @@ const SignUpForm = ({ user, title, button, link }) => {
           <TextField
             id="outlined-multiline-static"
             required
-            type= "password"
+            type="password"
             label="Re-enter Password"
             variant="outlined"
             autoComplete="off"
