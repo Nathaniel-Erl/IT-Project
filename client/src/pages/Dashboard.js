@@ -52,7 +52,10 @@ function Dashboard() {
 
       <StyledModal
         open={openQuizForm}
-        onClose={() => setOpenQuizForm(false) }
+        onClose={() => {
+          setOpenQuizForm(false)
+          setCurrentQuizId(null)
+        }}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >

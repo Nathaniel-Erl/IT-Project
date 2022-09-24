@@ -88,9 +88,10 @@ const QuizForm = ({ setOpenQuizForm, currentQuizId, setCurrentQuizId }) => {
                 <FileBase
                   type="file"
                   multiple={false}
-                  onDone={({ base64 }) =>
+                  onDone={({ base64 }) => {
+                    setSelectedColour('')
                     setQuizData({ ...quizData, image: base64 })
-                  }
+                  }}
                 />
               </Button>
             </IconButton>
