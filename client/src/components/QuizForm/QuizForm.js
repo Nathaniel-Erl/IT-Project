@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react'
-import { Form, QFBox } from './styles';
+import { Form, Item, QFBox } from './styles';
 import CloseIcon from "@mui/icons-material/Close";
-import { Box, Button, IconButton, Paper, TextField, Typography } from '@mui/material';
+import { Box, Button, Grid, IconButton, Paper, TextField, Tooltip, Typography } from '@mui/material';
 import FileBase from "react-file-base64";
 import AddIcon from "@mui/icons-material/Add";
 import { useDispatch, useSelector } from 'react-redux';
 import { createQuiz, updatedQuiz } from '../../actions/quizzes';
-import { MAX_DESCRIPTION_DISPLAY_LENGTH, MAX_TITLE_DISPLAY_LENGTH } from '../../static/constants';
+import { HEX_LENGTH, MAX_DESCRIPTION_DISPLAY_LENGTH, MAX_TITLE_DISPLAY_LENGTH } from '../../static/constants';
+import { colours } from '../../static/colorPallete'
 
 const QuizForm = ({ setOpenQuizForm, currentQuizId, setCurrentQuizId }) => {
+  const [selectedColour, setSelectedColour] = useState('')
   const [quizData, setQuizData] = useState({
     subject: "",
     description: "",
@@ -72,7 +74,7 @@ const QuizForm = ({ setOpenQuizForm, currentQuizId, setCurrentQuizId }) => {
             }}
           >
             <Typography fontWeight={200} marginBottom={2}>
-              Upload an image or use default image
+              Upload an image or Choose background colour below 
             </Typography>
 
             <IconButton size="large" sx={{ position: "relative" }}>
@@ -95,13 +97,47 @@ const QuizForm = ({ setOpenQuizForm, currentQuizId, setCurrentQuizId }) => {
           </Paper>
         </Box>
 
-        {quizData.image && (
+        {quizData.image && quizData.image.length > HEX_LENGTH && (
           <img
             src={`${quizData.image}`}
             alt="upload"
             style={{ width: "100%", height: "auto" }}
           ></img>
         )}
+
+        {/* colour pallete */}
+        <Box display="flex" gap="1rem">
+          <Typography display="inline" fontWeight={100}>
+            Background
+          </Typography>
+          <Box>
+            <Grid
+              container
+              wrap="nowrap"
+              spacing={{ xs: 1, md: 2 }}
+              columns={{ xs: 4, sm: 8, md: 12 }}
+            >
+              {colours.map((colour) => {
+                return (
+                  <Grid item xs={2} sm={6} md={2}>
+                    <Tooltip title={colour.name} placement="top">
+                      <Item
+                        sx={{
+                          backgroundColor: colour.hex,
+                          border: colour.hex === selectedColour ? 'solid 1px' : 'none'
+                        }}
+                        onClick={() => {
+                          setSelectedColour(colour.hex)
+                          setQuizData({ ...quizData, image: colour.hex })
+                      }}>
+                      </Item>
+                    </Tooltip>
+                  </Grid>
+                );
+              })}
+            </Grid>
+          </Box>
+        </Box>
 
         <TextField
           id="outlined-basic"

@@ -5,6 +5,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import ModeIcon from "@mui/icons-material/Mode";
 import { useDispatch } from "react-redux";
 import { deleteQuiz } from "../../../actions/quizzes";
+import { HEX_LENGTH } from "../../../static/constants";
 
 const QuizBlock = ({ images, setOpenQuizForm, quiz, setCurrentQuizId }) => {
   // limit length of display name and title
@@ -22,17 +23,21 @@ const QuizBlock = ({ images, setOpenQuizForm, quiz, setCurrentQuizId }) => {
 
   return (
     <Card>
-      <CardMedia
-        sx={{ objectFit: "cover" }}
-        component="img"
-        height="140"
-        image={
-          quiz.image
-            ? quiz.image
-            : images[Math.floor(Math.random() * images.length)].urls.full
-        }
-        alt="quiz"
-      />
+      {quiz.image.length > HEX_LENGTH ? (
+        <CardMedia
+          sx={{ objectFit: "cover" }}
+          component="img"
+          height="140"
+          image={quiz.image}
+        />
+      ) : (
+        <Box
+          sx={{
+            height: 140,
+            backgroundColor: quiz.image,
+          }}
+        />
+      )}
 
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">

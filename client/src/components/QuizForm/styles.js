@@ -1,4 +1,4 @@
-import { Box, styled } from "@mui/material";
+import { Box, Paper, styled } from "@mui/material";
 
 const QFBox = styled(Box)(({ theme }) => ({
   width: "1000px",
@@ -31,5 +31,9 @@ const Form = styled("form")({
   justifyContent: "space-between",
 });
 
+const Item = styled(Paper)(({ theme }) => ({
+  padding: theme.spacing(2),
+}));
 
-export { QFBox, Form };
+
+export { QFBox, Form, Item };

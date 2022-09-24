@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux'
 import { filterQuiz, getQuizzes } from "../actions/quizzes";
 import Quizzes from "../components/Quizzes/Quizzes";
 
-function Dashboard({ images }) {
+function Dashboard() {
   const [openQuizForm, setOpenQuizForm] = useState(false);
   const [currentQuizId, setCurrentQuizId] = useState(null);
   const [searchValue, setSearchValue] = useState("");
@@ -40,7 +40,6 @@ function Dashboard({ images }) {
         />
         {/* to format quizes */}
         <Quizzes
-          images={images}
           currentQuizId={currentQuizId}
           setCurrentQuizId={setCurrentQuizId}
           setOpenQuizForm={setOpenQuizForm}
@@ -53,7 +52,7 @@ function Dashboard({ images }) {
 
       <StyledModal
         open={openQuizForm}
-        onClose={() => setOpenQuizForm(false)}
+        onClose={() => setOpenQuizForm(false) }
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
