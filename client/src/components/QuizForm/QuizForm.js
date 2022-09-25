@@ -10,12 +10,15 @@ import { HEX_LENGTH, MAX_DESCRIPTION_DISPLAY_LENGTH, MAX_TITLE_DISPLAY_LENGTH } 
 import { colours } from '../../static/colorPallete'
 
 const QuizForm = ({ setOpenQuizForm, currentQuizId, setCurrentQuizId }) => {
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const [selectedColour, setSelectedColour] = useState('')
   const [quizData, setQuizData] = useState({
     subject: "",
     description: "",
     image: "",
+    createdBy: user.result.userName
   });
+  
 
   const dispatch = useDispatch();
   const selectedQuiz = useSelector((store) =>
