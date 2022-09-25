@@ -160,10 +160,10 @@ export const createQuestion = async (req, res) => {
 };
 
 export const getQuestion = async (req, res) => {
-  const quizID = req.params["quizID"];
-  console.log(quizID);
+  const questionID = req.params["quizID"];
+  console.log(questionID);
   try {
-    const quiz1 = await Quiz.findById(quizID);
+    const quiz1 = await Question.findById(quizID);
 
     res.send(quiz1);
   } catch (error) {
@@ -174,7 +174,7 @@ export const getQuestion = async (req, res) => {
 
 export const getAllQuestion = async (req, res) => {
   try {
-    const quizzes = await Quiz.find();
+    const quizzes = await Question.find();
 
     res.json(quizzes);
   } catch (error) {
@@ -192,7 +192,7 @@ export const updateQuestion = async (req, res) => {
     return res.status(404).send("No quiz with that id");
   }
 
-  const updated = await Quiz.findByIdAndUpdate(
+  const updated = await Question.findByIdAndUpdate(
     _id,
     { ...quiz, _id },
     { new: true }
@@ -207,7 +207,7 @@ export const deleteQuestion = async (req, res) => {
     return res.status(404).send("No quiz with that id");
   }
 
-  await Quiz.findByIdAndRemove(_id);
+  await Question.findByIdAndRemove(_id);
 
   res.json({ message: "Post deleted successfully" });
 };

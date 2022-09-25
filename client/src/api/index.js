@@ -13,7 +13,8 @@ export const logIn = (formData) => API.post("/login", formData);
 export const signUp = (formData) => API.post("/signup", formData);
 
 // question
-export const fetchQuestion = () => API.get("/quiz");
+export const getQuestion = () => API.get("/quiz");
+export const getAllQuestion = () => API.get("/quiz");
 export const createQuestion = (newQuiz) => API.post("/quiz", newQuiz);
 export const deleteQuestion = (id) => API.delete(`/quiz/${id}`);
 export const updateQuestion = (id, updatedQuiz) =>
