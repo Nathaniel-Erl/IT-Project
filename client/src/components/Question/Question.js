@@ -16,8 +16,15 @@ import ModeIcon from "@mui/icons-material/Mode";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 const Question = ({ question }) => {
+  function del() {
+    console.log("del");
+    document.getElementById("mainCard").style.display = "block";
+  }
+  function edit() {
+    console.log("edit");
+  }
   return (
-    <Card sx={{ margin: 5 }}>
+    <Card id="mainCard" sx={{ display: "block", margin: 5 }}>
       <CardHeader
         action={
           <IconButton aria-label="add to favorites">
@@ -37,7 +44,12 @@ const Question = ({ question }) => {
 
         <Paper
           variant="outlined"
-          sx={{ padding: 5, border: 1, borderColor: "grey.500", marginTop: 2 }}
+          sx={{
+            padding: 5,
+            border: 1,
+            borderColor: "grey.500",
+            marginTop: 2,
+          }}
         >
           <Typography variant="body1" fontWeight={100}>
             The Mitochondria
@@ -48,13 +60,13 @@ const Question = ({ question }) => {
         disableSpacing
         sx={{ display: "flex", justifyContent: "flex-end" }}
       >
-        <Tooltip title="Edit" placement="top">
+        <Tooltip title="Edit" placement="top" onClick={edit}>
           <IconButton aria-label="add to favorites">
             <ModeIcon />
           </IconButton>
         </Tooltip>
 
-        <Tooltip title="Delete" placement="top">
+        <Tooltip title="Delete" placement="top" onClick={del}>
           <IconButton aria-label="share">
             <DeleteIcon />
           </IconButton>
