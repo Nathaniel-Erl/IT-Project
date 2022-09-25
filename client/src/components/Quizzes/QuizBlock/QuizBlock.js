@@ -1,25 +1,35 @@
 import React from "react";
-import { Box, Button, Card, CardActions, CardContent, CardMedia, IconButton, Tooltip, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  IconButton,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 import { Link } from "react-router-dom";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ModeIcon from "@mui/icons-material/Mode";
 import { useDispatch } from "react-redux";
 import { deleteQuiz } from "../../../actions/quizzes";
-import { HEX_LENGTH } from "../../../static/constants";
+import { HEX_LENGTH } from "../../../static/Constants";
 
 const QuizBlock = ({ images, setOpenQuizForm, quiz, setCurrentQuizId }) => {
   // limit length of display name and title
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleDelete = () => {
-    dispatch(deleteQuiz(quiz._id))
-  }
+    dispatch(deleteQuiz(quiz._id));
+  };
 
   const handleUpdate = () => {
-    setCurrentQuizId(quiz._id)
-    setOpenQuizForm(true)
-  }
+    setCurrentQuizId(quiz._id);
+    setOpenQuizForm(true);
+  };
 
   return (
     <Card>
