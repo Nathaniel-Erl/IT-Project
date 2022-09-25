@@ -9,7 +9,7 @@ const Questions = ({
   currentquestionId,
   setCurrentquestionId,
 }) => {
-  let question = useSelector((store) => store.Questions);
+  let question = useSelector((store) => store.question);
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const Questions = ({
     );
   }
 
-  return !Questions.length ? (
+  return !question.length ? (
     <Typography variant="h6" align="center" marginTop="12rem">
       No Questions available
     </Typography>
@@ -36,7 +36,7 @@ const Questions = ({
       spacing={{ xs: 4, md: 8 }}
       columns={{ xs: 4, sm: 8, md: 12 }}
     >
-      {Questions.map((question) => (
+      {question.map((question) => (
         <Grid key={question._id} item xs={12} sm={4} md={4}>
           <Question
             images={images}

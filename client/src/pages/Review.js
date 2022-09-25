@@ -8,7 +8,7 @@ import { getAllQuestion } from "../actions/questions";
 import Questions from "../components/Questions/Questions";
 
 const Review = () => {
-  const [question, setQuestion] = useState(false);
+  const [openQuestionForm, setOpenQuestionForm] = useState(false);
   const [currentQuestionId, setCurrentQuestionId] = useState(null);
   const [searchValue, setSearchValue] = useState("");
   const dispatch = useDispatch();
@@ -21,9 +21,19 @@ const Review = () => {
     <>
       <NavBar title="Review" />
       <Box flex={4} padding={2}>
-        <Questions></Questions>
+        <Questions
+          currentQuestionId={currentQuestionId}
+          setCurrentQuestionId={setCurrentQuestionId}
+          setOpenQuestionForm={setOpenQuestionForm}
+        ></Questions>
       </Box>
-      <CreateButton title="Add Question" link="/createquestion"></CreateButton>
+      <CreateButton
+        title="Add Question"
+        link="/questions"
+        onClick={() => {
+          console.log("ehllo");
+        }}
+      ></CreateButton>
     </>
   );
 };
