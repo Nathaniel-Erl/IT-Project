@@ -2,15 +2,14 @@ import * as api from "../api";
 import {
   DELETE_QUESTION,
   UPDATE_QUESTION,
-  GET_ALL_QUESTION,
-  GET_QUESTION,
+  GET_ALL_QUESTIONS,
   CREATE_QUESTION,
 } from "../static/actionType";
 
-export const getAllQuestion = () => async (dispatch) => {
+export const getQuestions = (quizId) => async (dispatch) => {
   try {
-    const { data } = await api.getAllQuestion();
-    dispatch({ type: GET_ALL_QUESTION, payload: data });
+    const { data } = await api.getAllQuestions(quizId);
+    dispatch({ type: GET_ALL_QUESTIONS, payload: data });
   } catch (error) {
     console.log(error);
   }
@@ -20,15 +19,6 @@ export const createQuestion = (newQuiz) => async (dispatch) => {
   try {
     const { data } = await api.createQuestion(newQuiz);
     dispatch({ type: CREATE_QUESTION, payload: data });
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-export const getQuestion = () => async (dispatch) => {
-  try {
-    const { data } = await api.getQuestion();
-    dispatch({ type: GET_QUESTION, payload: data });
   } catch (error) {
     console.log(error);
   }

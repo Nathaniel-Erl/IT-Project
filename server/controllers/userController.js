@@ -5,7 +5,7 @@ import Quiz from "../models/quizSchema.js";
 import User from "../models/userSchema.js";
 
 export const createQuiz = async (req, res) => {
-  const { subject, description, image } = req.body;
+  const { subject, description, image, createdBy } = req.body
 
   //const username = req.originalUrl.split('/')[1]
   //const user = await User.findOne({ username: username })
@@ -16,7 +16,7 @@ export const createQuiz = async (req, res) => {
     const newQuiz = await Quiz.create({
       subject,
       description,
-      //createdBy: "someone",
+      createdBy: createdBy,
       image,
       questions,
     });
@@ -159,25 +159,14 @@ export const createQuestion = async (req, res) => {
   }
 };
 
-export const getQuestion = async (req, res) => {
-  const questionID = req.params["quizID"];
-  console.log(questionID);
-  try {
-    const quiz1 = await Question.findById(quizID);
 
-    res.send(quiz1);
-  } catch (error) {
-    res.send(400);
-    return;
+export const getAllQuestions = async (req, res) => {
+  const { quizId } = req.params
+  try {
+    const quizzes = await Quiz.findById(quizId);
+    res.json({ quizId: quizId, questions: quizzes.questions });
   }
-};
-
-export const getAllQuestion = async (req, res) => {
-  try {
-    const quizzes = await Question.find();
-
-    res.json(quizzes);
-  } catch (error) {
+  catch (error) {
     console.log(error);
     res.status(400);
     return;

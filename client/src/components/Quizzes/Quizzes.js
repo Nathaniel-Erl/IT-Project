@@ -3,11 +3,11 @@ import React, { useEffect, useState } from 'react'
 import QuizBlock from './QuizBlock/QuizBlock';
 import { useSelector } from "react-redux";
 
-
 const Quizzes = ({ images, setOpenQuizForm, currentQuizId, setCurrentQuizId }) => {
   let quizzes = useSelector((store) => store.quizzes)
   const [isLoading, setLoading] = useState(true);
-    
+  const user = JSON.parse(localStorage.getItem("profile"))
+
   useEffect(() => {
      setTimeout(() => {
        setLoading(false);
@@ -28,7 +28,8 @@ const Quizzes = ({ images, setOpenQuizForm, currentQuizId, setCurrentQuizId }) =
         spacing={{ xs: 4, md: 8 }}
         columns={{ xs: 4, sm: 8, md: 12 }}
       >
-        {quizzes.map((quiz) => (
+        {quizzes.filter(quiz => quiz.createdBy === user.result.userName).
+          map((quiz) => (
           <Grid key={quiz._id} item xs={12} sm={4} md={4}>
             <QuizBlock
               images={images}
