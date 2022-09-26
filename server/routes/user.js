@@ -1,33 +1,27 @@
-import express from 'express'
+import express from "express";
+import User from "../models/userSchema.js";
+import passport from "passport";
+import { login, signup } from "../controllers/userController.js";
 
-import {
-  createQuiz,
-  markQuiz,
-  getAllQuizzes,
-  deleteQuiz,
-  updateQuiz,
-  getAllQuestions
-} from '../controllers/userController.js'
+const router = express.Router();
 
-const router = express.Router()
+// for testing the authorization of a user
+router.get(
+  "/",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    User.find({}, (err, result) => {
+      res.status(200).json({ data: result });
+    });
+  }
+);
 
-router.get('/quiz', getAllQuizzes)
+router.post("/login", login)
 
-router.post('/quiz/:id/attempt', markQuiz)
+router.post("/signup", signup)
 
-// delete quiz
-router.delete('/quiz/:id', deleteQuiz)
+router.get("/settings", (req, res) => {
+  res.json({ message: "User settings " });
+});
 
-// update quiz
-router.patch('/quiz/:id', updateQuiz)
-
-router.get('/settings', (req, res) => {
-  res.json({ message: 'User settings ' })
-})
-
-router.post('/quiz', createQuiz)
-
-// questions
-router.get('/quiz/:quizId', getAllQuestions)
-
-export default router
+export default router;

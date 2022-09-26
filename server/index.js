@@ -3,8 +3,9 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
 import passport from "passport";
+import quizRoutes from "./routes/quiz.js";
 import userRoutes from "./routes/user.js";
-import landingRoutes from "./routes/landing.js";
+import questionRoutes from "./routes/question.js"
 import { passportConfig } from "./config/passport.js";
 import { keys } from "./config/keys.js";
 
@@ -16,9 +17,11 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 app.use(express.json());
 
+app.use("/", quizRoutes);
+
 app.use("/", userRoutes);
 
-app.use("/", landingRoutes);
+app.use("/", questionRoutes);
 
 const { port, mongoDBUri } = keys.env;
 const CONNECTION_URL = mongoDBUri;

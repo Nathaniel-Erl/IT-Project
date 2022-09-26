@@ -1,140 +1,67 @@
-// Create all the handlers for our routes
-import mongoose from "mongoose";
-import Question from '../models/questionSchema.js'
-import Quiz from '../models/quizSchema.js'
-import User from '../models/userSchema.js'
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+import { keys } from "../config/keys.js";
+import User from "../models/userSchema.js";
 
-export const createQuiz = async (req, res) => {
-  const { subject, description, image, createdBy } = req.body
-
-  //const username = req.originalUrl.split('/')[1]
-  //const user = await User.findOne({ username: username })
-  //const createdBy = user._id
-  const questions = []
-
-  try {
-    const newQuiz = await Quiz.create({
-      subject,
-      description,
-      createdBy: createdBy,
-      image,
-      questions,
-    })
-    res.send(newQuiz)
-  } catch (error) {
-    console.log(error)
-    res.send(400)
+export const login = async (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+  // Find user in database
+  const user = await User.findOne({ email });
+  // Check if user exists
+  if (!user) {
+    return res.status(404).json({ emailnotfound: "Email not found" });
   }
-}
-
-export const markQuiz = async (req, res) => {
-  try {
-    const answers = req.body
-
-    const quiz = await Quiz.findById(req.params['quizID'])
-
-    const quizLength = quiz['questions'].length
-    const quizQuestions = quiz['questions']
-
-    let multipleChoice = []
-    let shortAnswer = []
-    let multiAnswersNotInCorrect = []
-
-    for (let i = 0; i < quizLength; i++) {
-      //multiple choice will always have more than 1 answer and shot answer will have only 1 correct answer
-      if (
-        quiz['questions'][i]['correctAnswer'].length +
-          quiz['questions'][i]['incorrectAnswer'].length >
-        1
-      ) {
-        console.log('e')
-        multipleChoice.push({
-          index: i,
-          correct: quiz['questions'][i]['correctAnswer'],
-          incorrect: quiz['questions'][i]['incorrectAnswer'],
-        })
-      } else {
-        shortAnswer.push({
-          index: i,
-          model: quiz['questions'][i]['correctAnswer'],
-        })
-      }
+  // Check password
+  await bcrypt.compare(password, user.password).then((isPasswordMatched) => {
+    if (isPasswordMatched) {
+      // Create JWT Payload
+      const payload = {
+        id: user["_id"],
+        email: user.email,
+      };
+      // Sign token
+      const token = jwt.sign(payload, keys.passport.secretOrKey, {
+        expiresIn: keys.passport.expiresIn,
+      });
+      return res.status(200).json({ result: user, token });
+    } else {
+      // passwords do not match
+      return res.status(400).json({ passwordincorrect: "Incorrect password" });
     }
+  });
+};
 
-    //console.log(a.filter(x => !b.includes(x)) );
-    //{ '1': [ 6 ], '2': [ 1, 2, 3 ], '3': [ 1, 2, 3 ] }
-    let j = 0
-    for (let i = 0; i < multipleChoice.length; i++) {
-      let currentQuestionCorrect = multipleChoice[i]['correct']
+export const signup = async (req, res) => {
+  const { userName, firstName, lastName, email, password } = req.body;
+  try {
+    // check that email and username are unique
+    const usernameExists = await User.findOne({ userName });
+    const emailExists = await User.findOne({ email });
 
-      let index = multipleChoice[i]['index']
-      console.log(
-        answers[index].filter((x) => multipleChoice[i]['correct'].includes(x))
-      )
+    if (usernameExists) {
+      res.status(400).json({ userNameError: "Username already exists" });
+    } else if (emailExists) {
+      res.status(400).json({ emailError: "Email already exists" });
+    } else {
+      // Username and email are unique
+      // Hash the password to store in the database
+      const hash = await bcrypt.hash(password, 10);
+      // create a new user entry in the database
+      const newUser = await User.create({
+        userName: userName,
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: hash,
+      });
+      res.status(201).json({ result: newUser });
+      console.log(userName, firstName, lastName, email, hash);
     }
   } catch (error) {
-    res.send(400)
-    return
-  }
-}
-
-
-export const getAllQuizzes = async (req, res) => {
-  //const username = req.originalUrl.split('/')[1]
-  try {
-    // const user = await User.findOne({ username: username })
-
-    // if (user == null) {
-    //   res.send(400)
-    // }
-
-    //all the quizzes made by a user
-    //const quizzes = await Quiz.find({ createdBy: user._id })
-    const quizzes = await Quiz.find()
-
-    res.json(quizzes)
-  } catch (error) {
-    console.log(error)
-    res.status(400)
-    return
-  }
-}
-
-export const deleteQuiz = async (req, res) => {
-  const { id: _id } = req.params
-
-  if (!mongoose.Types.ObjectId.isValid(_id)) {
-    return res.status(404).send("No quiz with that id");
-  }
-
-  await Quiz.findByIdAndRemove(_id);
-
-  res.json({ message: "Post deleted successfully" });
-}
-
-export const updateQuiz = async (req, res) => {
-  const { id: _id } = req.params
-  const quiz = req.body
-
-  if (!mongoose.Types.ObjectId.isValid(_id)) {
-    return res.status(404).send("No quiz with that id");
-  }
-
-  const updated = await Quiz.findByIdAndUpdate(_id, { ...quiz, _id },  { new: true })
-  res.json(updated)
-}
-
-
-// questions
-export const getAllQuestions = async (req, res) => {
-  const { quizId } = req.params;
-  try {
-    const quizzes = await Quiz.findById(quizId);
-    res.json({ quizId: quizId, questions: quizzes.questions });
-  }
-  catch (error) {
     console.log(error);
-    res.status(400);
+    res.send(req.body);
+
     return;
   }
 };

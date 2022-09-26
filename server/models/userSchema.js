@@ -1,6 +1,4 @@
 import mongoose from "mongoose";
-import Question from "./questionSchema.js";
-import Quiz from "./quizSchema.js";
 
 const userSchema = mongoose.Schema({
   userName: { type: String, required: true, unique: true },
