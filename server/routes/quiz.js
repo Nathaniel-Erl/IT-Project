@@ -11,18 +11,18 @@ import {
 const router = express.Router()
 
 // fetch all quizzes
-router.get('/quiz', getAllQuizzes)
+router.get('/', getAllQuizzes)
 
 //router.post('/quiz/:id/attempt', markQuiz)
 
 // create quiz
-router.post("/quiz", createQuiz);
+router.post("/", createQuiz);
 
 // delete quiz
-router.delete('/quiz/:id', deleteQuiz)
+router.delete('/:id', deleteQuiz)
 
 // update quiz
-router.patch('/quiz/:id', updateQuiz)
+router.patch('/:id', updateQuiz)
 
 
 export default router
