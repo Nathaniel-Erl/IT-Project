@@ -7,6 +7,9 @@ export const createQuiz = (newQuiz) => API.post('/quiz', newQuiz)
 export const deleteQuiz = (id) => API.delete(`/quiz/${id}`)
 export const updateQuiz = (id, updatedQuiz) => API.patch(`/quiz/${id}`, updatedQuiz);
 
+// question
+export const getAllQuestions = (quizId) => API.get(`/quiz/${quizId}`);
+
 // auth
 export const logIn = (formData) => API.post("/login", formData);
 export const signUp = (formData) => API.post("/signup", formData);

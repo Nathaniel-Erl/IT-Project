@@ -11,7 +11,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/createquestion" exact element={<QuestionType />} />
-        <Route path="/questions" exact element={<Review />} />
+        <Route path="/quiz/:quizId" exact element={<Review />} />
         <Route path="/signup" exact element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/quiz" exact element={<Dashboard />} />

@@ -6,8 +6,9 @@ import ModeIcon from "@mui/icons-material/Mode";
 import { useDispatch } from "react-redux";
 import { deleteQuiz } from "../../../actions/quizzes";
 import { HEX_LENGTH } from "../../../static/constants";
+import { getQuestions } from "../../../actions/questions";
 
-const QuizBlock = ({ images, setOpenQuizForm, quiz, setCurrentQuizId }) => {
+const QuizBlock = ({ setOpenQuizForm, quiz, setCurrentQuizId }) => {
   // limit length of display name and title
 
   const dispatch = useDispatch()
@@ -48,7 +49,7 @@ const QuizBlock = ({ images, setOpenQuizForm, quiz, setCurrentQuizId }) => {
         </Typography>
       </CardContent>
       <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
-        <Button component={Link} to={"/questions"}>
+        <Button component={Link} to={`/quiz/${quiz._id}`} onClick={() => dispatch(getQuestions(quiz._id))}>
           Review Quiz
         </Button>
 

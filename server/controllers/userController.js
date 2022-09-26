@@ -78,18 +78,6 @@ export const markQuiz = async (req, res) => {
   }
 }
 
-export const getQuiz = async (req, res) => {
-  const quizID = req.params['quizID']
-  console.log(quizID)
-  try {
-    const quiz1 = await Quiz.findById(quizID)
-
-    res.send(quiz1)
-  } catch (error) {
-    res.send(400)
-    return
-  }
-}
 
 export const getAllQuizzes = async (req, res) => {
   //const username = req.originalUrl.split('/')[1]
@@ -135,3 +123,18 @@ export const updateQuiz = async (req, res) => {
   const updated = await Quiz.findByIdAndUpdate(_id, { ...quiz, _id },  { new: true })
   res.json(updated)
 }
+
+
+// questions
+export const getAllQuestions = async (req, res) => {
+  const { quizId } = req.params;
+  try {
+    const quizzes = await Quiz.findById(quizId);
+    res.json({ quizId: quizId, questions: quizzes.questions });
+  }
+  catch (error) {
+    console.log(error);
+    res.status(400);
+    return;
+  }
+};
