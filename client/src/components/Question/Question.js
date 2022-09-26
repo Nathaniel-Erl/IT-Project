@@ -16,13 +16,6 @@ import ModeIcon from "@mui/icons-material/Mode";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 const Question = ({ question }) => {
-  function del() {
-    console.log("del");
-    document.getElementById("mainCard").style.display = "block";
-  }
-  function edit() {
-    console.log("edit");
-  }
   return (
     <Card id="mainCard" sx={{ display: "block", margin: 5 }}>
       <CardHeader
@@ -60,13 +53,13 @@ const Question = ({ question }) => {
         disableSpacing
         sx={{ display: "flex", justifyContent: "flex-end" }}
       >
-        <Tooltip title="Edit" placement="top" onClick={edit}>
+        <Tooltip title="Edit" placement="top">
           <IconButton aria-label="add to favorites">
             <ModeIcon />
           </IconButton>
         </Tooltip>
 
-        <Tooltip title="Delete" placement="top" onClick={del}>
+        <Tooltip title="Delete" placement="top">
           <IconButton aria-label="share">
             <DeleteIcon />
           </IconButton>

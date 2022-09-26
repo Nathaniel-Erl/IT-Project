@@ -19,7 +19,7 @@ import {
   HEX_LENGTH,
   MAX_DESCRIPTION_DISPLAY_LENGTH,
   MAX_TITLE_DISPLAY_LENGTH,
-} from "../../static/Constants.js";
+} from "../../static/constants.js";
 import { colours } from "../../static/colorPallete";
 
 const QuizForm = ({ setOpenQuizForm, currentQuizId, setCurrentQuizId }) => {

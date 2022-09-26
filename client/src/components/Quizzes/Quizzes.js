@@ -3,12 +3,11 @@ import React, { useEffect, useState } from 'react'
 import QuizBlock from './QuizBlock/QuizBlock';
 import { useSelector } from "react-redux";
 
-
 const Quizzes = ({ images, setOpenQuizForm, currentQuizId, setCurrentQuizId }) => {
   let quizzes = useSelector((store) => store.quizzes)
   const [isLoading, setLoading] = useState(true);
   const user = JSON.parse(localStorage.getItem("profile"))
-    
+
   useEffect(() => {
      setTimeout(() => {
        setLoading(false);

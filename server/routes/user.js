@@ -1,19 +1,17 @@
 import express from 'express'
 
 import {
-  getQuiz,
   createQuiz,
   markQuiz,
   getAllQuizzes,
   deleteQuiz,
-  updateQuiz
+  updateQuiz,
+  getAllQuestions
 } from '../controllers/userController.js'
 
 const router = express.Router()
 
 router.get('/quiz', getAllQuizzes)
-
-router.get('/quiz/:id', getQuiz)
 
 router.post('/quiz/:id/attempt', markQuiz)
 
@@ -29,4 +27,6 @@ router.get('/settings', (req, res) => {
 
 router.post('/quiz', createQuiz)
 
+// questions
+router.get('/quiz/:quizId', getAllQuestions)
 export default router
