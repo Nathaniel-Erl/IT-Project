@@ -23,12 +23,15 @@ import {
 import { colours } from "../../static/colorPallete";
 
 const QuizForm = ({ setOpenQuizForm, currentQuizId, setCurrentQuizId }) => {
-  const [selectedColour, setSelectedColour] = useState("");
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+  const [selectedColour, setSelectedColour] = useState('')
   const [quizData, setQuizData] = useState({
     subject: "",
     description: "",
     image: "",
+    createdBy: user.result.userName
   });
+  
 
   const dispatch = useDispatch();
   const selectedQuiz = useSelector((store) =>
@@ -101,9 +104,10 @@ const QuizForm = ({ setOpenQuizForm, currentQuizId, setCurrentQuizId }) => {
                 <FileBase
                   type="file"
                   multiple={false}
-                  onDone={({ base64 }) =>
+                  onDone={({ base64 }) => {
+                    setSelectedColour('')
                     setQuizData({ ...quizData, image: base64 })
-                  }
+                  }}
                 />
               </Button>
             </IconButton>

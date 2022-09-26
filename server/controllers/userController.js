@@ -5,7 +5,7 @@ import Quiz from "../models/quizSchema.js";
 import User from "../models/userSchema.js";
 
 export const createQuiz = async (req, res) => {
-  const { subject, description, image } = req.body;
+  const { subject, description, image, createdBy } = req.body
 
   //const username = req.originalUrl.split('/')[1]
   //const user = await User.findOne({ username: username })
@@ -16,7 +16,7 @@ export const createQuiz = async (req, res) => {
     const newQuiz = await Quiz.create({
       subject,
       description,
-      //createdBy: "someone",
+      createdBy: createdBy,
       image,
       questions,
     });

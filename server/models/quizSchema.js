@@ -6,7 +6,7 @@ import Question from './questionSchema.js'
 const quizSchema = mongoose.Schema({
   subject: { type: String, required: true },
   description: { type: String, required: false },
-  createdBy: { type: Schema.Types.ObjectId, ref: 'user', required: false },
+  createdBy: { type: String, required: true },
   image: {type: String, required: false},
   questions: [{ type: Question.schema, required: false }],
 })
