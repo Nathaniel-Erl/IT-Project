@@ -5,6 +5,7 @@ import { login, signup } from "../controllers/userController.js";
 
 const router = express.Router();
 
+/*
 // for testing the authorization of a user
 router.get(
   "/",
@@ -15,10 +16,11 @@ router.get(
     });
   }
 );
+*/
 
-router.post("/", login)
+router.post("/", login);
 
-router.post("/signup", signup)
+router.post("/signup", signup);
 
 router.get("/settings", (req, res) => {
   res.json({ message: "User settings " });
