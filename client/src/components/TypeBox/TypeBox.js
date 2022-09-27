@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 const TypeBox = () => {
   const [openShortAnswer, setOpenShortAnswer] = useState(false);
   const [openMultipleChoice, setOpenMultipleChoice] = useState(false);
+  const quiz = JSON.parse(localStorage.getItem('quiz'))
 
   return (
     <>
@@ -24,7 +25,7 @@ const TypeBox = () => {
             >
               Question Type
             </Typography>
-            <IconButton component={Link} to="/questions">
+            <IconButton component={Link} to={`/quiz/${quiz._id}`}>
               <CloseIcon />
             </IconButton>
           </Box>
