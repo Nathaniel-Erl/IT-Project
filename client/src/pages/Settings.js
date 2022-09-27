@@ -2,11 +2,12 @@ import { Button, Grid } from "@mui/material";
 import { Box } from "@mui/system";
 import React, {useState} from "react";
 import NavBar from "../components/NavBar/NavBar";
-import SignUpForm from "../components/SignUp/SignUpForm";
-import SignOutButton from "../components/Buttons/SignOutButton";
+import SignUpForm from "../components/Settings/SettingsForm.js";
+import SignOutButton from "../components/Buttons/SignOutButton.js";
 import { useDispatch } from "react-redux";
 import { LOGOUT } from "../static/actionType";
 import { useNavigate } from "react-router-dom";
+import { MainContainer } from "../components/Settings/styles";
 
 function Settings() {
   const dispatch = useDispatch()
@@ -29,15 +30,13 @@ function Settings() {
         justifyContent="center"
         alignItems="center"
       >
-        <Grid container display="flex" justifyContent="center"  padding={3}>
-          <Grid item xs={6}>
-            <SignUpForm user={user} title="Settings" button="Save Changes" link="/quiz" />
-          </Grid>
-        </Grid>
+      <MainContainer>
+          <SignUpForm user={user} title="Settings" button="Save Changes" link="/quiz" />
+      </MainContainer>
       </Box>
-      <Button onClick={logout}>
-        <SignOutButton title="Log Out"></SignOutButton>
-      </Button>
+        <Button onClick={logout}>
+          <SignOutButton title="Log Out"></SignOutButton>
+        </Button>
     </>
   );
 }

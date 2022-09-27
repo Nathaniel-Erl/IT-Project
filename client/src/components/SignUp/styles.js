@@ -38,7 +38,7 @@ const MainContainer = styled(Box)(({ theme }) => ({
   height: "100vh",
   display: "flex",
   alignItems: "center",
-  justifyContent: "center",
+  justifyContent: "space-evenly",
   textalign: "center",
   [theme.breakpoints.down("sm")]: {
     display: "grid",
@@ -52,7 +52,7 @@ const MainContainer = styled(Box)(({ theme }) => ({
 
 const LogoText = styled(Box)(({ theme }) => ({
   display: "grid",
-  width: "50vw",
+  width: "500px",
   justifyContent: "center",
   alignItems: "center",
   [theme.breakpoints.down("sm")]: {
