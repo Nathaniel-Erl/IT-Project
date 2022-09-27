@@ -50,7 +50,7 @@ const QuizBlock = ({ setOpenQuizForm, quiz, setCurrentQuizId }) => {
       </CardContent>
       <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
         <Button component={Link} to={`/quiz/${quiz._id}`} onClick={() => dispatch(getQuestions(quiz._id))}>
-          Review Quiz
+          Add Questions
         </Button>
 
         <Box>
