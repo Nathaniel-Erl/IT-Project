@@ -16,7 +16,7 @@ function Settings() {
   const logout = () => {
     dispatch({ type: LOGOUT })
     setUser(null);
-    navigate('/login')
+    navigate('/')
   }
 
   return (

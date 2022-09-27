@@ -19,8 +19,7 @@ export const accessCreateQuestion = (req, res) => {
 }
 
 export const createQuestion = async (req, res) => {
-  const { quizId, question, type, correctAnswer, incorrectAnswer } = req.body
-  
+  const { quizId, question, type, correctAnswer, incorrectAnswer } = req.body  
   try {
     const quiz = await Quiz.findById(quizId)
     const newQuestion = await Question.create({
@@ -39,6 +38,7 @@ export const createQuestion = async (req, res) => {
     res.status(201).json(result);
     
   } catch (error) {
-    res.status(409).json({ message: error.message });
+    console.log(error)
+    res.json({ message: error.message });
   } 
 }

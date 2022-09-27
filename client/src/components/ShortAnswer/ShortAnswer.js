@@ -2,16 +2,18 @@ import { Box, Button, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react'
 import { Form, SABox } from './styles';
 import CloseIcon from "@mui/icons-material/Close";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { createQuestion } from '../../actions/questions';
 
 const ShortAnswer = ({ setOpen }) => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const quizId = useSelector(store => store.questions.quizId)
-    
+    const quiz = JSON.parse(localStorage.getItem("quiz"));
+    const [correctAnswerStr, setCorrectAnswerStr] = useState('')
+   
     const [shortAnswer, setShortAnswer] = useState({
+      quizId: quiz._id,
       question: '',
       type: 'shortAnswer',
       correctAnswer: [],
@@ -20,7 +22,14 @@ const ShortAnswer = ({ setOpen }) => {
     
     const handleSubmit = (e) => {
       e.preventDefault()
-      dispatch(createQuestion(shortAnswer, navigate, quizId))
+      
+      setShortAnswer({
+        ...shortAnswer,
+        correctAnswer: shortAnswer.correctAnswer.push(correctAnswerStr)
+      })
+
+      console.log(shortAnswer);
+      dispatch(createQuestion(shortAnswer, navigate, quiz._id))
     }
 
     return (
@@ -60,8 +69,8 @@ const ShortAnswer = ({ setOpen }) => {
               rows="7"
               variant="outlined"
               autoComplete="off"
-              onChange={(e) =>
-                setShortAnswer({ ...shortAnswer, correctAnswer: [...(shortAnswer.correctAnswer), e.target.value] })
+              onChange={(e) => 
+                setCorrectAnswerStr(e.target.value)
               }
             />
           </Box>

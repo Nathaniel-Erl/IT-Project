@@ -15,7 +15,7 @@ import StarIcon from "@mui/icons-material/Star";
 import ModeIcon from "@mui/icons-material/Mode";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-const Question = ({ question }) => {
+const Question = ({ subject, correctAnswer, incorrectAnswer, question, type, index, total }) => {
   return (
     <Card sx={{ margin: 5 }}>
       <CardHeader
@@ -27,8 +27,8 @@ const Question = ({ question }) => {
             />
           </IconButton>
         }
-        title="Biology"
-        subheader="Question 1 of 12"
+        title={subject}
+        subheader={`Question ${index} of ${total}`}
       />
       <CardContent>
         <Typography variant="h6" fontWeight={100}>
@@ -39,9 +39,11 @@ const Question = ({ question }) => {
           variant="outlined"
           sx={{ padding: 5, border: 1, borderColor: "grey.500", marginTop: 2 }}
         >
-          <Typography variant="body1" fontWeight={100}>
-            The Mitochondria
-          </Typography>
+          {correctAnswer.map(correct =>
+            <Typography variant="body1" fontWeight={100}>
+              {correct}
+            </Typography>
+          )}
         </Paper>
       </CardContent>
       <CardActions
