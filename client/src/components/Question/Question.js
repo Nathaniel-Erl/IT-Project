@@ -35,16 +35,44 @@ const Question = ({ subject, correctAnswer, incorrectAnswer, question, type, ind
           {question}
         </Typography>
 
-        <Paper
-          variant="outlined"
-          sx={{ padding: 5, border: 1, borderColor: "grey.500", marginTop: 2 }}
-        >
-          {correctAnswer.map(correct =>
-            <Typography variant="body1" fontWeight={100}>
-              {correct}
-            </Typography>
-          )}
-        </Paper>
+        {type === "shortAnswer" ? (
+          <Paper
+            variant="outlined"
+            sx={{
+              padding: 5,
+              border: 1,
+              borderColor: "grey.500",
+              marginTop: 2,
+            }}
+          >
+            {correctAnswer.map((correct) => (
+              <Typography variant="body1" fontWeight={100}>
+                {correct}
+              </Typography>
+            ))}
+          </Paper>
+        ) : (
+          <Paper
+            variant="outlined"
+            sx={{
+              padding: 5,
+              border: 1,
+              borderColor: "grey.500",
+              marginTop: 2,
+            }}
+          >
+            {correctAnswer.map((correct, id) => (
+              <Typography color="red" variant="body1" fontWeight={100}>
+                {id + 1}. {correct}
+              </Typography>
+            ))}
+            {incorrectAnswer.map((incorrect, id) => (
+              <Typography variant="body1" fontWeight={100}>
+                {id + correctAnswer.length + 1}. {incorrect}
+              </Typography>
+            ))}
+          </Paper>
+        )}
       </CardContent>
       <CardActions
         disableSpacing
