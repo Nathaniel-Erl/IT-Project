@@ -3,13 +3,10 @@ import React from "react";
 import NavBar from "../components/NavBar/NavBar";
 import Question from "../components/Question/Question";
 import CreateButton from "../components/Buttons/CreateButton";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Review = () => {
-  const { quizId, questions } = useSelector((store) => store.questions);
-
-  const dispatch = useDispatch();
+  const questions = useSelector((store) => store.questions.questions);
 
   return (
     <>
@@ -23,10 +20,7 @@ const Review = () => {
       ) : (
         ""
       )}
-      <CreateButton
-        title="Add Question"
-        link={`/createquestion/${quizId}`}
-      ></CreateButton>
+      <CreateButton title="Add Question"></CreateButton>
     </>
   );
 };

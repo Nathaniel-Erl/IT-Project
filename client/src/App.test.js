@@ -1,8 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import CreateButton from "../CreateButton";
+import App from "./App.js";
 
 it("renders without crashing", () => {
   const div = document.createElement("div");
-  ReactDOM.createRoot(<CreateButton link={"/"} title="hi"></CreateButton>, div);
+  ReactDOM.render(<App />, div);
+  ReactDOM.unmountComponentAtNode(div);
 });

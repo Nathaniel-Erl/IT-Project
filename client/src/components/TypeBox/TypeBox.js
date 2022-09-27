@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { Box, Typography, Button, IconButton } from "@mui/material";
+import React, {useState} from 'react'
+import { Box, Typography, Button, IconButton } from '@mui/material'
 import CloseIcon from "@mui/icons-material/Close";
-import ShortAnswer from "../ShortAnswer/ShortAnswer";
-import MultipleChoice from "../MultipleChoice/MultipleChoice";
-import { Container, StyledBox, StyledModal } from "./styles";
+import ShortAnswer from '../ShortAnswer/ShortAnswer';
+import MultipleChoice from '../MultipleChoice/MultipleChoice';
+import { Container, StyledBox, StyledModal } from './styles';
 import { Link } from "react-router-dom";
 
-const TypeBox = (quizId) => {
+const TypeBox = () => {
   const [openShortAnswer, setOpenShortAnswer] = useState(false);
   const [openMultipleChoice, setOpenMultipleChoice] = useState(false);
 
@@ -76,6 +76,6 @@ const TypeBox = (quizId) => {
       </StyledModal>
     </>
   );
-};
+}
 
-export default TypeBox;
+export default TypeBox
