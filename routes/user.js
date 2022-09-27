@@ -5,18 +5,16 @@ import { login, signup } from "../controllers/userController.js";
 
 const router = express.Router();
 
-/*
 // for testing the authorization of a user
-router.get(
-  "/",
-  passport.authenticate("jwt", { session: false }),
-  (req, res) => {
-    User.find({}, (err, result) => {
-      res.status(200).json({ data: result });
-    });
-  }
-);
-*/
+router.get("/", (req, res) => {
+  res.status(200).json({
+    status: "success",
+    data: {
+      name: "quizy",
+      version: "1.0",
+    },
+  });
+});
 
 router.post("/", login);
 

@@ -1,8 +1,5 @@
 import axios from "axios";
-//const API = axios.create({ baseURL: 'http://localhost:5000' })
-const API = axios.create({
-  baseURL: "https://quizy-it-project.herokuapp.com/",
-});
+const API = axios.create({ baseURL: "http://localhost:5000" });
 
 // quiz
 export const fetchQuizzes = () => API.get("/quiz");
