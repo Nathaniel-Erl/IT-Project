@@ -1,6 +1,6 @@
 import { Alert, Box, Button, Snackbar, TextField } from '@mui/material';
 import React, { useState } from 'react'
-import { Form, SABox } from './styles';
+import { Form, SABox } from '../SignUp/styles.js';
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logIn } from "../../actions/auth";

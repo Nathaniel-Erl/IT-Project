@@ -10,20 +10,20 @@ const Signup = () => {
       <MainContainer>
         <LogoText>
           <Logo
-            src={logo}
-            alt="quizy"
-          />
+              src={logo}
+              alt="quizy"
+              sx={{ width: { xs: "200px", sm: "300px", lg: "400px" } }}
+            />
           <Typography
-            variant="h5"
-            color="#666666"
-            align="center"
-            marginRight="auto"
+              color="#666666"
+              align="center"
+              sx={{ fontSize: { xs: "12px", sm: "15px", lg: "19px" } }}
           >
             Quiz yourself and your friends!
           </Typography>
         </LogoText>
-        <Box flex={4} padding={2}>
-          <SignUpForm title="Sign up" button="Sign Up" link="../login"/>
+        <Box>
+          <SignUpForm title="Sign up" button="Sign Up" link="../"/>
         </Box>
       </MainContainer>
     </>

@@ -8,6 +8,7 @@ const SABox = styled(Box)(({ theme }) => ({
   margin: "0vw",
   overflow: "hidden",
   overflowY: "hidden",
+  
   [theme.breakpoints.down("sm")]: {
     width: "auto",
     borderRadius: "0",
@@ -31,9 +32,11 @@ const Form = styled("form")({
 });
 
 const MainContainer = styled(Box)(({ theme }) => ({
-  height: "89vh",
+  height: "82vh",
+  marginTop: "18px",
   display: "flex",
   alignItems: "center",
+  padding: "0px",
   justifyContent: "center",
   textalign: "center",
   [theme.breakpoints.down("sm")]: {
