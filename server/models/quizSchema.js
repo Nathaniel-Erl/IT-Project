@@ -1,6 +1,4 @@
 import mongoose, { Schema } from 'mongoose'
-// import multipleChoice from './multipleChoiceSchema.js'
-// import shortAnswer from './shortAnswerSchema.js'
 import Question from './questionSchema.js'
 
 const quizSchema = mongoose.Schema({
@@ -8,7 +6,7 @@ const quizSchema = mongoose.Schema({
   description: { type: String, required: false },
   createdBy: { type: String, required: true },
   image: {type: String, required: false},
-  questions: [{ type: Question.schema, required: false }],
+  questions: [Question.schema],
 })
 
 const Quiz = mongoose.model('quiz', quizSchema)

@@ -16,7 +16,7 @@ router.get(
   }
 );
 
-router.post("/login", login)
+router.post("/", login)
 
 router.post("/signup", signup)
 

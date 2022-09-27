@@ -19,9 +19,9 @@ app.use(express.json());
 
 app.use("/quiz", quizRoutes);
 
-app.use("/", userRoutes);
+app.use(userRoutes);
 
-app.use("/", questionRoutes);
+app.use(questionRoutes);
 
 const { port, mongoDBUri } = keys.env;
 const CONNECTION_URL = mongoDBUri;

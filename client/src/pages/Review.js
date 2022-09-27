@@ -6,7 +6,7 @@ import CreateButton from "../components/Buttons/CreateButton";
 import { useSelector } from "react-redux";
 
 const Review = () => {
-  const { quizId, questions } = useSelector((store) => store.questions);
+  const questions = useSelector((store) => store.questions.questions);
 
   return (
     <>

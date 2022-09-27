@@ -9,7 +9,8 @@ export const updateQuiz = (id, updatedQuiz) => API.patch(`/quiz/${id}`, updatedQ
 
 // question
 export const getAllQuestions = (quizId) => API.get(`/quiz/${quizId}`);
+export const createQuestion = (newQuestion) => API.post('/createquestion', newQuestion)
 
 // auth
-export const logIn = (formData) => API.post("/login", formData);
+export const logIn = (formData) => API.post("/", formData);
 export const signUp = (formData) => API.post("/signup", formData);

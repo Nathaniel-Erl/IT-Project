@@ -6,6 +6,7 @@ export const FILTER_QUIZZES = "FILTER_QUIZZES"
 
 // questions
 export const GET_ALL_QUESTIONS = "GET_ALL_QUESTIONS"
+export const CREATE_QUESTION = "CREATE_QUESTION"
 
 // auth
 export const AUTH = "AUTH";
