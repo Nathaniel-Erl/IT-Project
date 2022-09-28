@@ -1,14 +1,14 @@
 import { Box, Paper, styled } from "@mui/material";
 
 const QFBox = styled(Box)(({ theme }) => ({
-  width: "1000px",
-  height: "500px",
+  width: "80vw",
+  height: "85vh",
   borderRadius: "4px",
   backgroundColor: "#FFFFFF",
   padding: "20px",
   margin: "auto",
   overflow: "hidden",
-  overflowY: "scroll",
+  overflowY: "hidden",
   [theme.breakpoints.down("sm")]: {
     width: "100vw",
     height: "98vh",
