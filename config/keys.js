@@ -6,7 +6,7 @@ export const keys = {
     expiresIn: 86400, // 1 day in seconds
   },
   env: {
-    port: process.env.PORT || 8080,
+    port: process.env.PORT || 5000,
     mongoDBUri: process.env.MONGO_URI,
   },
 };
