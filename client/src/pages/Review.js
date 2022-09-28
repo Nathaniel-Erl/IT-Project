@@ -31,7 +31,7 @@ const Review = () => {
       ) : (
         ""
       )}
-      <CreateButton title="Add Question" link={'/createquestion'}></CreateButton>
+      <CreateButton title="Add Question" link={'/api/createquestion'}></CreateButton>
     </>
   );
 };

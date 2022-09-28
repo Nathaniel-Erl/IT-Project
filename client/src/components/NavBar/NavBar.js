@@ -1,6 +1,5 @@
 import React from "react";
 import { StyledAppBar, StyledToolbar, Logo } from "./styles";
-//import { Menu, MenuItem } from "@mui/material";
 import logo from "../../images/logo.svg";
 import { Typography } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -14,7 +13,7 @@ const NavBar = ({ title }) => {
       <StyledToolbar>
         <div style={{ flexGrow: 1, flexBasis: 0 }}>
           <Logo
-            onClick={() => navigate('/quiz')}
+            onClick={() => navigate('/api/quiz')}
             src={logo}
             alt="quizy"
             sx={{ display: { xs: "none", sm: "block" } }}
@@ -29,34 +28,14 @@ const NavBar = ({ title }) => {
           {title}
         </Typography>
         <div style={{ flexGrow: 1, flexBasis: 0, textAlign: "right" }}>
-          <Link to="/settings">
+          <Link to="/api/settings">
               <AccountCircleIcon
                 id="basic-button"
-                //aria-controls={open ? "basic-menu" : undefined}
-                //aria-haspopup="true"
-                //aria-expanded={open ? "true" : undefined}
-                //onClick={handleClick}
-                //component={Link}
-                //to="/settings"
-                //variant="contained"
                 style={{ marginLeft: "auto", color: "black" }}
               ></AccountCircleIcon>
             </Link>
 
-          {/*<Menu
-            id="basic-menu"
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleClose}
-            MenuListProps={{
-              "aria-labelledby": "basic-button",
-            }}
-          >
-            <MenuItem component={Link} to={"/settings"}>
-              Account Settings
-            </MenuItem>
-            <MenuItem>Logout</MenuItem>
-          </Menu> */}
+          
         </div>
       </StyledToolbar>
     </StyledAppBar>

@@ -5,7 +5,7 @@ export const signUp = (formData, navigate) => async (dispatch) => {
     try {
         const { data } = await api.signUp(formData)
         dispatch({ type: AUTH, data })
-        navigate('/quiz')
+        navigate('/api/quiz')
     }
     catch (error) {
         dispatch({ type: ERROR_AUTH, error})
@@ -16,7 +16,7 @@ export const logIn = (formData, navigate) => async (dispatch) => {
   try {
       const { data } = await api.logIn(formData);
       dispatch({ type: AUTH, data });
-      navigate("/quiz");
+      navigate("/api/quiz");
   } catch (error) {
     console.log(error);
   }

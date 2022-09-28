@@ -78,7 +78,7 @@ const LoginForm = () => {
           <hr style={{ marginTop: "30px" }} />
           <Button
             component={Link}
-            to={"/signup"}
+            to={"/api/signup"}
             variant="contained"
             color="success"
             style={{ padding: "0.5rem 5rem" }}

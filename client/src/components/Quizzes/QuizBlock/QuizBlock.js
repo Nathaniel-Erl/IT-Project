@@ -49,7 +49,7 @@ const QuizBlock = ({ setOpenQuizForm, quiz, setCurrentQuizId }) => {
         </Typography>
       </CardContent>
       <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
-        <Button component={Link} to={`/quiz/${quiz._id}`} onClick={() => dispatch(getQuestions(quiz._id))}>
+        <Button component={Link} to={`/api/quiz/${quiz._id}`} onClick={() => dispatch(getQuestions(quiz._id))}>
           Add Questions
         </Button>
 

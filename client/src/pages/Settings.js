@@ -17,7 +17,7 @@ function Settings() {
   const logout = () => {
     dispatch({ type: LOGOUT })
     setUser(null);
-    navigate('/')
+    navigate('/api')
   }
 
   return (
@@ -31,7 +31,7 @@ function Settings() {
         alignItems="center"
       >
       <MainContainer>
-          <SignUpForm user={user} title="Settings" button="Save Changes" link="/quiz" />
+          <SignUpForm user={user} title="Settings" button="Save Changes" link="/api/quiz" />
       </MainContainer>
       </Box>
         <Button onClick={logout}>

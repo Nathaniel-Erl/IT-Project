@@ -1,5 +1,5 @@
 import axios from "axios";
-const url = "https://quizy-it-project.herokuapp.com/";
+const url = "https://quizy-it-project.herokuapp.com/api";
 const local = "http://localhost:5000";
 const API = axios.create({ baseURL: url }); 
 // quiz
