@@ -2,6 +2,7 @@ import { Strategy, ExtractJwt } from "passport-jwt";
 import { keys } from "./keys.js";
 import User from "../models/userSchema.js";
 
+// configure passport middleware for user authentication
 export const passportConfig = (passport) => {
   var opts = {};
   opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
