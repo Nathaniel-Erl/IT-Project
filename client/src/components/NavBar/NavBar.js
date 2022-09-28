@@ -4,26 +4,17 @@ import { StyledAppBar, StyledToolbar, Logo } from "./styles";
 import logo from "../../images/logo.svg";
 import { Typography } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const NavBar = ({ title }) => {
-  /*const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  }; */
+  const navigate = useNavigate()
 
   return (
     <StyledAppBar position="fixed" sx={{ top: 0, bottom: 0 }}>
       <StyledToolbar>
         <div style={{ flexGrow: 1, flexBasis: 0 }}>
           <Logo
-            onClick={(event) => (window.location.href = "/quiz")}
+            onClick={() => navigate('/quiz')}
             src={logo}
             alt="quizy"
             sx={{ display: { xs: "none", sm: "block" } }}
