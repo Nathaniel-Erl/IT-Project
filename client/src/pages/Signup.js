@@ -23,7 +23,7 @@ const Signup = () => {
           </Typography>
         </LogoText>
         <Box>
-          <SignUpForm title="Sign up" button="Sign Up" link="/api"/>
+          <SignUpForm title="Sign up" button="Sign Up" link="/"/>
         </Box>
       </MainContainer>
     </>

@@ -17,7 +17,7 @@ function Settings() {
   const logout = () => {
     dispatch({ type: LOGOUT })
     setUser(null);
-    navigate('/api')
+    navigate('/')
   }
 
   return (

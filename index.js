@@ -22,7 +22,7 @@ app.use(express.json());
 
 app.use("/api/quiz", quizRoutes);
 
-app.use("/api", userRoutes);
+app.use("/", userRoutes);
 
 app.use("/api", questionRoutes);
 
