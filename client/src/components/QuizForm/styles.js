@@ -8,7 +8,7 @@ const QFBox = styled(Box)(({ theme }) => ({
   padding: "20px",
   margin: "auto",
   overflow: "hidden",
-  overflowY: "hidden",
+  overflowY: "scroll",
   [theme.breakpoints.down("sm")]: {
     width: "100vw",
     height: "98vh",
