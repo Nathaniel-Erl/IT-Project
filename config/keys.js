@@ -1,11 +1,12 @@
+import dotenv from "dotenv";
+dotenv.config();
 export const keys = {
   passport: {
-    secretOrKey: "b38H*u779PlhA",
+    secretOrKey: process.env.SECRET_OR_KEY,
     expiresIn: 86400, // 1 day in seconds
   },
   env: {
-    port: 5000,
-    mongoDBUri:
-      "mongodb+srv://BackendBryans:BackendBryans@cluster0.dosyhde.mongodb.net/?retryWrites=true&w=majority",
+    port: process.env.PORT || 8080,
+    mongoDBUri: process.env.MONGO_URI,
   },
 };
