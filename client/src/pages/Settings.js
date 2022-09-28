@@ -31,7 +31,7 @@ function Settings() {
         alignItems="center"
       >
       <MainContainer>
-          <SignUpForm user={user} title="Settings" button="Save Changes" link="/api/quiz" />
+          <SignUpForm user={user} title="Settings" button="Save Changes" link="/quiz" />
       </MainContainer>
       </Box>
         <Button onClick={logout}>

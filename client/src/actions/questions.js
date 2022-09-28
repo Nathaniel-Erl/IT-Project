@@ -14,7 +14,7 @@ export const createQuestion = (newQuestion, navigate, quizId) => async (dispatch
   try {
     const { data } = await api.createQuestion(newQuestion);
     dispatch({ type: CREATE_QUESTION, payload: data });
-    navigate(`/api/quiz/${quizId}`)
+    navigate(`/quiz/${quizId}`)
   }
   catch (error) {
     console.log(error);

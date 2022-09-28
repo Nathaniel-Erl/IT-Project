@@ -7,9 +7,9 @@ const router = express.Router();
 
 router.post("/", login);
 
-router.post("/api/signup", signup);
+router.post("/signup", signup);
 
-router.get("/api/settings", (req, res) => {
+router.get("/settings", (req, res) => {
   res.json({ message: "User settings " });
 });
 

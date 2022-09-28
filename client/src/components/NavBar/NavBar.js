@@ -13,7 +13,7 @@ const NavBar = ({ title }) => {
       <StyledToolbar>
         <div style={{ flexGrow: 1, flexBasis: 0 }}>
           <Logo
-            onClick={() => navigate('/api/quiz')}
+            onClick={() => navigate('/quiz')}
             src={logo}
             alt="quizy"
             sx={{ display: { xs: "none", sm: "block" } }}
@@ -28,7 +28,7 @@ const NavBar = ({ title }) => {
           {title}
         </Typography>
         <div style={{ flexGrow: 1, flexBasis: 0, textAlign: "right" }}>
-          <Link to="/api/settings">
+          <Link to="/settings">
               <AccountCircleIcon
                 id="basic-button"
                 style={{ marginLeft: "auto", color: "black" }}

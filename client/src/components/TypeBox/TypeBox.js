@@ -25,7 +25,7 @@ const TypeBox = () => {
             >
               Question Type
             </Typography>
-            <IconButton component={Link} to={`/api/quiz/${quiz._id}`}>
+            <IconButton component={Link} to={`/quiz/${quiz._id}`}>
               <CloseIcon />
             </IconButton>
           </Box>
