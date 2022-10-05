@@ -14,8 +14,18 @@ import StarBorderIcon from "@mui/icons-material/StarBorder";
 import StarIcon from "@mui/icons-material/Star";
 import ModeIcon from "@mui/icons-material/Mode";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { deleteQuestion } from "../../actions/questions";
 
-const Question = ({ subject, correctAnswer, incorrectAnswer, question, type, index, total }) => {
+const Question = ({
+  subject,
+  correctAnswer,
+  incorrectAnswer,
+  question,
+  type,
+  index,
+  total,
+  quizId,
+}) => {
   return (
     <Card sx={{ margin: 5 }}>
       <CardHeader
@@ -86,7 +96,12 @@ const Question = ({ subject, correctAnswer, incorrectAnswer, question, type, ind
 
         <Tooltip title="Delete" placement="top">
           <IconButton aria-label="share">
-            <DeleteIcon />
+            <DeleteIcon
+              onClick={() => {
+                console.log(`/quiz/${quizId}/${index}`);
+                deleteQuestion(quizId, index);
+              }}
+            />
           </IconButton>
         </Tooltip>
       </CardActions>

@@ -6,9 +6,9 @@ import CreateButton from "../components/Buttons/CreateButton";
 import { useSelector } from "react-redux";
 
 const Review = () => {
-  const quiz = useSelector(store => store.questions)
-  const subject = quiz && quiz.subject
-  const questions = quiz && quiz.questions
+  const quiz = useSelector((store) => store.questions);
+  const subject = quiz && quiz.subject;
+  const questions = quiz && quiz.questions;
 
   return (
     <>
@@ -16,22 +16,28 @@ const Review = () => {
       {questions && questions.length ? (
         <Box flex={4} padding={2}>
           {questions.map((q, index) => {
-            const {correctAnswer, incorrectAnswer, question, type} = q
-            return <Question
-                    index={index + 1} 
-                    total={questions.length} 
-                    subject={subject}
-                    question={question}
-                    type={type}
-                    correctAnswer={correctAnswer}
-                    incorrectAnswer={incorrectAnswer} > 
-                    </Question>;
+            const { correctAnswer, incorrectAnswer, question, type } = q;
+            return (
+              <Question
+                index={index + 1}
+                total={questions.length}
+                subject={subject}
+                question={question}
+                type={type}
+                correctAnswer={correctAnswer}
+                incorrectAnswer={incorrectAnswer}
+                quizId={q._id}
+              ></Question>
+            );
           })}
         </Box>
       ) : (
         ""
       )}
-      <CreateButton title="Add Question" link={'/createquestion'}></CreateButton>
+      <CreateButton
+        title="Add Question"
+        link={"/createquestion"}
+      ></CreateButton>
     </>
   );
 };
