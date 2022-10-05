@@ -78,16 +78,7 @@ export const markQuiz = async (req, res) => {
 
 
 export const getAllQuizzes = async (req, res) => {
-  //const username = req.originalUrl.split('/')[1]
   try {
-    // const user = await User.findOne({ username: username })
-
-    // if (user == null) {
-    //   res.send(400)
-    // }
-
-    //all the quizzes made by a user
-    //const quizzes = await Quiz.find({ createdBy: user._id })
     const quizzes = await Quiz.find()
 
     res.json(quizzes)
