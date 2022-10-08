@@ -24,6 +24,7 @@ const Question = ({
   type,
   index,
   total,
+  questionId,
   quizId,
 }) => {
   return (
@@ -98,8 +99,9 @@ const Question = ({
           <IconButton aria-label="share">
             <DeleteIcon
               onClick={() => {
-                console.log(`/quiz/${quizId}/${index}`);
-                deleteQuestion(quizId, index);
+                console.log(`/quiz/${quizId}/${questionId}`);
+                console.log(quizId);
+                deleteQuestion(quizId, questionId);
               }}
             />
           </IconButton>

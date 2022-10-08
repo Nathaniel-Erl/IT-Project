@@ -26,7 +26,8 @@ const Review = () => {
                 type={type}
                 correctAnswer={correctAnswer}
                 incorrectAnswer={incorrectAnswer}
-                quizId={q._id}
+                questionId={q._id}
+                quizId={quiz._id}
               ></Question>
             );
           })}
