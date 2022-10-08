@@ -9,7 +9,7 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import StarIcon from "@mui/icons-material/Star";
 import ModeIcon from "@mui/icons-material/Mode";
@@ -27,6 +27,11 @@ const Question = ({
   questionId,
   quizId,
 }) => {
+  const [toDisplay, setToDisplay] = useState([true]);
+
+  function refreshToDisplay() {
+    setToDisplay([...toDisplay]);
+  }
   return (
     <Card sx={{ margin: 5 }}>
       <CardHeader
@@ -102,6 +107,7 @@ const Question = ({
                 console.log(`/quiz/${quizId}/${questionId}`);
                 console.log(quizId);
                 deleteQuestion(quizId, questionId);
+                setToDisplay(false);
               }}
             />
           </IconButton>
