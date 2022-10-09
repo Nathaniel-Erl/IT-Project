@@ -18,9 +18,15 @@ const LoginForm = () => {
     const handleSubmit = (e) => {
       e.preventDefault()
       dispatch(logIn(loginData, navigate))
+
+      setTimeout(() => {
+        setOpen(true)
+      }, 1000);
+
+      setOpen(false)
       
       // wrong credentials
-      if (auth.authData === null) {
+      if ("error" in auth.authData) {
         setOpen(true)
       } 
       else {
@@ -30,11 +36,11 @@ const LoginForm = () => {
 
     return (
       <SABox>
-        <Form onSubmit={handleSubmit} >
+        <Form onSubmit={handleSubmit}>
           <Snackbar
             anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
             open={open}
-            sx={{position:'relative', top: '0', left:'0'}}
+            sx={{ position: "relative", top: "0", left: "0" }}
           >
             <Alert variant="filled" severity="error">
               Please re-enter your credentials

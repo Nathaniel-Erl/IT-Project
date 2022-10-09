@@ -17,7 +17,8 @@ export const logIn = (formData, navigate) => async (dispatch) => {
       const { data } = await api.logIn(formData);
       dispatch({ type: AUTH, data });
       navigate("/quiz");
-  } catch (error) {
-    console.log(error);
+  }
+  catch (error) {
+     dispatch({ type: ERROR_AUTH, error });
   }
 };

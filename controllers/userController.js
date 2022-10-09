@@ -10,7 +10,7 @@ export const login = async (req, res) => {
   const user = await User.findOne({ email });
   // Check if user exists
   if (!user) {
-    return res.status(404).json({ emailnotfound: "Email not found" });
+    return res.status(404).json({ error: "Email not found" });
   }
   // Check password
   await bcrypt.compare(password, user.password).then((isPasswordMatched) => {
@@ -27,7 +27,7 @@ export const login = async (req, res) => {
       return res.status(200).json({ result: user, token });
     } else {
       // passwords do not match
-      return res.status(400).json({ passwordincorrect: "Incorrect password" });
+      return res.status(400).json({ error: "Incorrect password" });
     }
   });
 };
