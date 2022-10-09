@@ -18,12 +18,6 @@ const LoginForm = () => {
     const handleSubmit = (e) => {
       e.preventDefault()
       dispatch(logIn(loginData, navigate))
-
-      setTimeout(() => {
-        setOpen(true)
-      }, 1000);
-
-      setOpen(false)
       
       // wrong credentials
       if ("error" in auth.authData) {
