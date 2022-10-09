@@ -1,24 +1,36 @@
-import React, { useState, useEffect } from 'react'
-import { Form, Item, QFBox } from './styles';
+import React, { useState, useEffect } from "react";
+import { Form, Item, QFBox } from "./styles";
 import CloseIcon from "@mui/icons-material/Close";
-import { Box, Button, Grid, IconButton, Paper, TextField, Tooltip, Typography } from '@mui/material';
+import {
+  Box,
+  Button,
+  Grid,
+  IconButton,
+  Paper,
+  TextField,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 import FileBase from "react-file-base64";
 import AddIcon from "@mui/icons-material/Add";
-import { useDispatch, useSelector } from 'react-redux';
-import { createQuiz, updatedQuiz } from '../../actions/quizzes';
-import { HEX_LENGTH, MAX_DESCRIPTION_DISPLAY_LENGTH, MAX_TITLE_DISPLAY_LENGTH } from '../../static/constants';
-import { colours } from '../../static/colorPallete'
+import { useDispatch, useSelector } from "react-redux";
+import { createQuiz, updatedQuiz } from "../../actions/quizzes";
+import {
+  HEX_LENGTH,
+  MAX_DESCRIPTION_DISPLAY_LENGTH,
+  MAX_TITLE_DISPLAY_LENGTH,
+} from "../../static/constants";
+import { colours } from "../../static/colorPallete";
 
 const QuizForm = ({ setOpenQuizForm, currentQuizId, setCurrentQuizId }) => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
-  const [selectedColour, setSelectedColour] = useState('')
+  const [selectedColour, setSelectedColour] = useState("");
   const [quizData, setQuizData] = useState({
     subject: "",
     description: "",
     image: "",
-    createdBy: user.result.userName
+    createdBy: user.result.userName,
   });
-  
 
   const dispatch = useDispatch();
   const selectedQuiz = useSelector((store) =>
@@ -77,7 +89,7 @@ const QuizForm = ({ setOpenQuizForm, currentQuizId, setCurrentQuizId }) => {
             }}
           >
             <Typography fontWeight={200} marginBottom={2}>
-              Upload an image or Choose background colour below 
+              Upload an image or Choose background colour below
             </Typography>
 
             <IconButton size="large" sx={{ position: "relative" }}>
@@ -92,8 +104,8 @@ const QuizForm = ({ setOpenQuizForm, currentQuizId, setCurrentQuizId }) => {
                   type="file"
                   multiple={false}
                   onDone={({ base64 }) => {
-                    setSelectedColour('')
-                    setQuizData({ ...quizData, image: base64 })
+                    setSelectedColour("");
+                    setQuizData({ ...quizData, image: base64 });
                   }}
                 />
               </Button>
@@ -128,13 +140,16 @@ const QuizForm = ({ setOpenQuizForm, currentQuizId, setCurrentQuizId }) => {
                       <Item
                         sx={{
                           backgroundColor: colour.hex,
-                          border: colour.hex === selectedColour ? 'solid 1px' : 'none'
+                          border:
+                            colour.hex === selectedColour
+                              ? "solid 1px"
+                              : "none",
                         }}
                         onClick={() => {
-                          setSelectedColour(colour.hex)
-                          setQuizData({ ...quizData, image: colour.hex })
-                      }}>
-                      </Item>
+                          setSelectedColour(colour.hex);
+                          setQuizData({ ...quizData, image: colour.hex });
+                        }}
+                      ></Item>
                     </Tooltip>
                   </Grid>
                 );
@@ -177,6 +192,6 @@ const QuizForm = ({ setOpenQuizForm, currentQuizId, setCurrentQuizId }) => {
       </Form>
     </QFBox>
   );
-}
+};
 
-export default QuizForm
+export default QuizForm;
