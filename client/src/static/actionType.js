@@ -8,6 +8,7 @@ export const FILTER_QUIZZES = "FILTER_QUIZZES";
 export const GET_ALL_QUESTIONS = "GET_ALL_QUESTIONS";
 export const CREATE_QUESTION = "CREATE_QUESTION";
 export const DELETE_QUESTION = "DELETE_QUESTION";
+export const REST_QUESTIONS = "RESET_QUESTION"
 
 // auth
 export const AUTH = "AUTH";

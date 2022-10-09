@@ -19,6 +19,7 @@ const Review = () => {
             const { correctAnswer, incorrectAnswer, question, type } = q;
             return (
               <Question
+                key={index}
                 index={index + 1}
                 total={questions.length}
                 subject={subject}

@@ -18,8 +18,8 @@ const MultipleChoice = ({ setOpen }) => {
     quizId: quiz._id,
     question: "",
     type: "multipleChoice",
-    correctAnswer: [],
-    incorrectAnswer: [],
+    correctAnswer: new Array(0),
+    incorrectAnswer: new Array(0),
   });
  
   var data = [];
@@ -51,7 +51,6 @@ const MultipleChoice = ({ setOpen }) => {
     } else if (data && checked === false) {
       data[id] = { ...data[id], correct: false };
     }
-    console.log(data);
   }
 
   const handleSubmit = (e) => {
@@ -72,7 +71,6 @@ const MultipleChoice = ({ setOpen }) => {
       incorrectAnswer: multipleChoiceAnswer.incorrectAnswer.push(incorrectObj[i].answer),
     });
     }
-    console.log(multipleChoiceAnswer)
     dispatch(createQuestion(multipleChoiceAnswer, navigate, quiz._id));
   };
 

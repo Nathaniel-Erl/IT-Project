@@ -20,11 +20,13 @@ const LoginForm = () => {
       dispatch(logIn(loginData, navigate))
       
       // wrong credentials
-      if ("error" in auth.authData) {
-        setOpen(true)
-      } 
-      else {
-        setOpen(false);
+      if (auth && auth.authData) {
+        if ("error" in auth.authData) {
+          setOpen(true)
+        }
+        else {
+          setOpen(false);
+        }
       }
     }
 

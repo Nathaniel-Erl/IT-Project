@@ -16,7 +16,7 @@ const ShortAnswer = ({ setOpen }) => {
       quizId: quiz._id,
       question: '',
       type: 'shortAnswer',
-      correctAnswer: [],
+      correctAnswer: new Array(0),
       incorrectAnswer: []
     })
     
@@ -27,8 +27,7 @@ const ShortAnswer = ({ setOpen }) => {
         ...shortAnswer,
         correctAnswer: shortAnswer.correctAnswer.push(correctAnswerStr)
       })
-
-      console.log(shortAnswer);
+      
       dispatch(createQuestion(shortAnswer, navigate, quiz._id))
     }
 
