@@ -14,10 +14,10 @@ const Sidebar = () => {
   return (
     <Box
       flex={1}
-      p={2}
-      sx={{ display: { xs: "none", sm: "none", md:"block" } }}
-      height="100vh"
+      p={4}
+      sx={{ display: { xs: "none", sm: "none", md: "block" } }}
       borderRight={1}
+      height="100vh"
       borderColor="grey.500"
     >
         <Box position="fixed">

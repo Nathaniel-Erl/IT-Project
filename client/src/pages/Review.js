@@ -1,5 +1,5 @@
 import { Box, Stack } from "@mui/material";
-import React, { useState } from "react";
+import React from "react";
 import NavBar from "../components/NavBar/NavBar";
 import Question from "../components/Question/Question";
 import CreateButton from "../components/Buttons/CreateButton";
@@ -14,7 +14,7 @@ const Review = () => {
   return (
     <>
       <NavBar title="Review" />
-      <Stack direction="row" spacing={2} justifyContent="space-between">
+      <Stack direction="row" spacing={1} justifyContent="space-between">
         <Sidebar/>
         <Box flex={6} padding={2}>
           {questions && questions.length ?

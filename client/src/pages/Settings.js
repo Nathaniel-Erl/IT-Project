@@ -8,7 +8,6 @@ import { useDispatch } from "react-redux";
 import { LOGOUT } from "../static/actionType";
 import { useNavigate } from "react-router-dom";
 import { MainContainer } from "../components/Settings/styles";
-import Sidebar from "../components/Sidebar/Sidebar";
 
 function Settings() {
   const dispatch = useDispatch()

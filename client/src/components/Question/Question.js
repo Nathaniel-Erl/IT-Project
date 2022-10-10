@@ -35,7 +35,7 @@ const Question = ({
   };
 
   return (
-    <Card sx={{ margin: 5 }}>
+    <Card sx={{ margin: 4 }}>
       <CardHeader
         action={
           <IconButton aria-label="add to favorites">
