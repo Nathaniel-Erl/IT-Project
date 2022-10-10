@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { deleteQuiz } from "../../../actions/quizzes";
 import { HEX_LENGTH } from "../../../static/constants";
 import { getQuestions } from "../../../actions/questions";
-import { REST_QUESTIONS } from "../../../static/actionType";
+import { RESET_QUESTIONS } from "../../../static/actionType";
 
 const QuizBlock = ({ setOpenQuizForm, quiz, setCurrentQuizId }) => {
   // limit length of display name and title
@@ -51,10 +51,10 @@ const QuizBlock = ({ setOpenQuizForm, quiz, setCurrentQuizId }) => {
       </CardContent>
       <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
         <Button component={Link} to={`/quiz/${quiz._id}`} onClick={() => {
-          dispatch({type: REST_QUESTIONS})
+          dispatch({type: RESET_QUESTIONS})
           dispatch(getQuestions(quiz._id))
         }}>
-          Add Questions
+          Review Questions
         </Button>
 
         <Box>
