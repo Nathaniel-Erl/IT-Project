@@ -35,7 +35,6 @@ const NavBar = ({ title }) => {
               ></AccountCircleIcon>
             </Link>
 
-          
         </div>
       </StyledToolbar>
     </StyledAppBar>
