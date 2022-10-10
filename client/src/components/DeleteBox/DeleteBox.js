@@ -10,13 +10,13 @@ const DeleteBox = ({ handleDelete, setOpenDelete }) => {
       bgcolor={"background.default"}
       color={"text.primary"}
       p={3}
-      borderRadius={5}
+      borderRadius="4px"
       gap={4}
       display="flex"
       flexDirection="column"
       justifyContent="center"
     >
-      <Typography variant="h6" color="gray" textAlign="center" fontWeight={300}>
+      <Typography variant="h6" color="black" textAlign="center" fontWeight={300}>
         Are you sure you want to delete?<br></br>There is no undo.
       </Typography>
       
