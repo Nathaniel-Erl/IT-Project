@@ -17,7 +17,7 @@ const Sidebar = () => {
       p={4}
       sx={{ display: { xs: "none", sm: "none", md: "block" } }}
       borderRight={1}
-      height="100vh"
+      minHeight="100vh"
       borderColor="grey.500"
     >
       <Box position="fixed">

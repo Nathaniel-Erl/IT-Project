@@ -1,4 +1,4 @@
-import { Box, Button, TextField, Typography } from '@mui/material';
+import { Box, Button, IconButton, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react'
 import { Form, SABox } from './styles';
 import CloseIcon from "@mui/icons-material/Close";
@@ -44,7 +44,9 @@ const ShortAnswer = ({ setOpen }) => {
               Write Question
             </Typography>
 
-            <CloseIcon onClick={() => setOpen(false)} />
+            <IconButton>
+              <CloseIcon onClick={() => setOpen(false)} />
+            </IconButton>
           </Box>
 
           <hr style={{ marginTop: "-3rem" }} />

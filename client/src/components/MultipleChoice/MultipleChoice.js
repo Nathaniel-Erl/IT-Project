@@ -87,7 +87,10 @@ const MultipleChoice = ({ setOpen }) => {
           >
             Write Question
           </Typography>
-          <CloseIcon onClick={() => setOpen(false)} />
+
+          <IconButton>
+            <CloseIcon onClick={() => setOpen(false)} />
+          </IconButton>
         </Box>
 
         <hr style={{ marginTop: "-3rem" }} />
