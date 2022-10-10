@@ -28,8 +28,11 @@ export const createQuestion =
 export const deleteQuestion = (quizId, questionId) => async (dispatch) => {
   console.log("del starting");
   try {
-    await api.deleteQuiz(quizId, questionId);
-    dispatch({ type: DELETE_QUESTION, payload: (quizId, questionId) });
+    await api.deleteQuestion(quizId, questionId);
+    dispatch({
+      type: DELETE_QUESTION,
+      payload: { quizId, questionId },
+    });
     console.log("del success");
   } catch (error) {
     console.log(error);

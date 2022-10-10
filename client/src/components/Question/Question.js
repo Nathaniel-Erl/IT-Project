@@ -15,6 +15,7 @@ import StarIcon from "@mui/icons-material/Star";
 import ModeIcon from "@mui/icons-material/Mode";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { deleteQuestion } from "../../actions/questions";
+import { useDispatch } from "react-redux";
 
 const Question = ({
   subject,
@@ -27,11 +28,12 @@ const Question = ({
   questionId,
   quizId,
 }) => {
-  const [toDisplay, setToDisplay] = useState([true]);
+  const dispatch = useDispatch();
 
-  function refreshToDisplay() {
-    setToDisplay([...toDisplay]);
-  }
+  const handleDelete = () => {
+    dispatch(deleteQuestion(quizId, questionId));
+  };
+
   return (
     <Card sx={{ margin: 5 }}>
       <CardHeader
@@ -102,14 +104,7 @@ const Question = ({
 
         <Tooltip title="Delete" placement="top">
           <IconButton aria-label="share">
-            <DeleteIcon
-              onClick={() => {
-                console.log(`/quiz/${quizId}/${questionId}`);
-                console.log(quizId);
-                deleteQuestion(quizId, questionId);
-                setToDisplay(false);
-              }}
-            />
+            <DeleteIcon onClick={handleDelete} />
           </IconButton>
         </Tooltip>
       </CardActions>
