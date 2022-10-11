@@ -13,10 +13,10 @@ const NavBar = ({ title }) => {
       <StyledToolbar>
         <div style={{ flexGrow: 1, flexBasis: 0 }}>
           <Logo
-            onClick={() => navigate('/quiz')}
+            onClick={() => navigate("/quiz")}
             src={logo}
             alt="quizy"
-            sx={{ display: { xs: "none", sm: "block" } }}
+            sx={{ display: { xs: "none", sm: "block" }, cursor: "pointer" }}
           />
         </div>
         <Typography
@@ -29,12 +29,11 @@ const NavBar = ({ title }) => {
         </Typography>
         <div style={{ flexGrow: 1, flexBasis: 0, textAlign: "right" }}>
           <Link to="/settings">
-              <AccountCircleIcon
-                id="basic-button"
-                style={{ marginLeft: "auto", color: "black" }}
-              ></AccountCircleIcon>
-            </Link>
-
+            <AccountCircleIcon
+              id="basic-button"
+              style={{ marginLeft: "auto", color: "black" }}
+            ></AccountCircleIcon>
+          </Link>
         </div>
       </StyledToolbar>
     </StyledAppBar>
