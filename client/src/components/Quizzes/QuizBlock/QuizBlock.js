@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Box, Button, Card, CardActions, CardContent, CardMedia, IconButton, Tooltip, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Box, Card, CardActions, CardContent, CardMedia, IconButton, Tooltip, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ModeIcon from "@mui/icons-material/Mode";
 import { useDispatch } from "react-redux";
@@ -14,6 +14,7 @@ import DeleteBox from "../../DeleteBox/DeleteBox";
 const QuizBlock = ({ setOpenQuizForm, quiz, setCurrentQuizId }) => {
   const [openDelete, setOpenDelete] = useState(false)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const handleDelete = () => {
     dispatch(deleteQuiz(quiz._id))
@@ -26,7 +27,14 @@ const QuizBlock = ({ setOpenQuizForm, quiz, setCurrentQuizId }) => {
 
   return (
     <>
-      <Card>
+      <Card
+        sx={{ cursor: "pointer" }}
+        onClick={() => {
+          dispatch({ type: RESET_QUESTIONS });
+          dispatch(getQuestions(quiz._id));
+          navigate(`/quiz/${quiz._id}`)
+        }}
+      >
         {quiz.image.length > HEX_LENGTH ? (
           <CardMedia
             sx={{ objectFit: "cover" }}
@@ -51,27 +59,25 @@ const QuizBlock = ({ setOpenQuizForm, quiz, setCurrentQuizId }) => {
             {quiz.description}
           </Typography>
         </CardContent>
-        <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Button
-            component={Link}
-            to={`/quiz/${quiz._id}`}
-            onClick={() => {
-              dispatch({ type: RESET_QUESTIONS });
-              dispatch(getQuestions(quiz._id));
-            }}
-          >
-            Review Questions
-          </Button>
-
+        <CardActions sx={{ display: "flex", justifyContent: "flex-end" }}>
           <Box>
             <Tooltip title="Edit" placement="top">
-              <IconButton aria-label="add to favorites" onClick={handleUpdate}>
+              <IconButton aria-label="add to favorites" onClick={(e) => {
+                e.stopPropagation();  
+                handleUpdate()
+              }}>
                 <ModeIcon />
               </IconButton>
             </Tooltip>
 
             <Tooltip title="Delete" placement="top">
-              <IconButton aria-label="share" onClick={() => setOpenDelete(true)}>
+              <IconButton
+                aria-label="share"
+                onClick={(e) => {
+                  e.stopPropagation();  
+                  setOpenDelete(true)
+                }}
+              >
                 <DeleteIcon />
               </IconButton>
             </Tooltip>
