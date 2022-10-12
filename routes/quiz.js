@@ -1,4 +1,5 @@
-import express from 'express'
+import express from "express";
+import passport from "passport";
 
 import {
   createQuiz,
@@ -6,23 +7,34 @@ import {
   getAllQuizzes,
   deleteQuiz,
   updateQuiz,
-} from '../controllers/quizController.js'
+} from "../controllers/quizController.js";
 
-const router = express.Router()
+const router = express.Router();
 
 // fetch all quizzes
-router.get('/', getAllQuizzes)
+router.get(
+  "/",
+  passport.authenticate("jwt", { session: false }),
+  getAllQuizzes
+);
 
 //router.post('/quiz/:id/attempt', markQuiz)
 
 // create quiz
-router.post("/", createQuiz);
+router.post("/", passport.authenticate("jwt", { session: false }), createQuiz);
 
 // delete quiz
-router.delete('/:id', deleteQuiz)
+router.delete(
+  "/:id",
+  passport.authenticate("jwt", { session: false }),
+  deleteQuiz
+);
 
 // update quiz
-router.patch('/:id', updateQuiz)
+router.patch(
+  "/:id",
+  passport.authenticate("jwt", { session: false }),
+  updateQuiz
+);
 
-
-export default router
+export default router;

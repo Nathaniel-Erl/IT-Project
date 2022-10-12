@@ -1,11 +1,33 @@
 import express from "express";
-import { accessCreateQuestion, createQuestion, deleteQuestion, getAllQuestions } from "../controllers/questionController.js";
+import passport from "passport";
+import {
+  accessCreateQuestion,
+  createQuestion,
+  deleteQuestion,
+  getAllQuestions,
+} from "../controllers/questionController.js";
 
 const router = express.Router();
 
-router.get("/quiz/:quizId", getAllQuestions);
-router.get("/createquestion", accessCreateQuestion)
-router.post("/createquestion", createQuestion)
-router.delete("/quiz/:quizId/:questionId", deleteQuestion)
+router.get(
+  "/quiz/:quizId",
+  passport.authenticate("jwt", { session: false }),
+  getAllQuestions
+);
+router.get(
+  "/createquestion",
+  passport.authenticate("jwt", { session: false }),
+  accessCreateQuestion
+);
+router.post(
+  "/createquestion",
+  passport.authenticate("jwt", { session: false }),
+  createQuestion
+);
+router.delete(
+  "/quiz/:quizId/:questionId",
+  passport.authenticate("jwt", { session: false }),
+  deleteQuestion
+);
 
 export default router;

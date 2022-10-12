@@ -6,6 +6,7 @@ import User from "../models/userSchema.js";
 export const login = async (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
+
   // Find user in database
   const user = await User.findOne({ email });
   // Check if user exists
@@ -24,7 +25,11 @@ export const login = async (req, res) => {
       const token = jwt.sign(payload, keys.passport.secretOrKey, {
         expiresIn: keys.passport.expiresIn,
       });
-      return res.status(200).json({ result: user, token });
+      const bearer = "Bearer " + token;
+      return res.status(200).json({
+        result: user,
+        token: bearer,
+      });
     } else {
       // passwords do not match
       return res.status(400).json({ passwordincorrect: "Incorrect password" });
@@ -34,11 +39,13 @@ export const login = async (req, res) => {
 
 export const signup = async (req, res) => {
   const { userName, firstName, lastName, email, password } = req.body;
+  const lowerEmail = email.toLowerCase();
+  console.log(lowerEmail);
   try {
     // check that email and username are unique
     const usernameExists = await User.findOne({ userName });
-    const emailExists = await User.findOne({ email });
-
+    const emailExists = await User.findOne({ lowerEmail });
+    console.log();
     if (usernameExists) {
       res.status(400).json({ userNameError: "Username already exists" });
     } else if (emailExists) {
@@ -52,11 +59,11 @@ export const signup = async (req, res) => {
         userName: userName,
         firstName: firstName,
         lastName: lastName,
-        email: email,
+        email: lowerEmail,
         password: hash,
       });
       res.status(201).json({ result: newUser });
-      console.log(userName, firstName, lastName, email, hash);
+      console.log(userName, firstName, lastName, lowerEmail, hash);
     }
   } catch (error) {
     console.log(error);
