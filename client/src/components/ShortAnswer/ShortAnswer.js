@@ -1,16 +1,17 @@
 import { Box, Button, IconButton, TextField, Typography } from '@mui/material';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Form, SABox } from './styles';
 import CloseIcon from "@mui/icons-material/Close";
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { createQuestion } from '../../actions/questions';
+import { createQuestion, updateQuestion } from '../../actions/questions';
 
-const ShortAnswer = ({ setOpen }) => {
+const ShortAnswer = ({ setOpen, update=false, quizId, questionId }) => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const quiz = JSON.parse(localStorage.getItem("quiz"));
     const [correctAnswerStr, setCorrectAnswerStr] = useState('')
+    const selectedQuestion = questionId ? quiz.questions.find(q => q._id === questionId) : null
    
     const [shortAnswer, setShortAnswer] = useState({
       quizId: quiz._id,
@@ -28,8 +29,22 @@ const ShortAnswer = ({ setOpen }) => {
         correctAnswer: shortAnswer.correctAnswer.push(correctAnswerStr)
       })
       
-      dispatch(createQuestion(shortAnswer, navigate, quiz._id))
+      if (!update) {
+        dispatch(createQuestion(shortAnswer, navigate, quiz._id));
+      }
+      else {
+        setOpen(false)
+        dispatch(updateQuestion(quizId, questionId, shortAnswer));
+      }
     }
+  
+  useEffect(() => {
+    if (selectedQuestion) {
+      const { question, correctAnswer } = selectedQuestion
+      setCorrectAnswerStr(correctAnswer[0])
+      setShortAnswer({ ...shortAnswer, question })
+    }
+  }, [update])
 
     return (
       <SABox>
@@ -45,7 +60,9 @@ const ShortAnswer = ({ setOpen }) => {
             </Typography>
 
             <IconButton>
-              <CloseIcon onClick={() => setOpen(false)} />
+              <CloseIcon onClick={() => {
+                setOpen(false);
+              }} />
             </IconButton>
           </Box>
 
@@ -53,6 +70,7 @@ const ShortAnswer = ({ setOpen }) => {
 
           <Box display="flex" flexDirection="column" gap="2rem">
             <TextField
+              value={shortAnswer.question && shortAnswer.question}
               required
               id="outlined-basic"
               label="Question"
@@ -63,6 +81,7 @@ const ShortAnswer = ({ setOpen }) => {
               }
             />
             <TextField
+              value={correctAnswerStr}
               required
               id="outlined-multiline-static"
               label="Answer"
@@ -70,9 +89,7 @@ const ShortAnswer = ({ setOpen }) => {
               rows="7"
               variant="outlined"
               autoComplete="off"
-              onChange={(e) => 
-                setCorrectAnswerStr(e.target.value)
-              }
+              onChange={(e) => setCorrectAnswerStr(e.target.value)}
             />
           </Box>
           <Button

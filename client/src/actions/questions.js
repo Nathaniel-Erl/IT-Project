@@ -3,6 +3,7 @@ import {
   CREATE_QUESTION,
   GET_ALL_QUESTIONS,
   DELETE_QUESTION,
+  UPDATE_QUESTIONS,
 } from "../static/actionType";
 
 export const getQuestions = (quizId) => async (dispatch) => {
@@ -37,3 +38,13 @@ export const deleteQuestion = (quizId, questionId) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const updateQuestion = (quizId, questionId, updatedQuestion) => async (dispatch) => {
+  try {
+    const { data } = await api.updateQuestion(quizId, questionId, updatedQuestion)
+    dispatch({ type: UPDATE_QUESTIONS, payload: data })
+  }
+  catch (error) {
+    console.log(error)
+  }
+}

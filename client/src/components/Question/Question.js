@@ -18,6 +18,8 @@ import { deleteQuestion } from "../../actions/questions";
 import { useDispatch } from "react-redux";
 import { StyledModal } from "../TypeBox/styles"
 import DeleteBox from "../DeleteBox/DeleteBox";
+import ShortAnswer from '../ShortAnswer/ShortAnswer'
+import MultipleChoice from "../MultipleChoice/MultipleChoice";
 
 
 const Question = ({
@@ -32,11 +34,13 @@ const Question = ({
   quizId,
 }) => {
   const [openDelete, setOpenDelete] = useState(false);
+  const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
 
   const handleDelete = () => {
     dispatch(deleteQuestion(quizId, questionId));
   };
+
 
   return (
     <>
@@ -102,8 +106,8 @@ const Question = ({
           sx={{ display: "flex", justifyContent: "flex-end" }}
         >
           <Tooltip title="Edit" placement="top">
-            <IconButton aria-label="add to favorites">
-              <ModeIcon />
+            <IconButton aria-label="Edit">
+              <ModeIcon onClick={() => setOpen(true)} />
             </IconButton>
           </Tooltip>
 
@@ -124,6 +128,31 @@ const Question = ({
         aria-describedby="modal-modal-description"
       >
         <DeleteBox handleDelete={handleDelete} setOpenDelete={setOpenDelete} />
+      </StyledModal>
+
+      <StyledModal
+        open={open}
+        onClose={() => {
+          setOpen(false);
+        }}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        {type === "shortAnswer" ? (
+          <ShortAnswer
+            setOpen={setOpen}
+            update={true}
+            quizId={quizId}
+            questionId={questionId}
+          />
+        ) : (
+          <MultipleChoice
+            setOpen={setOpen}
+            update={true}
+            quizId={quizId}
+            questionId={questionId}
+          />
+        )}
       </StyledModal>
     </>
   );

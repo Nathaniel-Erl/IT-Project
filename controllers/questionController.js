@@ -63,3 +63,30 @@ export const deleteQuestion = async (req, res) => {
   
   return res.json({ message: "Question deleted successfully" })
 }
+
+export const updateQuestions = async (req, res) => {
+  const { quizId, questionId } = req.params;
+  const question = req.body;
+
+  if (!mongoose.Types.ObjectId.isValid(quizId)) {
+    return res.status(404).send("No quiz with that id");
+  }
+
+  if (!mongoose.Types.ObjectId.isValid(questionId)) {
+    return res.status(404).send("No question with that id");
+  }
+
+  await Quiz.updateOne(
+    { '_id': quizId, "questions._id": questionId },
+    { $set: { "questions.$": question } }
+  );
+
+  await Question.findByIdAndUpdate(
+    questionId,
+    { ...question, questionId },
+    { new: true }
+  );
+
+  const result = await Quiz.findById(quizId);
+  res.json(result);
+};

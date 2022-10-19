@@ -13,4 +13,6 @@ router.get("/settings", (req, res) => {
   res.json({ message: "User settings " });
 });
 
+
+
 export default router;

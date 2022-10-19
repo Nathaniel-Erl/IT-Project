@@ -1,7 +1,7 @@
 import axios from "axios";
 const url = "https://quizy-it-project.herokuapp.com/";
 const local = "http://localhost:5000";
-const API = axios.create({ baseURL: url });
+const API = axios.create({ baseURL: local });
 // quiz
 export const fetchQuizzes = () => API.get("/quiz");
 export const createQuiz = (newQuiz) => API.post("/quiz", newQuiz);
@@ -15,6 +15,8 @@ export const createQuestion = (newQuestion) =>
   API.post("/createquestion", newQuestion);
 export const deleteQuestion = (quizId, questionId) =>
   API.delete(`/quiz/${quizId}/${questionId}`);
+export const updateQuestion = (quizId, questionId, updatedQuestion) =>
+  API.patch(`/quiz/${quizId}/${questionId}`, updatedQuestion)
 
 // auth
 export const logIn = (formData) => API.post("/", formData);
