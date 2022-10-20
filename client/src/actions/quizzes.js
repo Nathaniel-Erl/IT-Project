@@ -13,9 +13,7 @@ export const getQuizzes = () => async (dispatch) => {
     console.log(data);
     dispatch({ type: FETCH_ALL_QUIZZES, payload: data });
   } catch (error) {
-    if (error.response.status === "401") {
-      console.log(error);
-    }
+    console.log(error);
   }
 };
 
