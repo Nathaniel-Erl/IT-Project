@@ -1,5 +1,11 @@
 import QuestionType from './pages/QuestionType'
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+  Navigate,
+} from 'react-router-dom'
 import Review from './pages/Review'
 import Signup from './pages/Signup'
 import Login from './pages/Login'
@@ -55,6 +61,14 @@ function App() {
       </Routes>
     </BrowserRouter>
   )
+}
+
+// Check if user is logged-in
+// If not, redirect to "/login"
+const PrivateRoute = ({ children }) => {
+  const authed = localStorage.getItem('profile')
+
+  return authed ? children : <Navigate to='/' />
 }
 
 // Check if user is logged-in
