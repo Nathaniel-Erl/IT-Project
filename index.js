@@ -11,6 +11,7 @@ import userRoutes from "./routes/user.js";
 import questionRoutes from "./routes/question.js";
 import { passportConfig } from "./config/passport.js";
 import { keys } from "./config/keys.js";
+import { fileURLToPath } from "url";
 
 const app = express();
 
@@ -31,6 +32,8 @@ const CONNECTION_URL = mongoDBUri;
 const PORT = port;
 
 if (process.env.NODE_ENV === "production") {
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
   app.use(express.static("client/build"));
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
