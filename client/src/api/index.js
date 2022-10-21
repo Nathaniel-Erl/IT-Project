@@ -1,8 +1,8 @@
 import axios from 'axios'
 import { authHeader } from '../actions/auth.js'
 const url = 'https://quizy-it-project.herokuapp.com/'
-const local = 'http://localhost:5000'
-const API = axios.create({ baseURL: local })
+// const local = 'http://localhost:5000'
+const API = axios.create({ baseURL: url })
 // quiz
 export const fetchQuizzes = () =>
   API.get('/quiz', {
