@@ -6,6 +6,7 @@ import User from "../models/userSchema.js";
 export const login = async (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
+
   // Find user in database
   const user = await User.findOne({ email });
   // Check if user exists
@@ -24,7 +25,11 @@ export const login = async (req, res) => {
       const token = jwt.sign(payload, keys.passport.secretOrKey, {
         expiresIn: keys.passport.expiresIn,
       });
-      return res.status(200).json({ result: user, token });
+      const bearer = "Bearer " + token;
+      return res.status(200).json({
+        result: user,
+        token: bearer,
+      });
     } else {
       // passwords do not match
       return res.status(400).json({ error: "Incorrect password" });
@@ -34,14 +39,16 @@ export const login = async (req, res) => {
 
 export const signup = async (req, res) => {
   const { userName, firstName, lastName, email, password } = req.body;
+  const lowerEmail = email.toLowerCase();
   try {
     // check that email and username are unique
-    const usernameExists = await User.findOne({ userName });
-    const emailExists = await User.findOne({ email });
-
+    const usernameExists = await User.findOne({ userName: userName });
+    const emailExists = await User.findOne({ email: lowerEmail });
     if (usernameExists) {
+      console.log("username");
       res.status(400).json({ userNameError: "Username already exists" });
     } else if (emailExists) {
+      console.log("email");
       res.status(400).json({ emailError: "Email already exists" });
     } else {
       // Username and email are unique
@@ -52,11 +59,21 @@ export const signup = async (req, res) => {
         userName: userName,
         firstName: firstName,
         lastName: lastName,
-        email: email,
+        email: lowerEmail,
         password: hash,
       });
-      res.status(201).json({ result: newUser });
-      console.log(userName, firstName, lastName, email, hash);
+      // create and sign token
+      // Create JWT Payload
+      const payload = {
+        id: newUser["_id"],
+        email: newUser.email,
+      };
+      // Sign token
+      const token = jwt.sign(payload, keys.passport.secretOrKey, {
+        expiresIn: keys.passport.expiresIn,
+      });
+      const bearer = "Bearer " + token;
+      res.status(201).json({ result: newUser, token: bearer });
     }
   } catch (error) {
     console.log(error);
