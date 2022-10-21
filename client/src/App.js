@@ -10,8 +10,6 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/createquestion' exact element={<QuestionType />} />
-        <Route path='/quiz/:quizId' exact element={<Review />} />
         <Route
           path='/createquestion'
           exact
@@ -32,8 +30,6 @@ function App() {
         />
         <Route path='/signup' exact element={<Signup />} />
         <Route path='/' element={<Login />} />
-        <Route path='/quiz' exact element={<Dashboard />} />
-        <Route path='/settings' exact element={<Settings />} />
         <Route
           path='/quiz'
           exact
