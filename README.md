@@ -3,7 +3,7 @@ Quizzy is the capstone project for computing-related major at the University of 
 
 The aim of the project is to build an application that allow users to store important quizzes that assist their revision for university subjects.
 
-The project is built upon MERN stack, using React.js for frontend, Node.js + Express.js for backend, and MongoDB as database.
+The project is built upon MERN stack, using React.js for frontend development, Node.js + Express.js for backend development, and MongoDB as database.
 
 ## Installation
 To install and set up in a local enviroment
