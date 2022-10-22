@@ -5,6 +5,7 @@ import {
   createQuestion,
   deleteQuestion,
   getAllQuestions,
+  updateQuestion,
 } from "../controllers/questionController.js";
 
 const router = express.Router();
@@ -28,6 +29,11 @@ router.delete(
   "/quiz/:quizId/:questionId",
   passport.authenticate("jwt", { session: false }),
   deleteQuestion
+);
+router.patch(
+  "/quiz/:quizId/:questionId",
+  passport.authenticate("jwt", { session: false }),
+  updateQuestion
 );
 
 export default router;

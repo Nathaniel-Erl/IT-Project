@@ -12,7 +12,7 @@ const Quizzes = ({ images, setOpenQuizForm, currentQuizId, setCurrentQuizId }) =
   useEffect(() => {
      setTimeout(() => {
        setLoading(false);
-     }, 1000);
+     }, 3000);
   }, []);
   
   if (isLoading) {
@@ -20,6 +20,7 @@ const Quizzes = ({ images, setOpenQuizForm, currentQuizId, setCurrentQuizId }) =
       <CircularProgress margin="auto"/>
     </Box>
   }
+
 
   return !quizzes.length ? (
       <Typography variant='h6' align="center" marginTop='12rem'>No quizzes available</Typography>
@@ -29,8 +30,8 @@ const Quizzes = ({ images, setOpenQuizForm, currentQuizId, setCurrentQuizId }) =
         spacing={{ xs: 4, md: 8 }}
         columns={{ xs: 4, sm: 8, md: 12 }}
       >
-        {quizzes.filter(quiz => quiz.createdBy === user.result.userName).
-          map((quiz) => (
+        {quizzes.filter(quiz => quiz.createdBy === user.result.userName)
+          .map((quiz) => (
           <Grid key={quiz._id} item xs={12} sm={4} md={4}>
             <QuizBlock
               images={images}

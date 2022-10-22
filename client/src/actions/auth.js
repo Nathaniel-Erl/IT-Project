@@ -6,7 +6,8 @@ export const signUp = (formData, navigate) => async (dispatch) => {
     const { data } = await api.signUp(formData)
     dispatch({ type: AUTH, data })
     navigate('/quiz')
-  } catch (error) {
+  }
+  catch (error) {
     dispatch({ type: ERROR_AUTH, error })
   }
 }
@@ -16,27 +17,12 @@ export const logIn = (formData, navigate) => async (dispatch) => {
     const { data } = await api.logIn(formData)
     dispatch({ type: AUTH, data })
     navigate('/quiz')
-  } catch (error) {
-    console.log(error)
+  }
+  catch (error) {
+    dispatch({ type: ERROR_AUTH, error });
   }
 }
 
-// function Protected() {
-//   useEffect(() => {
-//     const token = localStorage.getItem("profile").token;
-//     api.API.get("/quiz", {
-//       headers: {
-//         Authorization: token,
-//       },
-//     })
-//       .then((res) => {
-//         console.log(res);
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//       });
-//   }, []);
-// }
 
 export function authHeader() {
   // return authorization header with basic auth credentials

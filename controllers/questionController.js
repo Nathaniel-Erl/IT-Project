@@ -64,7 +64,7 @@ export const deleteQuestion = async (req, res) => {
   return res.json({ message: "Question deleted successfully" })
 }
 
-export const updateQuestions = async (req, res) => {
+export const updateQuestion = async (req, res) => {
   const { quizId, questionId } = req.params;
   const question = req.body;
 

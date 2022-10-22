@@ -3,7 +3,6 @@ import passport from "passport";
 
 import {
   createQuiz,
-  markQuiz,
   getAllQuizzes,
   deleteQuiz,
   updateQuiz,
@@ -18,7 +17,6 @@ router.get(
   getAllQuizzes
 );
 
-//router.post('/quiz/:id/attempt', markQuiz)
 
 // create quiz
 router.post("/", passport.authenticate("jwt", { session: false }), createQuiz);
